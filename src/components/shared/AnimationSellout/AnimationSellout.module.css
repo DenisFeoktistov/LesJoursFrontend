@@ -1,0 +1,53 @@
+.block {
+
+    width: 110%;
+    height: 110%;
+    position: fixed;
+    top: -5%;
+    left: -5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: black;
+    z-index: 9999;
+    animation: opacityAnim 4s ease forwards;
+}
+.img {
+    width: 50%;
+    height: auto;
+    animation: zoomOut 4s ease forwards;
+}
+
+@keyframes zoomOut {
+    0% {
+        transform: scale(0); /* Начальный размер изображения (100%) */
+        opacity: 0; /* Начальная непрозрачность (полностью видимо) */
+    }
+    66% {
+        transform: scale(1); /* Конечный размер изображения (0%, т.е., исчезает) */
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1); /* Конечный размер изображения (0%, т.е., исчезает) */
+        opacity: 0;
+    }
+}
+
+@keyframes opacityAnim {
+    0% {
+        background: black /* Начальная непрозрачность (полностью видимо) */
+    }
+    66% {
+        background: black;
+    }
+    100% {
+        /*background: rgba(0, 0, 0, 0.01) !* Конечная непрозрачность (полностью прозрачно) *!*/
+        background: transparent;
+    }
+}
+@media (max-width: 1000px) {
+    .img {
+        width: 70%;
+    }
+}

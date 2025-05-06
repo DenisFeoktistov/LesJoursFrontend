@@ -1,0 +1,954 @@
+.container {
+    margin-top: 130px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+
+}
+
+.col1 {
+    width: 60%;
+}
+
+.col2 {
+    width: 37%;
+}
+
+.col40 {
+    padding-left: 20px;
+    width: 40%;
+
+}
+
+.col60 {
+    width: 60%;
+}
+
+.photo {
+    width: 100%;
+    height: 400px;
+    text-align: center;
+    object-fit: contain;
+}
+
+.brand {
+    font-size: 19px;
+    cursor: pointer;
+    color: #51031D;
+    font-weight: 500;
+}
+
+.model {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.color {
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.price_default {
+    font-size: 19px;
+    font-weight: 500;
+    color: #51031D;
+}
+
+.price_sale {
+    font-size: 19px;
+    /*color: green;*/
+    color: #940a0a;
+    /*color: rgba(189, 24, 24, 0.79);*/
+    margin-right: 7px;
+    font-weight: 500;
+}
+
+.icons {
+    margin-left: 7px;
+    margin-right: 7px;
+
+}
+
+.love_in_mobile {
+    /*margin-left: 11px; !* Устанавливаем auto-марджины для центрирования *!*/
+    /*display: block; !* Обеспечиваем блочный элемент *!*/
+    /*max-width: 100%; !* Не дает изображению быть шире родительского блока *!*/
+    /*max-height: 100%; !* Не дает изображению быть выше родительского блока *!*/
+}
+
+.bonuses_block {
+    display: inline;
+    align-items: center;
+    font-weight: 500;
+}
+
+.privText {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.privTextPart {
+    /*background: linear-gradient(45deg, #51031D 0%, #83052F 42%, #B70742 100%);*/
+    /*-webkit-background-clip: text;*/
+    /*-webkit-text-fill-color: transparent;*/
+    color: #51031D;
+    display: inline-block;
+    align-items: center;
+    font-weight: 500;
+    /*color: #136207;*/
+    font-size: 12px;
+    line-height: 1.3;
+}
+
+.priv_icon {
+    width: 80px;
+    height: auto;
+    margin-right: 7px;
+    display: block;
+}
+
+.bonuses {
+    margin: 3px 0;
+    color: green;
+}
+
+.bonus_icon {
+    margin-top: -3px;
+}
+
+.modals_block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn_group {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 8px 0px 0px 0px;
+    flex-wrap: wrap;
+}
+
+.taxIncludedText {
+    font-size: 12px;
+    text-align: center;
+}
+
+.promoBanner {
+    width: 100%;
+    height: 65px;
+    background: linear-gradient(45deg, #51031D 0%, #83052F 42%, #B70742 100%);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    border-radius: 2px;
+    margin-bottom: 15px;
+}
+
+.womenBanner {
+    background: linear-gradient(45deg, #51031D 0%, #83052F 42%, #D76BBF 100%);
+}
+
+.promoText {
+    color: white;
+    font-size: 24px;
+}
+
+@media (max-width: 1300px) {
+    .promoText {
+        font-size: 20px;
+    }
+}
+
+.promoButton {
+    font-size: 16px;
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 7px 27px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.promoButton:hover {
+    background-color: white;
+    color: #83052F;
+}
+
+
+.grey_text {
+    color: #727272;
+    text-align: center;
+    font-size: 22px;
+    margin-top: 20px;
+}
+
+.how {
+    margin: 8px 0px 12px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.cart_btn {
+    transition: background-color 0.5s ease;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    background: #51031D;
+    color: white;
+    min-height: 48px;
+    flex: 1; /* Растянуть на всё оставшееся пространство */
+    margin-right: 8px; /* Добавить немного отступа между кнопками */
+    /*transition: /0.3s;*/
+    font-size: 12pt;
+
+    font-weight: 550;
+}
+
+.cart_btn:disabled {
+    background: rgb(81, 3, 29, 0.77);
+}
+
+.cart_btn2 {
+    transition: background 0.5s ease;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    background: #51031D;
+    color: white;
+    min-height: 48px;
+    width: 82%;
+    /*transition: 0.3s;*/
+    font-size: 13pt;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.cart_btn2:disabled {
+    /*background: rgba(0, 0, 0, 0.25);*/
+    /*background: linear-gradient(0deg, rgb(81, 3, 29, 1) -60%, rgba(23, 0, 0, 0.25) 100%);*/
+    background: rgb(81, 3, 29, 0.77);
+    cursor: initial;
+}
+
+.fav_btn {
+    border: 1px solid black;
+    outline: none;
+    border-radius: 7px;
+    background: white;
+    color: black;
+    min-height: 48px;
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.fav_btn2 {
+
+    border: 1px solid black;
+    outline: none;
+    border-radius: 7px;
+    background: white;
+    color: black;
+    min-height: 48px;
+    width: 17%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*border: 1px solid black;*/
+    /*outline: none;*/
+    /*border-radius: 7px;*/
+    /*background: white;*/
+    /*color: black;*/
+    /*min-height: 40px;*/
+    /*width: 34%;*/
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+
+}
+
+.icon_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12pt;
+    font-weight: 500;
+}
+
+.link_block {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 15px 0;
+}
+
+.link {
+    color: #9a9999;
+}
+
+.link:hover {
+    color: #9a9999;
+}
+
+.more {
+    /*padding-top: 4px;*/
+    margin-top: 30px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    font-size: 15px;
+    font-weight: 400;
+
+    -webkit-transition: max-height 0.5s;
+    -moz-transition: max-height 0.5s;
+    -ms-transition: max-height 0.5s;
+    -o-transition: max-height 0.5s;
+    transition: max-height 0.5s;
+    z-index: -2;;
+
+    position: relative;
+}
+
+.more_open {
+    max-height: none;
+    z-index: 1;
+    transition: max-height 0.5s ease;
+}
+
+.fadeOut {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px; /* Высота градиента */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    pointer-events: none; /* Градиент не будет блокировать клики */
+}
+
+.invisible {
+    display: none;
+}
+
+.more_color {
+    font-size: 15px;
+}
+
+.description {
+    margin: 20px 0 20px 0;
+}
+
+.characteristics_title {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.characteristics {
+    margin: 5px 0;
+
+    font-size: 15px;
+    color: #727272;
+}
+
+.characteristics_text {
+    margin: 5px;
+    font-size: 15px;
+    color: black;
+}
+
+.more_btn {
+    display: flex;
+    justify-content: space-between;
+    outline: none;
+    background: none;
+    border: none;
+}
+
+.more_text {
+    margin-right: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.slider {
+    position: relative;
+    margin-top: 30px;
+}
+
+@media (max-width: 1200px) {
+    .brand {
+        font-size: 20px;
+    }
+
+    .model {
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+    .container {
+        /*margin-top: 0;*/
+        margin-top: 0;
+    /*    ВРЕМЕННОЕ ИЗМНЕНИЕ*/
+    }
+
+    .row {
+        flex-direction: column;
+
+    }
+
+    .col1, .col2, .col50, .col60 {
+        width: 100%;
+    }
+
+    .col40 {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .color {
+        margin-bottom: 0px;
+    }
+
+    .slider {
+        margin-top: 27px;
+        margin-bottom: 50px;
+    }
+
+    .photo {
+        height: 50vh;
+    }
+
+    .more {
+        margin-top: 0;
+    }
+}
+
+
+.cont {
+    margin-top: 130px;
+    margin-bottom: 50px;
+    min-height: 25vh;
+}
+
+.title_block {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.cart_link {
+    color: #9a9999;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.text_underline {
+    text-decoration: underline;
+}
+
+.shop_button {
+    width: 200px;
+    padding: 10px;
+    background: black;
+    color: white;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    margin-top: 10px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.login_block {
+    display: flex;
+}
+
+.main_block {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.items_block {
+    width: 70%;
+}
+
+.promos_block {
+    width: 28%;
+}
+
+.big_text {
+    font-size: 20px;
+}
+
+.order_btn {
+    color: white;
+    background: black;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.green_text {
+    margin: 0 0;
+    color: green;
+    font-size: 14px;
+}
+
+.red_text {
+    margin: 0 0;
+    color: #940a0a;
+    font-size: 14px;
+}
+
+.questions_block {
+    margin-top: 10px;
+}
+
+.point_block {
+    width: 35%;
+    white-space: nowrap;
+}
+
+.line {
+    height: 3px;
+    background: linear-gradient(90deg, rgba(190, 190, 190, 1) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+.text {
+    font-weight: 500;
+}
+
+.faq_block {
+    padding: 0;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.text_cont {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.text_cont div {
+    font-size: 18px;
+}
+
+.link {
+    color: black;
+}
+
+.icons_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    gap: 50px;
+}
+
+.socialsCont {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+.mainSocialsText {
+    margin-left: 10px;
+    color: black;
+    font-size: 20px;
+    font-family: inherit;
+    text-align: left;
+}
+
+.linkTgSocials {
+    text-decoration: underline; /* Подчёркивание текста */
+    color: black;
+}
+
+.page2 {
+    display: flex;
+    justify-content: center;
+}
+
+.page2Img {
+    width: 100vw;
+    height: auto;
+    display: block;
+}
+
+.img_cont {
+    position: relative;
+    width: 100%;
+    height: 350px;
+}
+
+.img {
+    object-fit: contain;
+}
+
+.containerMain {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.image {
+    width: 100%;
+    margin-top: 30px;
+    display: block;
+}
+
+.textWrapper {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    overflow: hidden;
+}
+
+.textMain {
+    color: #3F3F3F;
+    font-size: 15px;
+    position: relative;
+    text-decoration: none; /* Убираем стандартное подчеркивание */
+    white-space: nowrap;
+}
+
+.textMain::after {
+    content: ''; /* Создаем псевдоэлемент */
+    position: absolute;
+    left: 0;
+    bottom: 0; /* Позиционируем подчеркивание под текстом */
+    width: 100%; /* Ширина равна ширине текста */
+    height: 1px; /* Высота подчеркивания */
+    background-color: black; /* Цвет подчеркивания */
+    transform: scaleX(0); /* Начальное состояние (скрыто) */
+    transition: transform 0.3s ease; /* Плавный переход */
+}
+
+.containerMain:hover .textMain::after {
+    transform: scaleX(1); /* При наведении подчеркивание становится видимым */
+}
+
+.arrowCont {
+    overflow-x: hidden;
+    margin-left: 7px;
+}
+
+.arrow {
+    width: 350px; /* Задайте размер стрелки */
+    transition: transform 0.3s ease;
+    transform: translateX(-250px); /* Стартовая позиция стрелки, частично обрезана слева */
+}
+
+.containerMain:hover .arrow {
+    transform: translateX(-70px); /* При наведении стрелка двигается вправо */
+}
+
+.containerParamsMob {
+    width: 100%;
+    height: 100px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-x: hidden;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+}
+/* Градиентный прямоугольник с правым блюром */
+.containerParamsMob::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px; /* Ширина градиентного блока */
+    height: 100%;
+    background: linear-gradient(to left, rgb(249, 249, 249), rgba(244, 244, 244, 0)); /* Градиент */
+    /*backdrop-filter: blur(1px); !* Эффект блюра *!*/
+    pointer-events: none; /* Отключаем взаимодействие с элементом */
+}
+
+.section {
+    height: 50%;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: black;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+/* Линия по центру */
+.centerLine {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(100% - 50px);
+    height: 1px;
+    background-color: #B4B4B4;
+}
+
+.arrowParamsMob {
+    position: absolute;
+    right: 12px;
+    z-index: 2;
+}
+
+/* Нижняя часть с параметрами */
+.parametersSection {
+    display: flex;
+    height: 50%;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 15px;
+    color: black;
+}
+
+/* Заголовок "Параметры:" */
+.parametersTitle {
+    margin-right: 15px;
+}
+
+/* Контейнер параметров */
+.parametersContainer {
+    display: flex;
+    align-items: center;
+}
+
+/* Стиль параметра */
+.parameter {
+    display: flex;
+    flex-direction: column;
+    max-width: 100px;
+    overflow: hidden;
+}
+
+/* Название параметра */
+.parameterName {
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: black;
+}
+
+/* Значение параметра */
+.parameterValue {
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #666;
+}
+
+/* Вертикальная линия между параметрами */
+.verticalLine {
+    width: 1px;
+    height: 20px;
+    background-color: #B4B4B4;
+    margin: 0 12px;
+}
+
+
+@media (max-width: 1200px) {
+    .cont {
+        margin-top: 80px;
+    }
+
+    .login_block {
+        display: inline;
+    }
+
+    .main_block {
+        flex-direction: column-reverse;
+    }
+
+    .items_block, .promos_block {
+        width: 100%;
+    }
+
+    .faq_block {
+        padding: 0;
+    }
+
+    .questions_text {
+        font-size: 16px;
+    }
+
+    .point_block {
+        width: 45%;
+        font-size: 13px;
+    }
+
+    .img_cont {
+        height: 200px;
+    }
+
+    .row {
+        gap: 10px;
+
+    }
+    .icons_block {
+        gap: 25px;
+        flex-direction: column;
+    }
+    .socialsCont {
+        gap: 10px;
+        width: 200px;
+    }
+    .mainSocialsText {
+        font-size: 16px;
+    }
+    .image {
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+}
+
+.similar_title {
+    font-size: 19px;
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.arrows_section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.arrows_block {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.arrows_cont {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.arrow_img {
+    object-fit: contain;
+}
+
+.how_btn {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 15px;
+    color: #727272;
+    transition: 0.3s;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.how_btn:hover {
+    color: #444444;
+}
+
+.label {
+    text-align: left;
+    color: black;
+}
+
+.icon_how {
+    margin: 0 10px;
+    min-width: 25px;
+    height: auto;
+}
+
+.icon_about_us {
+    margin-right: 10px;
+    min-width: 34px;
+    height: 40px;
+    width: 34px;
+}
+
+.iconContainer {
+    position: absolute;
+    top: 0;
+    right: 8px;
+    cursor: pointer;
+}
+
+.shareIcon {
+    width: 26px; /* Adjust the size as needed */
+    height: 26px; /* Adjust the size as needed */
+    transition: transform 0.5s ease-in-out;
+}
+
+.clicked {
+    animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+}
+
+
+.margins {
+    margin-right: 3vw;
+    margin-left: 3vw;
+}
+@media (max-width: 1200px) {
+    .margins {
+        margin-right: 8px;
+        margin-left: 8px;
+    }
+}
+@media (min-width: 2000px) {
+    .margins {
+        margin-right: 10vw;
+        margin-left: 10vw;
+    }
+}
+@media (min-width: 2500px) {
+    .margins {
+        margin-right: 15vw;
+        margin-left: 15vw;
+    }
+}

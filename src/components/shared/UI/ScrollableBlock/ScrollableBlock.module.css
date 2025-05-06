@@ -1,0 +1,183 @@
+.scrollableBlock {
+    position: relative;
+    margin-bottom: 70px;
+}
+
+.scrollableContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    /*-webkit-overflow-scrolling: touch; !* Для плавной прокрутки на iOS *!*/
+    gap: 45px;
+    scroll-snap-type: x mandatory;
+}
+.scrollableContainer::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollableContainer {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+@media (max-width: 650px) {
+    .scrollableContainer {
+        gap: 20px;
+    }
+}
+.snapPaddingRegular {
+    scroll-padding-right: 3vw;
+    scroll-padding-left: 3vw;
+}
+.paddingRegular {
+    padding-right: 3vw;
+    padding-left: 3vw;
+}
+@media (max-width: 1200px) {
+    .paddingRegular {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+    .snapPaddingRegular {
+        scroll-padding-right: 8px;
+        scroll-padding-left: 8px;
+    }
+    .scrollableBlock {
+        margin-bottom: 40px;
+    }
+}
+@media (min-width: 2000px) {
+    .paddingRegular {
+        padding-right: 10vw;
+        padding-left: 10vw;
+    }
+    .snapPaddingRegular {
+        scroll-padding-right: 10vw;
+        scroll-padding-left: 10vw;
+    }
+}
+@media (min-width: 2500px) {
+    .paddingRegular {
+        padding-right: 15vw;
+        padding-left: 15vw;
+    }
+    .snapPaddingRegular {
+        scroll-padding-right: 15vw;
+        scroll-padding-left: 15vw;
+    }
+}
+
+.moreLines {
+    width: 200px;
+    background-color: #E2E2E2;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-shrink: 0;
+    align-self: stretch;
+    cursor: pointer;
+    border-color: transparent; /* Начальное значение border-color */
+    box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(0, 0, 0, 0);
+    transition: border 0.3s ease, box-shadow 0.3s ease; /* Плавный переход для обводки и тени */
+    text-decoration: none;
+    color: #000;
+    scroll-snap-align: start;
+}
+.moreLines:hover {
+    border-color: black; /* Обводка становится чёрной */
+    box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.25), /* Внутренняя тень */ 0 0 3px rgba(0, 0, 0, 0.25); /* Дополнительная внешняя тень для плавного эффекта */
+}
+.moreLinesText {
+    font-size: 14px;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.left {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    opacity: 0.7;
+    border: 1px solid black;
+    border-radius: 7px;
+    color: #333;
+    font-size: 24px;
+    left: 0;
+    outline: none;
+    z-index: 1;
+}
+
+.right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    opacity: 0.7;
+    border: 1px solid black;
+    border-radius: 7px;
+    color: #333;
+    font-size: 24px;
+    right: 0;
+    outline: none;
+}
+.leftNew {
+    position: absolute;
+    border: none;
+    right: 115px;
+    bottom: -40px;
+    z-index: 2;
+    background-color: transparent;
+}
+
+.rightNew {
+    position: absolute;
+    border: none;
+    right: 50px;
+    bottom: -40px;
+    z-index: 2;
+    background-color: transparent;
+}
+
+@media (max-width: 1200px) {
+    .leftNew {
+        right: calc(115px + 8px);
+    }
+    .rightNew {
+        right: calc(50px + 8px);
+    }
+}
+@media (min-width: 2000px) {
+    .leftNew {
+        right: calc(115px + 10vw);
+    }
+    .rightNew {
+        right: calc(50px + 10vw);
+    }
+}
+@media (min-width: 2500px) {
+    .leftNew {
+        right: calc(115px + 15vw);
+    }
+    .rightNew {
+        right: calc(50px + 15vw);
+    }
+}
+.img {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 1000px) {
+    .left, .right {
+        border: none;
+        background: transparent;
+    }
+}

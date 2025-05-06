@@ -1,0 +1,25 @@
+.empty_text {
+    font-weight: 700;
+    margin: 10px 0 20px 0;
+}
+.button {
+    color: white;
+    background: black;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    padding: 10px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.wishlist_cont {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+@media (max-width: 1200px) {
+    .wishlist_cont {
+        justify-content: space-between;
+    }
+}

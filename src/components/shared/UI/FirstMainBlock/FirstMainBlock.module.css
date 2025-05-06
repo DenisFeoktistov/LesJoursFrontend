@@ -1,0 +1,101 @@
+.imageRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    overflow: hidden; /* Hide overflowing content */
+}
+
+.imageContainer {
+    max-width: 25%; /* Set the max width for the first two images */
+    height: 520px;
+}
+
+
+.container {
+    max-width: 50%; /* Define width of the container */
+    height: 520px; /* Define height of the container */
+    overflow: hidden; /* Hide overflowing content */
+    border-radius: 5px;
+}
+
+.imageBigContainer {
+    object-fit: cover;
+    position: relative;
+    animation: scrollImage 20s linear infinite; /* Define animation */
+}
+
+.image {
+    display: flex;
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+    font-size: 0;
+}
+
+@keyframes scrollImage {
+    0% {
+        transform: translateY(-76.6%);
+    }
+    100% {
+    }
+}
+
+.imageContainer img {
+    display: none;
+}
+
+.imageContainer img.active {
+    display: flex;
+    width: auto;
+    height: 100%;
+    border-radius: 5px;
+    font-size: 0;
+    animation: 1.5s ease-in-out forwards;
+}
+
+
+
+
+
+@media (max-width: 1500px) {
+    .imageContainer, .container  {
+        height: 500px;
+    }
+}
+
+@media (max-width: 1430px) {
+    .imageContainer, .container  {
+        height: 450px;
+    }
+}
+
+@media (max-width: 1295px) {
+    .imageContainer, .container {
+        height: 400px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .imageRow {
+        flex-wrap: wrap;
+    }
+
+    .imageContainer, .container {
+        height: auto;
+        min-width: 49%;
+    }
+
+    .container {
+        order: -1; /* Move the last child to the beginning */
+        min-width: 100%;
+        margin-bottom: 1%;
+        max-height: 400px;
+    }
+
+    .imageContainer img.active {
+        width: 100%;
+    }
+}
+
+

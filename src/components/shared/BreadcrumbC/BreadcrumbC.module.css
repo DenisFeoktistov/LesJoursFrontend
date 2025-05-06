@@ -1,0 +1,29 @@
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #727272;
+    cursor: pointer;
+}
+.link {
+    color: #727272;
+    white-space: nowrap;
+    font-size: 16px;
+}
+.arrow {
+    margin: 0 5px;
+    width: 14px;
+}
+@media (max-width: 700px) {
+    .breadcrumb {
+        /*margin-top: 5px;*/
+    }
+    .link {
+        font-size: 13px;
+    }
+    .arrow {
+        width: 12px;
+    }
+}

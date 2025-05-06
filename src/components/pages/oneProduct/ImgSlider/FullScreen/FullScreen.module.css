@@ -1,0 +1,55 @@
+.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.9);
+    width: 100vw;
+    height: 140vh;
+}
+
+.close_btn {
+    outline: none;
+    border: none;
+    background: transparent;
+    margin: 20px 20px;
+}
+
+.quater {
+    height: 25vh;
+}
+
+.closeBtnWrapper {
+    position: absolute; /* Устанавливаем абсолютное позиционирование */
+    top: 10px; /* Отступ от верхнего края */
+    right: 10px; /* Отступ от правого края */
+    z-index: 999; /* Устанавливаем порядок слоев */
+}
+
+.cont {
+    position: relative;
+    /*object-fit: contain;*/
+    /*top: 45%;*/
+    /*!*align-items: center;*!*/
+    /*transform: translateY(-80%);*/
+    background-color: #FFFFFF;
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Центрируем содержимое по вертикали */
+    overflow: hidden; /* Скрываем возможные прокрутки */
+    /*width: 98%;*/
+
+    /*left: 50%;*/
+    /*transform: translate(-50%, -50%);*/
+}
+.photo_cont {
+    width: auto;
+    height: 90vh;
+    overflow: auto;
+}
+.photo {
+    text-align: center;
+    object-fit: contain;
+}

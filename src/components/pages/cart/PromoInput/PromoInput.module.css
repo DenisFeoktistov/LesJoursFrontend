@@ -1,0 +1,37 @@
+.input {
+    position: relative;
+    z-index: 6;
+    width: 100%;
+    margin: 10px 0;
+}
+.mailing {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.81);
+    border-radius: 7px;
+    outline: none;
+    padding: 10px 10px 10px 10px;
+    height: 44px;
+    background: transparent;
+}
+.mailing::placeholder {
+    font-style: italic;
+    font-size: 14px;
+}
+.input .icon {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-55%);
+
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: transparent;
+}

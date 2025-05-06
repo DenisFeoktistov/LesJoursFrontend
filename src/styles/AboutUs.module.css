@@ -1,0 +1,37 @@
+.cont {
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+}
+.photo {
+    width: 100%;
+    height: auto;
+}
+.nav_block {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+.link {
+    color: #BBBBBB;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 500;
+    text-decoration: none;
+}
+.wrap {
+    width: 100%;
+    display: none;
+}
+@media (max-width: 1200px) {
+    .cont {
+        margin-top: 0;
+    }
+    .link {
+        font-size: 18px;
+    }
+    .wrap {
+        display: block;
+    }
+}

@@ -1,0 +1,39 @@
+.checkbox {
+    min-width: 24px;
+    min-height: 22px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-weight: 700;
+}
+.label {
+    user-select: none;
+    display: flex;
+    align-items: center;
+    margin: 0 7px;
+}
+.block {
+    display: flex;
+    align-items: center;
+}
+.block_reversed {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+.block_between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-right: 5px;
+}
+.color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    margin-right: 5px;
+    border: 1px solid darkgrey;
+}

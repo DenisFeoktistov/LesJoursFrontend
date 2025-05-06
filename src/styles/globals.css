@@ -1,0 +1,200 @@
+@font-face{
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../static/fonts/Montserrat-Regular.ttf") format("truetype");
+}
+
+@font-face{
+    font-family: "Montserrat";
+    font-style: italic;
+    font-weight: normal;
+    src: url("../static/fonts/Montserrat-Italic.ttf") format("truetype");
+}
+@font-face{
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 500;
+    src: url("../static/fonts/Montserrat-Medium.ttf") format("truetype");
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+.body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    margin-bottom: 0;
+}
+body {
+    overflow-x: clip;
+    text-underline-offset: 2px;
+}
+body.modal-open #navbar {
+    width: calc(100% - 17px);
+}
+.modal-open {
+    overflow-y: hidden;
+}
+@-moz-document url-prefix() {
+    body.modal-open #navbar {
+        width: 100%;
+    }
+}
+.modal-open {
+    overflow-y: scroll;
+}
+.modal-backdrop {
+    overflow-y: clip;
+}
+button {
+    color: black;
+}
+input {
+    caret-color: black;
+}
+.slider {
+    margin-top: 15px;
+    width: 260px;
+    height: 4px;
+    background: #cbcbcb;
+    border-radius: 7px;
+}
+.slider .thumb {
+    width: 20px;
+    height: 20px;
+    cursor: grab;
+    background: #ffffff;
+    border: 2px solid #cbcbcb;
+    outline: none;
+    border-radius: 50px;
+    top: -7px;
+}
+.cont_up {
+    padding-top: 38px;
+    flex: 1;
+}
+.cont_up_mob {
+    flex: 1;
+}
+.custom_cont {
+    margin-right: 3vw;
+    margin-left: 3vw;
+}
+.mobile_d{
+    display: none;
+    align-items: center;
+}
+.desktop_d {
+    display: flex;
+    align-items: center;
+}
+.red_text {
+    color: #940a0a;
+}
+.green_text {
+    color: green;
+}
+.placeholder_img {
+
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    object-fit: cover;
+}
+.splide__arrow {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    width: fit-content !important;
+}
+.splide__arrow--prev {
+    left: 0 !important;
+}
+.splide__arrow--next {
+    right: 0px !important;
+}
+body.body-scroll-clip {
+    overflow-y: hidden;
+}
+@media (max-width: 1200px) {
+    .custom_cont {
+        margin-right: 8px;
+        margin-left: 8px;
+    }
+    .mobile_d {
+        display: flex;
+    }
+    .desktop_d {
+        display: none;
+    }
+    .placeholder_img {
+        z-index: -1;
+        object-fit: contain;
+    }
+    body.modal-open #navbar {
+        width: 100%
+    }
+    .splide__arrow--next {
+        right: 0 !important;
+    }
+    body.body-scroll-clip {
+        overflow-y: hidden;
+    }
+}
+@media (min-width: 2000px) {
+    .custom_cont {
+        margin-right: 10vw;
+        margin-left: 10vw;
+    }
+}
+@media (min-width: 2500px) {
+    .custom_cont {
+        margin-right: 15vw;
+        margin-left: 15vw;
+    }
+}
+
+
+.keywords-block {
+    /*margin-right: 3vw;*/
+    /*margin-left: 3vw;*/
+
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Тень под блоком */
+    z-index: 999; /* Устанавливаем поверх других элементов */
+    font-size: 14px; /* Размер текста */
+    color: #666; /* Серый цвет текста */
+    ;
+    /*text-align: center; !* Выравнивание текста по центру *!*/
+}
+
+.keywords-block h6 {
+    margin: 5px 0; /* Отступы сверху и снизу */
+    color: #b2b2b2; /* Серый цвет текста */
+}
+.keywords-block p {
+    margin: 5px 0; /* Отступы сверху и снизу */
+}
+
+/* Цвет загрузочного индикатора */
+#nprogress .bar {
+    background: #51031D !important; /* Цвет индикатора */
+}
+
+/* Цвет тени под индикатором (если используется) */
+#nprogress .peg {
+    box-shadow: 0 0 10px #51031D, 0 0 5px #51031D !important; /* Цвет тени */
+}
+
+/* Белый цвет, если виден хедер */
+.navbar-visible-desktop #nprogress .bar {
+    background: rgba(255, 166, 166, 0.85) !important;
+}
+
+.navbar-visible-desktop #nprogress .peg {
+    box-shadow: 0 0 5px white, 0 0 5px white !important;
+}

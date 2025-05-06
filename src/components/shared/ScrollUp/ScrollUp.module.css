@@ -1,0 +1,32 @@
+.scroll_btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 40px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #333333;
+    border-radius: 10%;
+    cursor: pointer;
+
+    transition: opacity 0.3s;
+    opacity: 0;
+    z-index: 1000;
+}
+.scroll_btn.visible {
+    opacity: 1;
+}
+.icon {
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .scroll_btn {
+        bottom: 120px;
+        right: 20px;
+        width: 40px;
+        height: 35px;
+    }
+}
