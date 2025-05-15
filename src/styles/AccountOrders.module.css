@@ -5,6 +5,7 @@
     text-transform: uppercase;
     text-align: center;
     font-weight: 700;
+    margin-bottom: 30px;
 }
 .cards_block {
     display: flex;
@@ -25,7 +26,7 @@
     padding: 7px 100px;
 }
 .orders_block {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 .faq_block {
     padding: 0 10%;

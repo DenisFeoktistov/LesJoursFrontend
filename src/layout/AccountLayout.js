@@ -17,7 +17,6 @@ import heart from '@/static/icons/heart.svg'
 const AccountLayout = ({children}) => {
     const {userStore, cartStore} = useContext(Context)
     const router = useRouter()
-    const selectedGender = Cookies.get('selected_gender')
 
     const logout = (e) => {
         e.preventDefault()
@@ -29,7 +28,7 @@ const AccountLayout = ({children}) => {
         userStore.setIsLogged(false)
         userStore.setGender('')
         cartStore.setCartCnt(0)
-        router.push(selectedGender === 'M' ? '/men' : selectedGender === 'F' ? '/women' : '/')
+        router.push('/')
     }
     const makeBold = (currPage) => {
         const {pathname} = router
@@ -56,31 +55,16 @@ const AccountLayout = ({children}) => {
                             <div className={makeBold('account')}>Личные данные</div>
                             <Image src={person} alt='' className={s.icon} width={20}/>
                         </Link>
-                        <Link href="/account/addresses" className={s.nav_link}
-                        >
-                            <div className={makeBold('addresses')}>Адреса</div>
-                            <Image src={geo} alt='' className={s.icon} width={20}/>
-                        </Link>
                         <Link href="/account/orders" className={s.nav_link}
                         >
                             <div className={makeBold('orders')}>Заказы</div>
                             <Image src={orders} alt='' className={s.icon} width={20}/>
                         </Link>
-                        <Link href="/account/favorite-brands" className={s.nav_link}
-                        >
-                            <div className={makeBold('favorite-brands')}>Любимые бренды</div>
-                            <Image src={heart} alt='' className={s.icon} width={20}/>
-                        </Link>
-                        <Link href="/account/loyalty" className={s.nav_link}
-                        >
-                            <div className={makeBold('loyalty')}>Программа лояльности</div>
-                            <Image src={loyal} alt='' className={s.icon} width={22}/>
-                        </Link>
-                        <Link href="/account/referral" className={s.nav_link}
-                        >
-                            <div className={makeBold('referral')}>Реферальная программа</div>
-                            <Image src={referral} alt='' className={s.icon} width={25}/>
-                        </Link>
+                        {/*<Link href="/account/referral" className={s.nav_link}*/}
+                        {/*>*/}
+                        {/*    <div className={makeBold('referral')}>Реферальная программа</div>*/}
+                        {/*    <Image src={referral} alt='' className={s.icon} width={25}/>*/}
+                        {/*</Link>*/}
                     </div>
                     :
                     <>

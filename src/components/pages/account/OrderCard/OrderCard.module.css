@@ -98,7 +98,7 @@
 }
 .header_text {
     font-size: 20px;
-    margin: 0 10px;
+    width: 33%;
 }
 .header_block {
     display: flex;
@@ -106,20 +106,17 @@
 }
 .header_col {
     display: flex;
-    width: 40%;
+    width: 100%;
 }
 .header_col2 {
     display: flex;
     width: 60%;
 }
 .num {
-    width: 40%;
 }
 .date {
-    width: 60%;
 }
 .sum {
-    width: 50%;
 }
 .status {
     width: 50%;
@@ -175,9 +172,10 @@
 .final_block {
     display: flex;
     padding: 15px;
+    justify-content: end;
 }
 .final_col {
-    width: 50%;
+    width: 49%;
 }
 .prices {
     font-size: 16px;
@@ -185,7 +183,7 @@
     justify-content: space-between;
 }
 .hr {
-    visibility: hidden;
+    /*visibility: hidden;*/
 }
 .blackDivider {
     border-top: 1px solid black;

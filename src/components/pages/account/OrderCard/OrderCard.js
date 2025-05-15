@@ -10,23 +10,11 @@ import {Context} from "@/context/AppWrapper";
 const OrderCard = ({order}) => {
     const [isOpen, setIsOpen] = useState(false)
     const [isBeOpen, setIsBeOpen] = useState(false)
-    const {desktopStore} = useContext(Context)
-    // const toggle = () => {
-    //     if (isOpen) {
-    //         setIsOpen(false);
-    //         setIsBeOpen(true);
-    //         setTimeout(() => {
-    //             setIsBeOpen(false);
-    //         }, desktopStore.isDesktop ? 300 : 500); // Задержка в одну секунду
-    //     } else {
-    //         setIsOpen(true);
-    //         setIsBeOpen(false);
-    //     }
-    // };
+
     const addSpacesToNumber = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 
     const toggle = () => {
-        if (isOpen){
+        if (isOpen) {
             setIsBeOpen(true)
         }
         setIsOpen(!isOpen)
@@ -46,6 +34,67 @@ const OrderCard = ({order}) => {
         }
     }, [isOpen]);
 
+    const orderTemp = {
+        "id": 1113,
+        "order_units": [
+            {
+                "id": 1544,
+                "name": "Бенто-торт",
+                "bucket_link": [
+                    {
+                        "url": "https://storage.yandexcloud.net/les-jours-bucket/1.png"
+                    }
+                ],
+                "slug": "vans-old-skool-blackwhite-43719",
+                "price": {
+                    "start_price": 3900,
+                    "final_price": 3900
+                },
+                "guestsAmount": 2,
+                "totalPrice": 7800,
+                "date": {
+                    "start_datetime": "2024-04-01T14:00:00Z",
+                    "end_datetime": "2024-04-01T16:00:00Z"
+                },
+                "address": "Кремлевский дворец",
+                "contacts": "+7 (007) МММ 77-77",
+                "type": "master_class"
+            },
+            {
+                "id": 1544,
+                "name": "Бенто-торт",
+                "bucket_link": [
+                    {
+                        "url": "https://storage.yandexcloud.net/les-jours-bucket/1.png"
+                    }
+                ],
+                "slug": "vans-old-skool-blackwhite-43719",
+                "price": {
+                    "start_price": 3900,
+                    "final_price": 3900
+                },
+                "guestsAmount": 2,
+                "totalPrice": 7800,
+                "date": {
+                    "start_datetime": "2024-04-01T14:00:00Z",
+                    "end_datetime": "2024-04-01T16:00:00Z"
+                },
+                "address": "Кремлевский дворец",
+                "contacts": "+7 (007) МММ 77-77",
+                "type": "master_class"
+            },
+            {
+                "type": "certificate",
+                "amount": "5000"
+            }
+        ],
+        "formatted_date": "16.11.24",
+        "number": "115536",
+        "total_amount": 13190,
+        "final_amount": 10640,
+        "total_sale": 3100,
+    }
+
 
     return (
 
@@ -60,18 +109,13 @@ const OrderCard = ({order}) => {
                     <div className={s.header_block}>
                         <div className={s.header_col}>
                             <div className={`${s.header_text} ${s.num}`}>
-                                № {order.number}
+                                № {orderTemp.number}
                             </div>
                             <div className={`${s.header_text} ${s.date}`}>
-                                Дата: {order.formatted_date}
+                                Дата заказа: {orderTemp.formatted_date}
                             </div>
-                        </div>
-                        <div className={s.header_col2}>
                             <div className={`${s.header_text} ${s.sum}`}>
-                                Сумма: {addSpacesToNumber(order.final_amount)} ₽
-                            </div>
-                            <div className={`${s.header_text} ${s.status}`}>
-                                Статус: {order.status.name}
+                                Сумма: {addSpacesToNumber(orderTemp.final_amount)} ₽
                             </div>
                         </div>
                     </div>
@@ -85,16 +129,16 @@ const OrderCard = ({order}) => {
                 </div>
                 <div ref={contentRef}
                      className={[s.text_block, isOpen ? s.open : ""].join(" ")}
-                     style={{ maxHeight: contentHeight}}>
-                    {(isOpen || isBeOpen)  && <div className={s.blackDivider}></div>}
+                     style={{maxHeight: contentHeight}}>
+                    {(isOpen || isBeOpen) && <div className={s.blackDivider}></div>}
                     <div className={s.details_block}>
                         <div className={s.order}>
                             {
-                                order.order_units.map((el, ind) =>
+                                orderTemp.order_units.map((el, ind) =>
                                     <>
                                         <ProductBlock unit={el}/>
                                         {
-                                            ind !== order.order_units.length - 1 &&
+                                            ind !== orderTemp.order_units.length - 1 &&
                                             <hr className={s.hr}/>
                                         }
                                     </>
@@ -104,34 +148,19 @@ const OrderCard = ({order}) => {
                         <div className={s.final_block}>
                             <div className={s.final_col}>
                                 <div className={s.prices}>
-                                    Адрес: {order.pvz_address ? order.pvz_address : order.address.address}
-                                </div>
-                                <div className={s.prices}>
-                                    Телефон: {order.phone}
-                                </div>
-                                <div className={s.prices}>
-                                    Способ получения: {order.delivery}
-                                </div>
-                            </div>
-                            <div className={s.final_col}>
-                                <div className={s.prices}>
                                     <div>Товаров на сумму:</div>
-                                    <div>{addSpacesToNumber(order.total_amount)} ₽</div>
+                                    <div>{addSpacesToNumber(orderTemp.total_amount)} ₽</div>
                                 </div>
                                 {
-                                    Number(order.total_sale) > 0 &&
+                                    Number(orderTemp.total_sale) > 0 &&
                                     <div className={s.prices}>
                                         <div>Скидка:</div>
-                                        <div>{addSpacesToNumber(order.total_sale)} ₽</div>
+                                        <div>{addSpacesToNumber(orderTemp.total_sale)} ₽</div>
                                     </div>
                                 }
                                 <div className={s.prices}>
-                                    <div>Доставка:</div>
-                                    <div>{addSpacesToNumber(order.delivery_view_price)} ₽</div>
-                                </div>
-                                <div className={s.prices}>
                                     <div>Итого:</div>
-                                    <div>{addSpacesToNumber(order.final_amount)} ₽</div>
+                                    <div>{addSpacesToNumber(orderTemp.final_amount)} ₽</div>
                                 </div>
                             </div>
                         </div>

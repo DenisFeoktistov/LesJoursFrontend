@@ -18,6 +18,9 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
+.wishlist_cont_no_login {
+    display: flex;
+}
 @media (max-width: 1200px) {
     .wishlist_cont {
         justify-content: space-between;

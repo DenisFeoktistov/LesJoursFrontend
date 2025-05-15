@@ -21,7 +21,7 @@ const PassEmailModal = ({show, onHide, defEmail}) => {
             return null
         }
         setValidEmail(true)
-        await sendPassEmail(email)
+        // await sendPassEmail(email)
         setSentEmail(email)
         setSent(true)
     }
@@ -55,7 +55,7 @@ const PassEmailModal = ({show, onHide, defEmail}) => {
                             <div className={'red_text text-center mt-2'}>Некорректный формат почты</div>
                         }
                         {sent &&
-                            <div className={'green_text text-center mt-2'}>Письмо отправлено на почту {sentEmail}</div>
+                            <div className={'yellow_text text-center mt-2'}>Восстановление пароля временно не работает. Просим прощения за неудобства! Напишите нам в службу поддержки, и мы восстановим ваш пароль!</div>
                         }
                     </form>
                 </Modal.Body>

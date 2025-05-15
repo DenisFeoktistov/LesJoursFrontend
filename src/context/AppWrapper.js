@@ -14,7 +14,7 @@ import {fetchCart2, updateCartFromCookies} from "@/http/cartApi";
 
 export const Context = createContext(null);
 
-export default function AppWrapper({ children }) {
+export default function AppWrapper({children}) {
     const router = useRouter()
     let sharedState = {
         desktopStore,
@@ -25,52 +25,7 @@ export default function AppWrapper({ children }) {
         cartStore,
         orderStore
     }
-    const getGoogleToken = () => {
-        const path = router.asPath
-        if (!path.includes('#')) {
-            return null
-        }
-        const urlParts = path.split("#");
-        let idToken = null;
-        if (urlParts.length > 1) {
-            const queryParams = urlParts[1].split("&");
-            for (let i = 0; i < queryParams.length; i++) {
-                const paramParts = queryParams[i].split("=");
-                if (paramParts[0] === "id_token") {
-                    idToken = paramParts[1];
-                    break;
-                }
-            }
-        }
 
-        return idToken
-    }
-    const authViaGoogle = async () => {
-        const googleToken = getGoogleToken()
-        if (googleToken) {
-            const res = await googleAuth(googleToken)
-            Cookies.set('access_token', res.access, {expires: 2772})
-            Cookies.set('refresh_token', res.refresh, {expires: 2772})
-            const cookieCart = Cookies.get('cart').trim().filter(el => el !== '' && el !== ' ')
-            let cartFromBack
-            if (cookieCart) {
-                cartFromBack = await updateCartFromCookies(cookieCart, res.user_id, res.access)
-            } else {
-                cartFromBack = await updateCartFromCookies('', res.user_id, res.access)
-            }
-            cartStore.setCartCnt(cartFromBack.length)
-            let newStr = ''
-            cartFromBack.forEach(el => newStr += " " + el)
-            Cookies.set('cart', newStr, {expires: 2772})
-            userStore.setIsLogged(true)
-            userStore.setId(res.user_id)
-            userStore.setUsername(res.username)
-            userStore.setFirstName(res.first_name)
-            userStore.setLastName(res.last_name)
-            userStore.setAccessToken(res.access)
-            userStore.setGender('')
-        }
-    }
     useEffect(() => {
         const token = Cookies.get('refresh_token')
         const refreshObj = JSON.stringify({refresh: token})
@@ -102,7 +57,6 @@ export default function AppWrapper({ children }) {
                 Cookies.remove('refresh_token')
             })
         }
-        authViaGoogle()
         const cart = Cookies.get('cart')
         const lastSeen = Cookies.get('last_seen')
         if (cart && !userStore.isLogged) {
@@ -117,22 +71,6 @@ export default function AppWrapper({ children }) {
         }
     }, [])
 
-    useLayoutEffect(() => {
-        desktopStore.setAnimation(true)
-        document.body.classList.add('body-scroll-clip')
-        setTimeout(() => {
-            desktopStore.setAnimation(false)
-        }, 2700)
-        setTimeout(() => {
-            document.body.classList.remove('body-scroll-clip')
-        }, 2600)
-    }, []);
-    useEffect(() => {
-        const referral = router.query.referral_id
-        if (referral) {
-            Cookies.set('referral_id', referral)
-        }
-    }, [])
     return (
         <Context.Provider value={sharedState}>
             {children}

@@ -46,11 +46,21 @@ export async function fetchProductsPage(query, token = '') {
             allQuery +=`${key}=${query[key]}&`
         }
     })
+    // if (!token) {
+    //     const {data} = await $host.get(`product/products/?${allQuery}`)
+    //     return data
+    // } else {
+    //     const {data} = await $host.get(`product/products/?${allQuery}`, {
+    //         headers: {Authorization: `Bearer ${token}`}
+    //     })
+    //     return data
+    // }
+
     if (!token) {
-        const {data} = await $host.get(`product/products/?${allQuery}`)
+        const {data} = await $host.get(`masterclasses/masterclasses/`)
         return data
     } else {
-        const {data} = await $host.get(`product/products/?${allQuery}`, {
+        const {data} = await $host.get(`masterclasses/masterclasses/`, {
             headers: {Authorization: `Bearer ${token}`}
         })
         return data
@@ -171,6 +181,32 @@ export async function fetchOneProduct(slug, token = '', ip = "") {
         return data;
     } else {
         const { data } = await $host.get(`product/slug/${slug}`, {
+            params,
+            // Устанавливаем заголовок X-Forwarded-For и Authorization
+            headers: {
+                'X-Forwarded-For': ip, // Передаем IP-адрес в заголовке X-Forwarded-For
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        return data;
+    }
+}
+
+export async function fetchProductsTemp(token = '', ip = "") {
+    // Создаем объект с параметрами
+    const params = { ip };
+
+    if (!token) {
+        const { data } = await $host.get(`masterclasses/masterclasses/`, {
+            params,
+            // Устанавливаем заголовок X-Forwarded-For
+            headers: {
+                'X-Forwarded-For': ip // Передаем IP-адрес в заголовке X-Forwarded-For
+            }
+        });
+        return data;
+    } else {
+        const { data } = await $host.get(`masterclasses/masterclasses/`, {
             params,
             // Устанавливаем заголовок X-Forwarded-For и Authorization
             headers: {

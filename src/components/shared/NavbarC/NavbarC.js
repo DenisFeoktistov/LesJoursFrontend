@@ -10,7 +10,7 @@ import SidebarNew from "../SidebarNew/Sidebar";
 import SearchModal from "../SearchModal/SearchModal";
 import AuthModal from "..//AuthModal/AuthModal";
 import Image from "next/image";
-import logo from '@/static/img/sellout_logo.svg'
+import logo from '@/static/icons/les-jours-logo-desktop.png'
 import {useRouter} from "next/router";
 import ElasticSearchModal from "@/components/shared/ElasticSearchModal/ElasticSearchModal";
 import {Context} from "@/context/AppWrapper";
@@ -56,7 +56,7 @@ const NavbarC = () => {
         bags: ""
     })
     useEffect(() => {
-        fetchNavbarPhoto().then(res => setPhotos(res))
+        // fetchNavbarPhoto().then(res => setPhotos(res))
     }, [])
 
     const [contactOpen, setContactOpen] = useState(false)
@@ -200,168 +200,167 @@ const NavbarC = () => {
             } id={'navbar'}>
                 {desktopStore.isDesktop &&
                     <>
-                        <SalesLine toggleSocials={toggleSocials} toggleRef={toggleRef} toggleGifts={toggleGifts}/>
                         <div className={'custom_cont'}>
-                            <div className={s.row1}>
-                                <div className={s.block}>
-
-                                    <div className={'desktop_d'}>
-                                        <Link href="/women"
-                                              className={selectedGender === 'F' ? s.selectedGender : s.genderButton}
-                                              onClick={() => {
-                                                  handleGenderSelection('F');
-
-                                              }}>Женское</Link>
-
-                                        <Link href="/men"
-                                              className={selectedGender === 'M' ? s.selectedGender : s.genderButton}
-                                              onClick={() => {
-                                                  handleGenderSelection('M');
-
-                                              }}>Мужское</Link>
-
-                                        <Link href="/about" className={s.links}>О нас</Link>
-                                        {/*<Link href="https://t.me/selloutsu" className={s.links}>Блог</Link>*/}
-                                        {/*<span className={s.links}*/}
-                                        {/*      onClick={toggleContact}*/}
-                                        {/*>Связаться с нами</span>*/}
-                                    </div>
-                                    <div className={'mobile_d align-items-center'}>
-                                        <Sidebar photos={photos}/>
-                                        <SearchModal/>
-                                    </div>
-                                </div>
-                                <div className={s.logo_block} style={{justifyContent: 'center'}}>
-
-                                    <Link
-                                        href={selectedGender === 'M' ? '/men' : selectedGender === 'F' ? '/women' : '/'}>
-                                        <Image className={s.logo} alt='' src={logo} loading={"eager"}/>
-
+                            <div className={s.headerM}>
+                                <div className={s.logoM}>
+                                    <Link href={'/'}>
+                                        <Image
+                                            src={logo}
+                                            alt="Логотип"
+                                            width={120}
+                                            height={40}
+                                            className={s.logoImage}
+                                        />
                                     </Link>
                                 </div>
-
-                                <div className={s.block} style={{justifyContent: 'flex-end'}}>
-                                    <div className={s.block} style={{justifyContent: 'flex-end'}}>
-                                        {desktopStore.isDesktop ? (
-                                            <>
-                                                <Link href="/wishlist">
-                                                    <Image width={25} src={like} alt="Wishlist" className={s.icons}
+                                <div className={s.navContainer}>
+                                    <nav className={s.navWrapper}>
+                                        <ul className={s.navList}>
+                                            <Link
+                                                href={{
+                                                    pathname: '/about'
+                                                }}
+                                                style={{textDecoration: "none"}}
+                                            >
+                                                <li>О нас</li>
+                                            </Link>
+                                            <Link
+                                                href={{
+                                                    pathname: '/products'
+                                                }}
+                                                style={{textDecoration: "none"}}
+                                            >
+                                                <li>Мастер-Классы</li>
+                                            </Link>
+                                            <Link
+                                                href={{
+                                                    pathname: '/events'
+                                                }}
+                                                style={{textDecoration: "none"}}
+                                            >
+                                                <li>Мероприятия</li>
+                                            </Link>
+                                            <Link
+                                                href={{
+                                                    pathname: '/certificate'
+                                                }}
+                                                style={{textDecoration: "none"}}
+                                            >
+                                                <li>Сертификаты</li>
+                                            </Link>
+                                            <li><span onClick={toggleContact}>Контакты</span></li>
+                                        </ul>
+                                    </nav>
+                                    <nav className={s.navWrapper}>
+                                        <ul className={s.navList}>
+                                            <Link href="/wishlist">
+                                                <Image width={25} src={like} alt="Wishlist" className={s.icons}
+                                                       loading="eager"/>
+                                            </Link>
+                                            {userStore.isLogged ? (
+                                                <Link href="/account" className={s.auth_block}>
+                                                    <Image width={25} src={person} alt="Account" className={s.icons}
                                                            loading="eager"/>
                                                 </Link>
-                                                {userStore.isLogged ? (
-                                                    <Link href="/account" className={s.auth_block}>
-                                                        <Image width={25} src={person} alt="Account" className={s.icons}
-                                                               loading="eager"/>
-                                                        <div className={s.name}>{userStore.firstName}</div>
-                                                    </Link>
-                                                ) : (
-                                                    <AuthModal>
-                                                        <Image width={25} src={person} alt="Login" className={s.icons}
-                                                               loading="eager"/>
-                                                        <div className={s.name}>Войдите</div>
-                                                    </AuthModal>
-                                                )}
-                                                <CartIcon/>
-                                            </>
-                                        ) : (
-                                            <div className="mobile_d align-items-center">
-                                                <Link href="/wishlist">
-                                                    <Image width={25} src={like} alt="Wishlist" className={s.icons}
+                                            ) : (
+                                                <AuthModal>
+                                                    <Image width={25} src={person} alt="Login" className={s.icons}
                                                            loading="eager"/>
-                                                </Link>
-                                                {/*{userStore.isLogged ? (*/}
-                                                {/*    <Link href="/account" className={s.auth_block}>*/}
-                                                {/*        <Image width={26} src={person} alt="Account" className={s.icons_profile} loading="eager" />*/}
-
-                                                {/*    </Link>*/}
-                                                {/*) : (*/}
-                                                {/*    <AuthModal>*/}
-                                                {/*        <Image width={26} src={person} alt="Login" className={s.icons_profile} loading="eager" />*/}
-
-                                                {/*    </AuthModal>*/}
-                                                {/*)}*/}
-                                                <CartIcon/>
-
-                                            </div>
-                                        )}
-                                    </div>
-
-
-                                </div>
-                            </div>
-                            <div className={s.row2}>
-                                <div className={s.block1}>
-                                    <Link href={selectedGender !== "M" && selectedGender !== "F" ? {pathname: '/'} :
-                                        {
-                                            pathname: '/products',
-                                            query: {new: 'true'}
-                                        }}
-                                          className={s.links}>Новинки</Link>
-                                    <Link href={selectedGender !== "M" && selectedGender !== "F" ? {pathname: '/'} : {
-                                        pathname: '/products',
-                                        query: {recommendations: 'true'}
-                                    }}
-                                          className={s.links}>Рекомендации</Link>
-                                    <Megamenu visible={desktopStore.navbarVisible} className={s.links} label={'Бренды'}
-                                              link={selectedGender !== "M" && selectedGender !== "F" ? {pathname: '/'} : {
-                                                  pathname: '/brands',
-                                              }} photos={photos} type={'brands'} selected_gender={selectedGender}/>
-                                    <Megamenu visible={desktopStore.navbarVisible} className={s.links} label={'Обувь'}
-                                              link={selectedGender !== "M" && selectedGender !== "F" ? {pathname: '/'} : {
-                                                  pathname: selectedGender === "M" ? '/catalog/shoes_desktop_men' : '/catalog/shoes_desktop_women'
-                                              }} photos={photos} type={'shoes'} selected_gender={selectedGender}/>
-                                    <Megamenu visible={desktopStore.navbarVisible} className={s.links} label={'Одежда'}
-                                              link={selectedGender !== "M" && selectedGender !== "F" ? {pathname: '/'} : {
-                                                  pathname: selectedGender === "M" ? '/catalog/clothes_desktop_men' : '/catalog/clothes_desktop_women'
-                                              }} photos={photos} type={'clothes'} selected_gender={selectedGender}/>
-                                    <Megamenu visible={desktopStore.navbarVisible} className={s.links} label={'Сумки'}
-                                              link={selectedGender !== "M" && selectedGender !== "F" ? {pathname: '/'} : {
-                                                  pathname: selectedGender === "M" ? '/catalog/bags_desktop_men' : '/catalog/bags_desktop_women'
-                                              }} type={'bags'} photos={photos} selected_gender={selectedGender}/>
-                                    <Megamenu visible={desktopStore.navbarVisible} className={s.links}
-                                              label={'Аксессуары'}
-                                              link={selectedGender !== "M" && selectedGender !== "F" ? {pathname: '/'} : {
-                                                  pathname: selectedGender === "M" ? '/catalog/accessories_desktop_men' : '/catalog/accessories_desktop_women'
-                                              }} type={'accessories'} photos={photos} selected_gender={selectedGender}/>
-                                    {/*<Link href="/products?is_fast_ship=is_fast_ship" className={s.links}*/}
-                                    {/*   onClick={e => {*/}
-                                    {/*       e.preventDefault()*/}
-                                    {/*       goToFastShip()*/}
-                                    {/*   }}*/}
-                                    {/*>*/}
-                                    {/*    Мгновенная доставка*/}
-                                    {/*    <Image src={truck} alt="" className={s.truck}/>*/}
-                                    {/*</Link>*/}
-                                    {/*<a href={`/products?${queryGender}is_sale=is_sale`} className={s.sale_link}*/}
-                                    {/*   onClick={e => {*/}
-                                    {/*       e.preventDefault()*/}
-                                    {/*       goToSale()*/}
-                                    {/*   }}*/}
-                                    {/*>Скидки</a>*/}
-                                    <Link href={selectedGender !== "M" && selectedGender !== "F" ? {pathname: '/'} : {
-                                        pathname: '/products'
-                                    }}
-                                          className={s.links}
-
-                                    >
-                                        Все товары
-                                    </Link>
-                                    <Link href={selectedGender !== "M" && selectedGender !== "F" ? {pathname: '/'} : {
-                                        pathname: '/products',
-                                        query: {is_sale: 'is_sale'}
-                                    }}
-                                          className={s.sale_link}
-
-                                    >
-                                        Скидки
-                                    </Link>
-                                </div>
-                                <div>
-                                    <ElasticSearchModal/>
-                                    <ContactModal isOpen={contactOpen} handleClose={closeContact}/>
+                                                </AuthModal>
+                                            )}
+                                            <CartIcon/>
+                                        </ul>
+                                    </nav>
                                 </div>
                             </div>
                         </div>
+                        {/*<div className={s.row1}>*/}
+                        {/*    <div className={s.block}>*/}
+
+                        {/*        <div className={'desktop_d'}>*/}
+                        {/*            <Link href="/women"*/}
+                        {/*                  className={selectedGender === 'F' ? s.selectedGender : s.genderButton}*/}
+                        {/*                  onClick={() => {*/}
+                        {/*                      handleGenderSelection('F');*/}
+
+                        {/*                  }}>Женское</Link>*/}
+
+                        {/*            <Link href="/men"*/}
+                        {/*                  className={selectedGender === 'M' ? s.selectedGender : s.genderButton}*/}
+                        {/*                  onClick={() => {*/}
+                        {/*                      handleGenderSelection('M');*/}
+
+                        {/*                  }}>Мужское</Link>*/}
+
+                        {/*            <Link href="/about" className={s.links}>О нас</Link>*/}
+                        {/*            /!*<Link href="https://t.me/selloutsu" className={s.links}>Блог</Link>*!/*/}
+                        {/*            /!*<span className={s.links}*!/*/}
+                        {/*            /!*      onClick={toggleContact}*!/*/}
+                        {/*            /!*>Связаться с нами</span>*!/*/}
+                        {/*        </div>*/}
+                        {/*        <div className={'mobile_d align-items-center'}>*/}
+                        {/*            <Sidebar photos={photos}/>*/}
+                        {/*            <SearchModal/>*/}
+                        {/*        </div>*/}
+                        {/*    </div>*/}
+                        {/*    <div className={s.logo_block} style={{justifyContent: 'center'}}>*/}
+
+                        {/*        <Link*/}
+                        {/*            href={selectedGender === 'M' ? '/men' : selectedGender === 'F' ? '/women' : '/'}>*/}
+                        {/*            <Image className={s.logo} alt='' src={logo} loading={"eager"}/>*/}
+
+                        {/*        </Link>*/}
+                        {/*    </div>*/}
+
+                        {/*    <div className={s.block} style={{justifyContent: 'flex-end'}}>*/}
+                        {/*        <div className={s.block} style={{justifyContent: 'flex-end'}}>*/}
+                        {/*            {desktopStore.isDesktop ? (*/}
+                        {/*                <>*/}
+                        {/*                    <Link href="/wishlist">*/}
+                        {/*                        <Image width={25} src={like} alt="Wishlist" className={s.icons}*/}
+                        {/*                               loading="eager"/>*/}
+                        {/*                    </Link>*/}
+                        {/*                    {userStore.isLogged ? (*/}
+                        {/*                        <Link href="/account" className={s.auth_block}>*/}
+                        {/*                            <Image width={25} src={person} alt="Account" className={s.icons}*/}
+                        {/*                                   loading="eager"/>*/}
+                        {/*                            <div className={s.name}>{userStore.firstName}</div>*/}
+                        {/*                        </Link>*/}
+                        {/*                    ) : (*/}
+                        {/*                        <AuthModal>*/}
+                        {/*                            <Image width={25} src={person} alt="Login" className={s.icons}*/}
+                        {/*                                   loading="eager"/>*/}
+                        {/*                            <div className={s.name}>Войдите</div>*/}
+                        {/*                        </AuthModal>*/}
+                        {/*                    )}*/}
+                        {/*                    <CartIcon/>*/}
+                        {/*                </>*/}
+                        {/*            ) : (*/}
+                        {/*                <div className="mobile_d align-items-center">*/}
+                        {/*                    <Link href="/wishlist">*/}
+                        {/*                        <Image width={25} src={like} alt="Wishlist" className={s.icons}*/}
+                        {/*                               loading="eager"/>*/}
+                        {/*                    </Link>*/}
+                        {/*                    /!*{userStore.isLogged ? (*!/*/}
+                        {/*                    /!*    <Link href="/account" className={s.auth_block}>*!/*/}
+                        {/*                    /!*        <Image width={26} src={person} alt="Account" className={s.icons_profile} loading="eager" />*!/*/}
+
+                        {/*                    /!*    </Link>*!/*/}
+                        {/*                    /!*) : (*!/*/}
+                        {/*                    /!*    <AuthModal>*!/*/}
+                        {/*                    /!*        <Image width={26} src={person} alt="Login" className={s.icons_profile} loading="eager" />*!/*/}
+
+                        {/*                    /!*    </AuthModal>*!/*/}
+                        {/*                    /!*)}*!/*/}
+                        {/*                    <CartIcon/>*/}
+
+                        {/*                </div>*/}
+                        {/*            )}*/}
+                        {/*        </div>*/}
+
+
+                        {/*    </div>*/}
+                        {/*</div>*/}
                     </>
                 }
 
@@ -490,6 +489,7 @@ const NavbarC = () => {
             <ModalSocialNets show={socialsOpen} onClose={handleSocialsClose}/>
             <ModalRef show={refModalOpen} onClose={handleRefModalOpen}/>
             <ModalGifts show={giftsModalOpen} onClose={handleGiftsModalClose}/>
+            <ContactModal isOpen={contactOpen} handleClose={closeContact}/>
         </>
 
 

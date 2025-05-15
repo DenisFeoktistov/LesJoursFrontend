@@ -1,0 +1,69 @@
+.container {
+    display: flex;
+    flex-direction: column; /* теперь можно располагать заголовок над списком */
+    align-items: center;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.text2 {
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.product_list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.customButton {
+    justify-content: center;
+    display: flex;
+    margin-top: 40px;
+}
+
+.link {
+    padding: 15px 40px;
+    color: black;
+    border: 1.5px solid #d1838c;
+    border-radius: 30px;
+    font-size: 16px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    min-width: 30%;
+    width: 390px;
+    max-width: 96%;
+    text-align: center;
+}
+
+.link:hover {
+    background-color: #d1838c;
+}
+
+.nothing {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 50px;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+@media (max-width: 1200px) {
+    .product_list {
+        justify-content: space-between;
+    }
+}

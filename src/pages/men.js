@@ -878,8 +878,6 @@ const Men = ({data, arrangement, restoredData}) => {
                 <meta property="og:image:height" content="640px"/>
             </Head>
             <div>
-
-
                 <div>
                     <div className={s.cont}>
                         <>
@@ -897,27 +895,7 @@ const Men = ({data, arrangement, restoredData}) => {
                             }
 
                             {renderPage()} {/* Рендерим страницы через функцию */}
-                            <div ref={endOfPageRef}></div>
-                            {/* Метка конца */}
-                            {/*<div className={'d-flex justify-content-center my-5'}>*/}
-                            {/*    <button onClick={getMore} className={s.more_btn}>*/}
-                            {/*        Посмотреть ещё*/}
-                            {/*    </button>*/}
-                            {/*</div>*/}
-
-                            <BuyoutModal show={show} handleClose={handleClose} isSend={isSend}/>
                         </>
-                    </div>
-                    <div className={s.text_container}>
-                        <div className={s.text}>
-                            Не нашли то, что искали? <br/>
-                            Мы привезем для вас желанный лот!
-                        </div>
-                        <div className={'d-flex justify-content-center'}>
-                            <button onClick={handleShow} className={s.toggle_btn}>
-                                Оставить заявку
-                            </button>
-                        </div>
                     </div>
                 </div>
 

@@ -42,21 +42,21 @@ const Complete = ({order, userData}) => {
         const orderItems = order.order_units
         const idList = [];
         //
-        for (const orderItem of orderItems) {
-            // Предположим, что у каждой позиции заказа есть свойство "id"
-            const itemId = orderItem.product.id;
-            window._tmr = window._tmr || [];
-            window._tmr.push({
-                type: "reachGoal",
-                id: 3470916,
-                value: String(orderItem.final_price), // Замените "VALUE" на необходимое значение
-                goal: "addToCart",
-                params: { product_id: String(itemId) } // Замените "PRODUCT_ID" на необходимое значение
-            });
-
-            // Преобразуем ID в строку и добавляем в список
-            // idList.push(String(itemId));
-        }
+        // for (const orderItem of orderItems) {
+        //     // Предположим, что у каждой позиции заказа есть свойство "id"
+        //     const itemId = orderItem.product.id;
+        //     window._tmr = window._tmr || [];
+        //     window._tmr.push({
+        //         type: "reachGoal",
+        //         id: 3470916,
+        //         value: String(orderItem.final_price), // Замените "VALUE" на необходимое значение
+        //         goal: "addToCart",
+        //         params: { product_id: String(itemId) } // Замените "PRODUCT_ID" на необходимое значение
+        //     });
+        //
+        //     // Преобразуем ID в строку и добавляем в список
+        //     // idList.push(String(itemId));
+        // }
 
         // Получаем текущий путь
         const currentPath = window.location.pathname;

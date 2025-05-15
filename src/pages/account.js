@@ -20,7 +20,7 @@ export const getServerSideProps = async (context) => {
     const userData = await fetchUserInfo(context.req.headers.cookie, user_id)
     const sizeTable = await getSizeTable(context.req.headers.cookie)
     const sizeInfo = await fetchSizeInfo(context.req.headers.cookie)
-    return { props: {userData, sizeTable, sizeInfo} }
+    return {props: {userData, sizeTable, sizeInfo}}
 }
 const Account = ({userData, sizeTable, sizeInfo}) => {
     const {userStore} = useContext(Context)
@@ -28,8 +28,6 @@ const Account = ({userData, sizeTable, sizeInfo}) => {
     const [lastname, setLastname] = useState(userData.last_name)
     const [email, setEmail] = useState(userData.email)
     const [phone, setPhone] = useState(userData.phone_number)
-    const [weight, setWeight] = useState(sizeInfo.weight)
-    const [height, setHeight] = useState(sizeInfo.height)
     const [birthday, setBirthday] = useState(userData.formatted_happy_birthday_date)
     const handleChangeNumber = (e) => {
         const inputPhoneNumber = e.target.value;
@@ -40,8 +38,8 @@ const Account = ({userData, sizeTable, sizeInfo}) => {
     const [genderOpen, setGenderOpen] = useState(false)
     const [selectedGender, setSelectedGender] = useState()
     const genders = [
-        ['Мужской', 'M','male'],
-        ['Женский', 'F','female'],
+        ['Мужской', 'M', 'male'],
+        ['Женский', 'F', 'female'],
     ]
     useEffect(() => {
         genders.forEach(el => {
@@ -66,11 +64,39 @@ const Account = ({userData, sizeTable, sizeInfo}) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     };
+    const validateBirthday = () => {
+        if (birthday === null) return true
+        // Проверка формата: DD.MM.YYYY
+        const dateRegex = /^(\d{2})\.(\d{2})\.(\d{4})$/;
+        const match = birthday.match(dateRegex);
+
+        if (!match) return false;
+
+        const day = parseInt(match[1], 10);
+        const month = parseInt(match[2], 10) - 1; // Месяцы в JS от 0 до 11
+        const year = parseInt(match[3], 10);
+
+        const date = new Date(year, month, day);
+
+        // Проверка: существует ли такая дата (например, не 31.02.2023)
+        const isValidDate = date.getFullYear() === year &&
+            date.getMonth() === month &&
+            date.getDate() === day;
+
+        // Проверка: не в будущем
+        const isNotFuture = date <= new Date();
+
+        return isValidDate && isNotFuture;
+    };
     const [validEmail, setValidEmail] = useState(true);
+    const [validBirthday, setValidBirthday] = useState(true);
     const [sent, setSent] = useState(false)
-    const [emailChanged, setEmailChanged] = useState(false)
     const [emailBusy, setEmailBusy] = useState(false)
     const sendData = async () => {
+        setValidEmail(true)
+        setValidBirthday(true)
+        setSent(false)
+        setEmailBusy(false)
         if (!checkFilling()) {
             setFillLines(true)
             return false
@@ -80,8 +106,10 @@ const Account = ({userData, sizeTable, sizeInfo}) => {
             setValidEmail(false)
             return false
         }
-        setValidEmail(true)
-        setSent(true)
+        if (!validateBirthday()) {
+            setValidBirthday(false)
+            return false
+        }
         const obj = {
             first_name: firstname,
             last_name: lastname,
@@ -97,38 +125,20 @@ const Account = ({userData, sizeTable, sizeInfo}) => {
             obj.date = birthday
         }
         const token = Cookies.get('access_token')
+        console.log(obj)
         try {
             const changeRes = await editUserInfo(token, userStore.id, obj)
-            setEmailBusy(false)
         } catch (e) {
             setEmailBusy(true)
+            return false
         }
-        if (email !== userData.email) {
-            setEmailChanged(true)
-            await confirmEmail(token, userStore.id, window.location.href)
-        }
+        // if (email !== userData.email) {
+        //     setEmailChanged(true)
+        //     // await confirmEmail(token, userStore.id, window.location.href)
+        // }
+        setSent(true)
     }
-    const checkIsNum = (str) => {
-        return !isNaN(str)
-    }
-    const changeWeight = async (value) => {
-        if (checkIsNum(value)) {
-            setWeight(value)
-            const token = Cookies.get('access_token')
-            const obj = {}
-            obj.weight = value
-            const res = await sendSizeInfo(token, JSON.stringify(obj))
-        }
-    }
-    const changeHeight = async (value) => {
-        if (checkIsNum(value)) {
-            setHeight(value)
-            const token = Cookies.get('access_token')
-            const obj = {}
-            obj.height = value
-            const res = await sendSizeInfo(token, JSON.stringify(obj))
-        }
-    }
+
     const [passModalShown, setPassModalShown] = useState(false)
     const closeModal = () => {
         setPassModalShown(false)
@@ -189,7 +199,7 @@ const Account = ({userData, sizeTable, sizeInfo}) => {
                                      style={genderOpen ? {borderBottom: '1px solid black'} : {}}
                                 >
                                     <div className={s.text}>
-                                        <div>{selectedGender ? selectedGender[0]: 'Пол'}</div>
+                                        <div>{selectedGender ? selectedGender[0] : 'Пол'}</div>
                                         <Arrow isOpen={genderOpen}/>
                                     </div>
                                 </div>
@@ -224,57 +234,22 @@ const Account = ({userData, sizeTable, sizeInfo}) => {
                     </div>
                     <button className={s.black_btn}
                             onClick={sendData}
-                    >Сохранить изменения</button>
+                    >Сохранить изменения
+                    </button>
                     {!validEmail && <div className={s.red_text}>Некорректный формат почты</div>}
+                    {!validBirthday && <div className={s.red_text}>Некорректный формат даты рождения</div>}
                     {fillLines && <div className={s.red_text}>Заполните все поля</div>}
-                    {sent && <div className={'green_text text-center'}>Именения успешно сохранены</div>}
-                    {emailChanged && <div className={'green_text text-center'}>Пиьсмо подтверждение было выслано на новую почту</div>}
-                    {emailBusy && <div className={s.red_text}>Заполните все поля</div>}
-                    <div className={'d-flex justify-content-center mt-2'}>
+                    {sent && <div className={'green_text text-center'}>Изменения успешно сохранены</div>}
+                    {/*{emailChanged &&*/}
+                    {/*    <div className={'green_text text-center'}>Письмо подтверждение было выслано на новую*/}
+                    {/*        почту</div>}*/}
+                    {emailBusy && <div className={s.red_text}>Пользователь с такой почтой уже существует</div>}
+                    <div className={'d-flex justify-content-center mt-2 mb-5'}>
                         <button onClick={toggleModal} className={s.change_pass_btn}>
                             Изменить пароль
                         </button>
                     </div>
                     <ResetPasswordModal show={passModalShown} onHide={closeModal}/>
-
-                    <div className={s.text_block}>
-                        <div className={s.text_size}>
-                            <h5 className={s.header}>Укажите ваши размеры</h5>
-                            <p className={'text-center'}>Вы можете указать свои размеры, чтобы мы искали для вас
-                                специальные предложения в ваших размерах,
-                                помогали с выбором размера на конкретные модели, а также упрощали
-                                процесс покупок на нашей платформе!</p>
-                        </div>
-                    </div>
-                    <div className={s.size_block}>
-
-                        <div className={s.col_dropdown}>
-                            <h5>Обувь</h5>
-                            <SizeDropdown catObj={sizeTable.size_tables[0]} typeIsShoes={true} currSizeId={sizeInfo.shoes_size}/>
-                        </div>
-                        <div className={s.col_dropdown}>
-                            <h5>Одежда</h5>
-                            <SizeDropdown catObj={sizeTable.size_tables[1]} typeIsShoes={false} currSizeId={sizeInfo.clothes_size}/>
-                        </div>
-                        <div className={s.col_input}>
-                            <div>
-                                <h5>Рост</h5>
-                                <input
-                                    className={s.size_input}
-                                    onChange={e => changeHeight(e.target.value)}
-                                    value={height}
-                                />
-                            </div>
-                            <div style={{marginTop: 30}}>
-                                <h5>Вес</h5>
-                                <input
-                                    className={s.size_input}
-                                    onChange={e => changeWeight(e.target.value)}
-                                    value={weight}
-                                />
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </AccountLayout>
         </MainLayout>

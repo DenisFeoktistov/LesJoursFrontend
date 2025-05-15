@@ -7,9 +7,7 @@ import ProductCard from "@/components/shared/ProductCard/ProductCard";
 import React, {useContext} from "react";
 import {Context} from "@/context/AppWrapper";
 import AuthModal from "@/components/shared/AuthModal/AuthModal";
-import {useRouter} from "next/router";
 import {observer} from "mobx-react-lite";
-import Recommendations from "@/components/shared/Recommendations/Recommendations";
 import Head from "next/head";
 import Link from "next/link";
 import {desktopStore} from "@/store/DesktopStore";
@@ -20,31 +18,55 @@ export const getServerSideProps = async (context) => {
     let wishlist
     try {
         const {user_id} = jwtDecode(token)
-        wishlist = await fetchWishlist(user_id , context.req.headers.cookie)
+        wishlist = await fetchWishlist(user_id, context.req.headers.cookie)
     } catch (e) {
         wishlist = []
     }
-    return { props: {wishlist} }
+    return {props: {wishlist}}
 }
 
 const Wishlist = ({wishlist}) => {
     const {userStore} = useContext(Context)
-    const router = useRouter()
-    const goToProductPage = () => {
-        router.push('/products')
-    }
+
     function formOfWord(num) {
-        let form = "товаров";
+        let form = "мастер-классов";
         if (num % 10 === 1 && num % 100 !== 11) {
-            form = "товар";
+            form = "мастер-класс";
         } else if (
             num % 10 >= 2 &&
             num % 10 <= 4 &&
             (num % 100 < 10 || num % 100 >= 20)
         ) {
-            form = "товара";
+            form = "мастер-класс";
         }
         return `${num} ${form}`;
+    }
+
+    const tempMasterClasses = {
+        "id": 43719,
+        "in_wishlist": false,
+        "price": {
+            "start_price": 8490,
+            "final_price": 8490
+        },
+        "short_description": "Вы сможете создать собственный тортик и чудесно провести вечер! Вы сможете создать еще один собственный тортик и опять чудесно провести вечер!",
+        "slug": "vans-old-skool-blackwhite-43719",
+        "location": "м. Новокузнецкая",
+        "name": "Бенто-торт",
+        "bucket_link": [
+            {
+                "id": 18603709,
+                "url": "https://storage.yandexcloud.net/les-jours-bucket/1.png"
+            },
+            {
+                "id": 18603710,
+                "url": "https://cdn.poizon.com/pro-img/origin-img/20230721/037c574fa17445ea9a85215e6ebb63a7.jpg"
+            },
+            {
+                "id": 18603711,
+                "url": "https://cdn.poizon.com/pro-img/origin-img/20230721/df71fdc035fb40668def489de323e230.jpg"
+            }
+        ]
     }
 
     return (
@@ -52,16 +74,17 @@ const Wishlist = ({wishlist}) => {
             <Head>
                 <title>Избранное</title>
             </Head>
-            <div className={'custom_cont'} style={{marginTop: desktopStore.isDesktop ? '130px' : '20px', marginBottom: '50px'}}>
+            <div className={'custom_cont'}
+                 style={{marginTop: desktopStore.isDesktop ? '130px' : '20px', marginBottom: '50px'}}>
                 <h3>Избранное</h3>
                 {
                     wishlist.length > 0 &&
                     <p>{formOfWord(wishlist.length)}</p>
                 }
-                <div className={s.wishlist_cont}>
+                <div className={userStore.isLogged && wishlist.length ? s.wishlist_cont : s.wishlist_cont_no_login}>
                     {
                         userStore.isLogged
-                        ?
+                            ?
                             <>
                                 {
                                     !wishlist.length &&
@@ -73,14 +96,15 @@ const Wishlist = ({wishlist}) => {
                                 }
                                 {wishlist.map(el =>
                                     <ProductCard
-                                                 product={el}
-                                                 cardList={true}
-                                                 key={el.id}/>
+                                        product={tempMasterClasses}
+                                        cardList={true}
+                                        key={el.id}/>
                                 )}
                             </>
                             :
                             <div>
-                                <p className={s.empty_text}>Войдите или зарегистрируйтесь, чтобы посмотреть список избранного </p>
+                                <p className={s.empty_text}>Войдите или зарегистрируйтесь, чтобы посмотреть список
+                                    избранного </p>
                                 <AuthModal>
                                     <div className={s.button}>Войти / Зарегистрироваться</div>
                                 </AuthModal>

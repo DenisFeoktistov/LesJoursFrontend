@@ -90,7 +90,7 @@ const ImgSlider = ({photos}) => {
                 {photos.map((el, index)=>
                     <SwiperSlide
                         key={index}
-                        className={s.photo}
+                        // className={s.photo}
                         onClick={() => toggleFullScreen(index)}
                     >
                         <div className={s.photo_cont}>
@@ -104,7 +104,7 @@ const ImgSlider = ({photos}) => {
                                        // position: 'relative',
                                        objectFit: 'contain',
                                        // objectPosition: "center bottom",
-                                       // height: '100%',
+                                       height: '100%',
                                    }}
                             />
                         </div>

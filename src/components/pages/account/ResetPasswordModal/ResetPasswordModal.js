@@ -54,7 +54,7 @@ const ResetPasswordModal = ({show, onHide}) => {
                             value={newPass1}
                             onChange={(e) => setNewPass1(e.target.value)}
                         />
-                        <label className={s.label}>Подтвердите пароль:</label>
+                        <label className={s.label}>Подтвердите новый пароль:</label>
                         <PasswordInput
                             value={newPass2}
                             onChange={(e) => setNewPass2(e.target.value)}

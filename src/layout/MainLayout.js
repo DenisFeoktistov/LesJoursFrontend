@@ -37,7 +37,7 @@ const MainLayout = ({children, footerData}) => {
         if (!Cookies.get('cookie_message')) {
             setCookieOpen(true)
         }
-        if ((!Cookies.get('promo_message')) && (!Cookies.get('access_token'))){
+        if ((!Cookies.get('promo_message')) && (!Cookies.get('access_token'))) {
             setPromoOpen(true)
         }
     }, [])
@@ -112,54 +112,36 @@ const MainLayout = ({children, footerData}) => {
     return (
         <>
             <Head>
-
-                {/*<title>Sellout: онлайн-платформа брендовой одежды и обуви</title>*/}
-                {/*<meta*/}
-                {/*    name="description"*/}
-                {/*    content="2 000 000+ лотов по лучшим ценам с гарантией оригинальности: от премиальных и лимитированных релизов до более доступных, но не менее желанных позиций"*/}
-                {/*/>*/}
-
-
                 <link rel="canonical" href={canonicalUrl}/>
                 <meta property="og:type" content="website"/>
                 <meta property="og:url" content={canonicalUrl}/>
                 <link rel={'icon'} type={'image/png'} sizes={"192x192"} href={'/favicon.png'}/>
-                {/*<link rel={'icon'} type={'image/svg+xml'} sizes={"192x192"} href={'/favicon.svg'}/>*/}
                 <link rel="apple-touch-icon" href="/favicon.jpg"/>
                 <link rel={'manifest'} href={'/manifest.json'}/>
 
-                {/*<meta name={'description'}*/}
-                {/*      content={'Закажите одежду, обувь и аксессуары в интернет-магазине SELLOUT. Выгодные цены. Доставка по всей России. Бонусы к первому заказу.'}/>*/}
                 <meta name="google-site-verification" content="-9Lz8B9UM4KuSBbpP5pxTwJW9Ha0ee2nQmpMUTXh75E"/>
-                {/*<meta name="google-site-verification" content="-9Lz8B9UM4KuSBbpP5pxTwJW9Ha0ee2nQmpMUTXh75E" />*/}
                 <meta name="yandex-verification" content="82500b5b5e72aa3a"/>
                 <meta name="theme-color" content={themeColor}/>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
                 <meta name="mailru-verification" content="2d636d2d3b28c14a"/>
 
 
-
-                {/*<script*/}
-                {/*    type="text/javascript"*/}
-                {/*    dangerouslySetInnerHTML={{__html: '(function ab(){ var request = new XMLHttpRequest(); request.open(\'GET\', "https://scripts.botfaqtor.ru/one/128285", false); request.send(); if(request.status == 200) eval(request.responseText); })();'}}*/}
-                {/*/>*/}
-
-                <script
-                    type="text/javascript"
-                    dangerouslySetInnerHTML={{
-                        __html: `
-            var _tmr = window._tmr || (window._tmr = []);
-            _tmr.push({id: "3470916", type: "pageView", start: (new Date()).getTime()});
-            (function (d, w, id) {
-                if (d.getElementById(id)) return;
-                var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
-                ts.src = "https://top-fwz1.mail.ru/js/code.js";
-                var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
-                if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
-            })(document, window, "tmr-code");
-        `,
-                    }}
-                />
+        {/*        <script*/}
+        {/*            type="text/javascript"*/}
+        {/*            dangerouslySetInnerHTML={{*/}
+        {/*                __html: `*/}
+        {/*    var _tmr = window._tmr || (window._tmr = []);*/}
+        {/*    _tmr.push({id: "3470916", type: "pageView", start: (new Date()).getTime()});*/}
+        {/*    (function (d, w, id) {*/}
+        {/*        if (d.getElementById(id)) return;*/}
+        {/*        var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;*/}
+        {/*        ts.src = "https://top-fwz1.mail.ru/js/code.js";*/}
+        {/*        var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};*/}
+        {/*        if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }*/}
+        {/*    })(document, window, "tmr-code");*/}
+        {/*`,*/}
+        {/*            }}*/}
+        {/*        />*/}
                 {/*<noscript>*/}
                 {/*    <div>*/}
                 {/*        <img src="https://top-fwz1.mail.ru/counter?id=3470916;js=na"*/}
@@ -191,20 +173,15 @@ const MainLayout = ({children, footerData}) => {
                     }}
                 />
             </Head>
-            {(desktopStore.animation) && <AnimationSellout/>}
             <div className={'body'}>
-                {(selectedGender === "M" || selectedGender === "F" || router.pathname !== '/') &&
-                    <NavbarC/>
-                    // <></>
-                }
-                <div className={`${router.pathname === '/' ? '' : desktopStore.isDesktop ? 'cont_up' : 'cont_up_mob'}`}>
+                <NavbarC/>
+                <div className={`${desktopStore.isDesktop ? 'cont_up' : 'cont_up_mob'}`}>
                     {children}
                 </div>
                 <Footer textData={footerData}/>
             </div>
             <ScrollUp/>
-            <CookieComponent isOpen={cookieOpen && router.pathname !== '/'} close={closeCookie}/>
-            <YandexMetrica/>
+            <CookieComponent isOpen={cookieOpen} close={closeCookie}/>
         </>
     );
 };

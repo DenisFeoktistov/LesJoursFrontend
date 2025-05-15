@@ -98,6 +98,9 @@ input {
 .green_text {
     color: green;
 }
+.yellow_text {
+    color: #7c7c00;
+}
 .placeholder_img {
 
     width: 100%;

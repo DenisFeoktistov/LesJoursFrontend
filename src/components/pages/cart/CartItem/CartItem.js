@@ -8,7 +8,7 @@ import close from '@/static/icons/x-lg.svg'
 import {Context} from "@/context/AppWrapper";
 import {useRouter} from "next/router";
 import Cookies from "js-cookie";
-import {removeFromCart} from "@/http/cartApi";
+import {removeFromCart, removeFromCartCertificate} from "@/http/cartApi";
 import {addToWishlist, removeFromWishlist} from "@/http/wishlistAPI";
 import like_fill from "@/static/icons/heart-fill.svg";
 import like from "@/static/icons/heart.svg";
@@ -20,69 +20,56 @@ import {
     trackRemoveToFavorites
 } from "@/components/shared/YandexMetrica/YandexMetrica";
 import green_gift from "@/static/icons/gift-green.svg";
+import Link from "next/link";
+import certificateImg from "@/static/img/certificateImg.png";
 
-const CartItem = ({model, colorway, brand, price, productId, unitId, sizeId, cardId, imgSrc, slug, inWL, product,
-                  available, bonus}) => {
-    const [prices, setPrices] = useState([])
+const CartItem = ({
+                      price, productId, unitId, imgSrc, slug, inWL,
+                      available, name, guestsAmount, date, contacts, address, type, amount
+                  }) => {
     const {cartStore, userStore} = useContext(Context)
     const router = useRouter()
-    useEffect(() => {
-        const token = Cookies.get('access_token')
-        fetchPrices(productId, token).then(res => {
-            setPrices(res)
-        })
-        cartStore.ships[cardId] = unitId
-    // }, [])
-    }, [Cookies.get('cart'), price])
-
-
-
-    const getProductDetail = (product) => {
-        const productDetails = {
-            id: product.id.toString(),
-            name: `${brand} ${product.model} ${product.colorway}`,
-            price: product.min_price,
-            brand: brand
-        };
-        return productDetails;
-    };
 
     const [isDeleted, setIsDeleted] = useState(false)
-
 
 
     const deleteFromCart = async () => {
         setIsDeleted(true);
 
-        // Сохраняем текущее положение скролла
-        // const scrollY = window.scrollY;
+        const unitIdStr = String(unitId);
 
-        const currCart = Cookies.get('cart').trim().split(' ').filter(el => el !== ' ' && el !== '').map(el => Number(el));
-        const newCart = currCart.filter(el => el !== cartStore.ships[cardId]);
-        Cookies.set('cart', newCart.join(' '), { expires: 2772 });
+        const currCart = Cookies.get('cart').trim().split(' ').filter(el => el !== ' ' && el !== '');
+        const newCart = currCart.filter(el => !el.startsWith(`${unitIdStr}_`));
+        Cookies.set('cart', newCart.join(' '), {expires: 2772});
         if (userStore.isLogged) {
-            const data = await removeFromCart(userStore.id, cartStore.ships[cardId], Cookies.get('access_token'));
+            const data = await removeFromCart(userStore.id, unitId, Cookies.get('access_token'));
         }
         cartStore.setCartCnt(newCart.length);
-        const productDetails = getProductDetail(product);
-        trackRemoveToCart(productDetails);
 
-        // Устанавливаем положение скролла обратно после удаления
-        // window.scrollTo(0, scrollY);
-
-        router.push('/cart', undefined, { scroll: false });
+        router.push('/cart', undefined, {scroll: false});
     }
+
+    const deleteFromCartCertificate = async () => {
+        setIsDeleted(true);
+
+        const currCart = Cookies.get('cart').trim().split(' ').filter(el => el !== ' ' && el !== '');
+        const newCart = currCart.filter(el => el !== `certificate_${amount}`);
+        Cookies.set('cart', newCart.join(' '), {expires: 2772});
+        if (userStore.isLogged) {
+            const data = await removeFromCartCertificate(userStore.id, amount, Cookies.get('access_token'));
+        }
+        cartStore.setCartCnt(newCart.length);
+
+        router.push('/cart', undefined, {scroll: false});
+    }
+
     const [isInWishlist, setIsInWishlist] = useState(inWL)
-
-
 
     const addToWL = async () => {
         setIsInWishlist(true)
         const token = Cookies.get('access_token')
         const userId = userStore.id
         const data = await addToWishlist(userId, productId, token)
-        const productDetails = getProductDetail(product);
-        trackAddToFavorites(productDetails)
 
     }
     const deleteFromWL = async () => {
@@ -90,127 +77,148 @@ const CartItem = ({model, colorway, brand, price, productId, unitId, sizeId, car
         const token = Cookies.get('access_token')
         const userId = userStore.id
         const data = await removeFromWishlist(userId, productId, token)
-        const productDetails = getProductDetail(product);
-        trackRemoveToFavorites(productDetails)
 
     }
-    // if (!product.available_flag || !available) {
-    //     console.group(brand, model)
-    //     console.log([available, product.available_flag])
-    //     console.groupEnd()
-    // }
+
     const addSpacesToNumber = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+
+    const formatDateTime = (isoStringStart, isoStringEnd) => {
+        const date = new Date(isoStringStart);
+        const dateEnd = new Date(isoStringEnd);
+
+        const day = String(date.getUTCDate()).padStart(2, '0');
+        const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+        const year = date.getUTCFullYear();
+
+        const hours = String(date.getUTCHours()).padStart(2, '0');
+        const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+
+        const hoursEnd = String(dateEnd.getUTCHours()).padStart(2, '0');
+        const minutesEnd = String(dateEnd.getUTCMinutes()).padStart(2, '0');
+
+        return `${day}.${month}.${year} с ${hours}:${minutes} до ${hoursEnd}:${minutesEnd}`;
+    }
 
 
     return (
-        <div key={unitId} className={isDeleted ? `${s.row} ${s.slideOut}` : ""} >
+        <div key={unitId} className={isDeleted ? `${s.row} ${s.slideOut}` : ""}>
 
             <hr/>
-            <div className={s.row}>
-                <div className={s.col1}>
-
-
-
-                        <div className={s.img}>
-                            <Image src={imgSrc} fill={true} alt=''
-                                   style={{objectFit: 'contain', cursor: 'pointer'}}
-                                   onClick={() => router.push(`/products/${slug}`)}
-                            />
-
-                        </div>
-
-
-
-
-                </div>
-                <div className={s.inner_row}>
-                    <div className={s.col}>
-                        <div>
-                            <div className={s.tag}>{brand}</div>
-                            <div className={s.model}>{model}</div>
-                            <div className={s.colorway}>{colorway}</div>
-                        </div>
-                    </div>
-
-                    <div className={s.col_dropdown}>
-                        <div className={s.dropdowns}>
-                            <div className={s.brand}>Размер</div>
-                            {
-                                product.available_flag &&
-                                <SizeDropdown prices={prices} productId={productId} currentId={sizeId}
-                                              cardId={cardId} manySizes={product.has_many_sizes}/>
-                            }
-                            <div className={s.number_block}>
-                                <div className={s.brand}>Доставка</div>
-                                {
-                                    product.available_flag &&
-                                    <ShipDropdown cardId={cardId} unitId={unitId}/>
-                                }
+            {type === "master_class" &&
+                <>
+                    <div className={s.row}>
+                        <Link href={`/products/${slug}`} className={s.col1}>
+                            {imgSrc &&
+                                <Image
+                                    src={imgSrc}
+                                    alt=''
+                                    className={s.img}
+                                    width={400}
+                                    height={400}
+                                />}
+                        </Link>
+                        <div className={s.inner_row}>
+                            <div className={s.col}>
+                                <div>
+                                    <div className={s.brand}>Мастер-класс</div>
+                                    <div className={s.text}>{name}</div>
+                                </div>
+                                <div>
+                                    <div className={`${s.brand} ${s.number_block}`}>Контакты локации</div>
+                                    <div className={s.text}>{contacts}</div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div className={`${s.col}`}>
-                        <div className={s.dropdowns}>
-                            <div className={s.brand}>Цена</div>
-                            <div className={s.text}>{addSpacesToNumber(price)} ₽</div>
-                        </div>
-                        <div className={s.ship_block}>
-                            <div className={s.brand}></div>
-                            <div className={s.text}></div>
-                        </div>
-                        {
-                            Number(bonus) > 0 &&
-                            <>
-                                <div className={s.brand}>Начислено бонусов:</div>
-                                <p className={'mt-2 mb-0'}>
 
-                                    <Image src={green_gift} alt='' className={s.bonus_icon}/> <span
-                                    className={s.bonuses}> {bonus}₽</span>
-                                </p>
-                                {/*<div className={s.text}>{addSpacesToNumber(bonus)} ₽</div>*/}
-                            </>
-                        }
-                        {userStore.isLogged
-                            ?
-                            <div className={s.like_block}
-                                 onClick={(e) => {
-                                     e.stopPropagation()
-                                     isInWishlist ? deleteFromWL() : addToWL()
-                                 }}>
-                                <Image src={isInWishlist ? like_fill : like} alt="like" className={s.like}
-                                />
-                                <div>{isInWishlist ? 'В избранном' : 'В избранное'}</div>
+                            <div className={s.col_dropdown}>
+                                <div className={s.dropdowns}>
+                                    <div className={s.brand}>Дата проведения</div>
+                                    <div
+                                        className={s.text}>{formatDateTime(date.start_datetime, date.end_datetime)}</div>
+                                    <div className={s.number_block}>
+                                        <div className={s.brand}>Адрес проведения</div>
+                                        <div className={s.text}>{address}</div>
+                                    </div>
+                                </div>
                             </div>
-                            :
-                            <div onClick={e => e.stopPropagation()}>
-                                <AuthModal fromWishlist={true}>
-                                    <div className={s.like_block}>
+                            <div className={`${s.col}`}>
+                                <div className={s.dropdowns}>
+                                    <div className={s.brand}>Число гостей</div>
+                                    <div className={s.text}>{guestsAmount}</div>
+                                </div>
+                                <div className={`${s.dropdowns} ${s.number_block}`}>
+                                    <div className={s.brand}>Общая стоимость</div>
+                                    <div className={s.text}>{addSpacesToNumber(price)} ₽</div>
+                                </div>
+
+                                {userStore.isLogged
+                                    ?
+                                    <div className={s.like_block}
+                                         onClick={(e) => {
+                                             e.stopPropagation()
+                                             isInWishlist ? deleteFromWL() : addToWL()
+                                         }}>
                                         <Image src={isInWishlist ? like_fill : like} alt="like" className={s.like}
                                         />
                                         <div>{isInWishlist ? 'В избранном' : 'В избранное'}</div>
                                     </div>
-                                </AuthModal>
+                                    :
+                                    <div onClick={e => e.stopPropagation()}>
+                                        <AuthModal fromWishlist={true}>
+                                            <div className={s.like_block}>
+                                                <Image src={isInWishlist ? like_fill : like} alt="like"
+                                                       className={s.like}
+                                                />
+                                                <div>{isInWishlist ? 'В избранном' : 'В избранное'}</div>
+                                            </div>
+                                        </AuthModal>
+                                    </div>
+                                }
                             </div>
-                        }
+                        </div>
+                        <div>
+                            <Image src={close} alt='' className={s.icon}
+                                   onClick={deleteFromCart}
+                            />
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <Image src={close} alt='' className={s.icon}
-                           onClick={deleteFromCart}
-                    />
-                </div>
-            </div>
-            {
-                !available && (
-                    product.available_flag
-                        ?
-                        <p className={'text-center red_text'}>К сожалению, данное предложение распродано, выберите другое</p>
-                        :
-                        <p className={'text-center red_text'}>К сожалению, данный товар распродан, удалите его из корзины
+                    {
+                        !available &&
+                        <p className={'text-center red_text'}>К сожалению, данный мастер-класс распродан, удалите его из
+                            корзины
                             <br/>
-                            Вы можете добавить товар в избранное, и мы уведомим вас, как только он появится в наличии!
+                            Вы можете добавить мастер-класс в избранное, и мы уведомим вас, как только он появится в
+                            наличии!
                         </p>
-                )
+                    }
+                </>
+            }
+            {type === "certificate" &&
+                <>
+                    <div className={s.row}>
+                        <Link href={`/certificate`} className={s.col1}>
+                            <Image
+                                src={certificateImg}
+                                alt=''
+                                className={s.img}
+                                width={400}
+                                height={400}
+                            />
+                        </Link>
+                        <div className={s.inner_row}>
+                            <div className={s.col}>
+                                <div>
+                                    <div className={s.brand}>Сертификат на сумму:</div>
+                                    <div className={s.text}>{amount}₽</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <Image src={close} alt='' className={s.icon}
+                                   onClick={deleteFromCartCertificate}
+                            />
+                        </div>
+                    </div>
+                </>
             }
         </div>
     );

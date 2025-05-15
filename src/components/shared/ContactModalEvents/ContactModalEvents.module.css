@@ -1,0 +1,77 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.text_cont {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.text_cont div {
+    font-size: 18px;
+}
+
+.link {
+    color: black;
+}
+
+.icons_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    gap: 50px;
+}
+
+.socialsCont {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+.mainSocialsText {
+    margin-left: 10px;
+    color: black;
+    font-size: 20px;
+    font-family: inherit;
+    text-align: left;
+}
+
+.linkTgSocials {
+    text-decoration: underline; /* Подчёркивание текста */
+    color: black;
+}
+
+
+.faq_block {
+    padding: 0;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+
+@media (max-width: 1200px) {
+    .faq_block {
+        padding: 0;
+    }
+    .icons_block {
+        gap: 25px;
+        flex-direction: column;
+    }
+    .socialsCont {
+        gap: 10px;
+        width: 200px;
+    }
+    .mainSocialsText {
+        font-size: 16px;
+    }
+}
