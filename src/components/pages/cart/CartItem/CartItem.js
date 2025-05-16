@@ -25,7 +25,7 @@ import certificateImg from "@/static/img/certificateImg.png";
 
 const CartItem = ({
                       price, productId, unitId, imgSrc, slug, inWL,
-                      available, name, guestsAmount, date, contacts, address, type, amount
+                      available, name, guestsAmount, date, contacts, address, type, amount, key
                   }) => {
     const {cartStore, userStore} = useContext(Context)
     const router = useRouter()
@@ -53,7 +53,17 @@ const CartItem = ({
         setIsDeleted(true);
 
         const currCart = Cookies.get('cart').trim().split(' ').filter(el => el !== ' ' && el !== '');
-        const newCart = currCart.filter(el => el !== `certificate_${amount}`);
+
+        const target = `certificate_${amount}`;
+        let removed = false;
+        const newCart = currCart.filter(el => {
+            if (!removed && el === target) {
+                removed = true;
+                return false;
+            }
+            return true;
+        });
+
         Cookies.set('cart', newCart.join(' '), {expires: 2772});
         if (userStore.isLogged) {
             const data = await removeFromCartCertificate(userStore.id, amount, Cookies.get('access_token'));
@@ -101,7 +111,7 @@ const CartItem = ({
 
 
     return (
-        <div key={unitId} className={isDeleted ? `${s.row} ${s.slideOut}` : ""}>
+        <div key={key} className={isDeleted ? `${s.row} ${s.slideOut}` : ""}>
 
             <hr/>
             {type === "master_class" &&

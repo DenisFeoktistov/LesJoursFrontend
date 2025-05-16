@@ -1,19 +1,14 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import s from './SizeChoice.module.css'
-import truck from '@/static/icons/truck.svg'
-import refund from '@/static/icons/arrow-return-left.svg'
 import Image from "next/image";
 import {Context} from "@/context/AppWrapper";
-import {fetchShippings} from "@/http/productsApi";
 import {userStore} from "@/store/UserStore";
 import AuthModal from "@/components/shared/AuthModal/AuthModal";
 import {Modal} from "react-bootstrap";
-import {addToWaitingList} from "@/http/userApi";
-import Cookies from "js-cookie";
 import close from "@/static/icons/x-lg.svg";
 import {useRouter} from "next/router";
-import parseHtml from 'html-react-parser'
 import {observer} from "mobx-react-lite";
+import Cookies from "js-cookie";
 
 const SizeChoice = ({prices = [], productId = -1, isDesktop, isCertificate = false}) => {
     const router = useRouter()
@@ -24,21 +19,16 @@ const SizeChoice = ({prices = [], productId = -1, isDesktop, isCertificate = fal
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
-    const selectItem = async (item) => {
-        console.log(item)
+    const selectItem = (item) => {
         setSelectedItem(item);
         setIsOpen(false);
         if (!isCertificate) {
             productStore.setSizeChosen(item)
-
+            const arr = Cookies.get('cart').trim().split(' ')
+            productStore.setText(arr, productStore.sizeChosen.id)
         } else {
             productStore.setCertificateChosen(item)
         }
-        // const token = Cookies.get('access_token')
-        // productStore.setAnim(true)
-        // const ships = await fetchShippings(productId, item.size_for_api, token)
-        // productStore.setAnim(false)
-        // productStore.setShipps(ships)
     };
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -60,21 +50,14 @@ const SizeChoice = ({prices = [], productId = -1, isDesktop, isCertificate = fal
     const handleOpen = () => {
         setIsShow(true)
     }
-    const toWaitingList = (sizeArr) => {
-        const token = Cookies.get('access_token')
-        addToWaitingList(token, productId, sizeArr)
-    }
+
     useEffect(() => {
         if (prices.length === 1) {
-            productStore.setShipps([])
-            // productStore.setSizeChosen(prices[0])
             selectItem(prices[0])
         } else {
             setSelectedItem(null)
         }
     }, [router.asPath, prices])
-
-    const addSpacesToNumber = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 
     const formatDateTime = (isoStringStart, isoStringEnd) => {
         const date = new Date(isoStringStart);
@@ -207,7 +190,6 @@ const SizeChoice = ({prices = [], productId = -1, isDesktop, isCertificate = fal
                                                         <button className={s.link}
                                                                 onClick={() => {
                                                                     handleOpen()
-                                                                    // toWaitingList(el)
                                                                 }}
                                                         >Сообщить о поступлении</button>
                                                         :
@@ -258,7 +240,8 @@ const SizeChoice = ({prices = [], productId = -1, isDesktop, isCertificate = fal
                                             <div className={s.size_block}>
                                                 <div className={s.icons}>
                                                     Введите свой номинал:
-                                                    <div className={s.inputWrapper} onClick={(e) => e.stopPropagation()}>
+                                                    <div className={s.inputWrapper}
+                                                         onClick={(e) => e.stopPropagation()}>
                                                         <input
                                                             type="text"
                                                             className={s.input}
@@ -269,7 +252,7 @@ const SizeChoice = ({prices = [], productId = -1, isDesktop, isCertificate = fal
                                                                 raw = raw.replace(/^0+/, '');
                                                                 const num = parseInt(raw, 10);
                                                                 if (!isNaN(num) && num > 0) {
-                                                                    productStore.certificateChosen.amount = `${num}₽`;
+                                                                    productStore.certificateChosen.amount = `${num}`;
                                                                 } else {
                                                                     productStore.certificateChosen.amount = '';
                                                                 }
@@ -313,9 +296,7 @@ const SizeChoice = ({prices = [], productId = -1, isDesktop, isCertificate = fal
                     </div>
                 </div>
             }
-
         </>
-
     );
 };
 

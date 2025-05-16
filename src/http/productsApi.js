@@ -57,7 +57,7 @@ export async function fetchOneProduct(slug, token = '', ip = "") {
     const params = {ip};
 
     if (!token) {
-        const {data} = await $host.get(`masterclasses/slug/${slug}`, {
+        const {data} = await $host.get(`masterclasses/masterclasses/${slug}`, {
             params,
             // Устанавливаем заголовок X-Forwarded-For
             headers: {
@@ -66,7 +66,33 @@ export async function fetchOneProduct(slug, token = '', ip = "") {
         });
         return data;
     } else {
-        const {data} = await $host.get(`masterclasses/slug/${slug}`, {
+        const {data} = await $host.get(`masterclasses/masterclasses/${slug}`, {
+            params,
+            // Устанавливаем заголовок X-Forwarded-For и Authorization
+            headers: {
+                'X-Forwarded-For': ip, // Передаем IP-адрес в заголовке X-Forwarded-For
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        return data;
+    }
+}
+
+export async function fetchOneProductEvents(slug, token = '', ip = "") {
+    // Создаем объект с параметрами
+    const params = {ip};
+
+    if (!token) {
+        const {data} = await $host.get(`masterclasses/masterclasses/${slug}/events`, {
+            params,
+            // Устанавливаем заголовок X-Forwarded-For
+            headers: {
+                'X-Forwarded-For': ip // Передаем IP-адрес в заголовке X-Forwarded-For
+            }
+        });
+        return data;
+    } else {
+        const {data} = await $host.get(`masterclasses/masterclasses/${slug}/events`, {
             params,
             // Устанавливаем заголовок X-Forwarded-For и Authorization
             headers: {

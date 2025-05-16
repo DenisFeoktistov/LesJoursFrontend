@@ -1,76 +1,11 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React from 'react';
 import MainLayout from "@/layout/MainLayout";
 import s from '@/styles/FAQ.module.css'
-import FaqDropdown from "@/components/pages/faq/FaqDropdown/FaqDropdown";
 import Head from "next/head";
 import Section from "@/components/pages/faq/Section/Section";
-import ContactModal from "@/components/shared/ContactModal/ContactModal";
 import Text from "@/components/pages/faq/Text/Text";
-import returnImg from '@/static/icons/arrow-return-left.svg'
-import ReferralModal from "@/components/pages/account/ReferralModal/ReferralModal";
-import Image from "next/image";
-import BuyoutModal from "@/components/shared/BuyoutModal/BuyoutModal";
-import Link from "next/link";
-import LoyaltyFAQ from "@/components/pages/account/LoyaltyFAQ/LoyaltyFAQ";
 
 const Faq = () => {
-    const [isDesktop, setIsDesktop] = useState(true)
-    const checkIsDesktop = () => {
-        const width = window.innerWidth
-        if (width <= 1200) {
-            setIsDesktop(false)
-        } else {
-            setIsDesktop(true)
-        }
-    }
-    useEffect(() => {
-        window.addEventListener("resize", checkIsDesktop);
-        // Call handler right away so state gets updated with initial window size
-        checkIsDesktop();
-        // Remove event listener on cleanup
-        return () => window.removeEventListener("resize", checkIsDesktop);
-    })
-
-
-    const [contactOpen, setContactOpen] = useState(false)
-    const toggleContact = () => {
-        setContactOpen(!contactOpen)
-    }
-    const closeContact = () => {
-        setContactOpen(false)
-    }
-    const [referralOpen, setReferralOpen] = useState(false)
-    const referralToggle = () => {
-        setReferralOpen(!referralOpen)
-    }
-    const closeReferral = () => {
-        setReferralOpen(false)
-    }
-
-    const scroll = (id) => {
-        const el = document.getElementById(id)
-        const scrollPosition = el.offsetTop
-        const num = isDesktop ? 160 : 95
-        window.scrollTo({
-            top: scrollPosition - num,
-            behavior: 'smooth',
-        });
-        setTimeout(() => {
-            el.classList.add(s.select_anim)
-        }, 600)
-        setTimeout(() => {
-            el.classList.remove(s.select_anim)
-        }, 4000)
-    }
-    const [isSend, setIsSend] = useState(false)
-    const [show, setShow] = useState(false);
-    const handleClose = () => {
-        setShow(false)
-    };
-    const handleShow = () => {
-        setShow(true)
-        setIsSend(false)
-    };
     return (
         <MainLayout>
             <Head>
@@ -273,11 +208,6 @@ const Faq = () => {
                     Телефон: +7 983 285-83-99
                 </Section>
             </div>
-
-
-            <ContactModal isOpen={contactOpen} handleClose={closeContact}/>
-            <ReferralModal isOpen={referralOpen} handleClose={closeReferral}/>
-            <BuyoutModal show={show} handleClose={handleClose} isSend={isSend}/>
         </MainLayout>
     );
 };

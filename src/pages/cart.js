@@ -73,7 +73,7 @@ export const getServerSideProps = async (context) => {
         if (promoStr) {
             defaultPromo = promoStr
         }
-        const res = await fetchCartPrice(cartArr, promoStr)
+        const res = await fetchCartPrice(cartArr, defaultPromo)
         defaultPrice = res.total_amount
         finalPrice = res.final_amount
         sale = res.sale
@@ -100,9 +100,17 @@ const Cart = ({
                   defaultPromo,
                   isUpdate
               }) => {
+    console.log(productUnits)
+    console.log(defaultPrice)
+    console.log(finalPrice)
+    console.log(sale)
+    console.log(totalSale)
+    console.log(defaultPromo)
+    console.log(isUpdate)
+
     const router = useRouter()
     const [lastSeen, setLastSeen] = useState([])
-    const {userStore, cartStore, desktopStore} = useContext(Context)
+    const {userStore, desktopStore} = useContext(Context)
     const [promo, setPromo] = useState(defaultPromo)
 
     const [defAmount, setDefAmount] = useState(defaultPrice)
@@ -186,35 +194,6 @@ const Cart = ({
 
     const addSpacesToNumber = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 
-    const tempCartProductUnits = [
-        {
-            "id": 1544,
-            "name": "Бенто-торт",
-            "in_wishlist": false,
-            "availability": false,
-            "bucket_link": [
-                {
-                    "url": "https://storage.yandexcloud.net/les-jours-bucket/PavelContainer.png"
-                }
-            ],
-            "slug": "vans-old-skool-blackwhite-43719",
-            "guestsAmount": 2,
-            "totalPrice": 7800,
-            "date": {
-                "id": 121312312,
-                "start_datetime": "2024-04-01T14:00:00Z",
-                "end_datetime": "2024-04-01T16:00:00Z"
-            },
-            "address": "Кремлевский дворец",
-            "contacts": "+7 (007) МММ 77-77",
-            "type": "master_class"
-        },
-        {
-            "type": "certificate",
-            "amount": "5000"
-        }
-    ]
-
     return (
         <MainLayout>
             <Head>
@@ -253,28 +232,21 @@ const Cart = ({
                             {
                                 productUnits.slice().reverse().map((el, ind) =>
                                     <CartItem
-                                        unitId={el.id}
-                                        productId={el.product.id}
-                                        slug={el.product.slug}
-                                        inWL={el.product.in_wishlist}
-
-                                        product={el.product}
-                                        key={el.id}
-
-                                        name={tempCartProductUnits[0]?.name}
-                                        guestsAmount={tempCartProductUnits[0]?.guestsAmount}
-                                        date={tempCartProductUnits[0]?.date}
-                                        contacts={tempCartProductUnits[0]?.contacts}
-                                        address={tempCartProductUnits[0]?.address}
-                                        type={tempCartProductUnits[0].type}
-                                        price={tempCartProductUnits[0]?.totalPrice ?? 0}
-                                        // unitId={tempCartProductUnits[0]?.date?.id}
-                                        // productId={tempCartProductUnits[0].id}
-                                        imgSrc={tempCartProductUnits[0]?.bucket_link?.[0]?.url}
-                                        // slug={tempCartProductUnits[0].slug}
-                                        // inWL={tempCartProductUnits[0].in_wishlist}
-                                        available={tempCartProductUnits[0]?.availability}
-                                        amount={tempCartProductUnits[0]?.amount}
+                                        key={el?.id ?? `${Math.floor(Math.random() * 1_000_000_000)}`}
+                                        name={el?.name}
+                                        guestsAmount={el?.guestsAmount}
+                                        date={el?.date}
+                                        contacts={el?.contacts}
+                                        address={el?.address}
+                                        type={el.type}
+                                        price={el?.totalPrice ?? 0}
+                                        unitId={el?.date?.id ?? `${Math.floor(Math.random() * 1_000_000_000)}`}
+                                        productId={el?.id ?? `${Math.floor(Math.random() * 1_000_000_000)}`}
+                                        imgSrc={el?.bucket_link?.[0]?.url}
+                                        slug={el.slug}
+                                        inWL={el.in_wishlist}
+                                        available={el?.availability}
+                                        amount={el?.amount}
                                     />
                                 )
                             }

@@ -73,6 +73,7 @@ const AuthModal = ({
         }
         try {
             const res = await registration(JSON.stringify(data))
+            console.log(res)
             setEmailBusy(false)
             const cookieCart = Cookies.get('cart')
             let cartFromBack

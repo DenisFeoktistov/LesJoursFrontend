@@ -486,9 +486,6 @@ const NavbarC = () => {
                     initialScrollPositions={desktopStore.scrollPositions}
                 />
             }
-            <ModalSocialNets show={socialsOpen} onClose={handleSocialsClose}/>
-            <ModalRef show={refModalOpen} onClose={handleRefModalOpen}/>
-            <ModalGifts show={giftsModalOpen} onClose={handleGiftsModalClose}/>
             <ContactModal isOpen={contactOpen} handleClose={closeContact}/>
         </>
 

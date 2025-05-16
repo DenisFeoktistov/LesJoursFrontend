@@ -6,21 +6,14 @@ import returnImg from '@/static/icons/arrow-return-left.svg'
 import like from '@/static/icons/heart.svg'
 import like_fill from '@/static/icons/heart-fill.svg'
 import SizeTable from "@/components/pages/oneProduct/SizeTable/SizeTable";
-import SizeHelp from "@/components/pages/oneProduct/SizeHelp/SizeHelp";
 import SizeChoice from "@/components/pages/oneProduct/SizeChoice/SizeChoice";
 import HowToChoose from "@/components/pages/oneProduct/HowToChoose/HowToChoose";
-import TextModal from "@/components/shared/UI/TextModal/TextModal";
 import Arrow from "@/components/shared/UI/Arrow/Arrow";
 import Image from 'next/image'
 import {
     fetchOneProduct,
-    fetchOneProductFull,
-    fetchPrices,
     fetchProductsByArray,
-    fetchShippings,
-    fetchSimilarProducts,
-    updateOneProduct,
-    fetchProductsPage
+    fetchProductsPage, fetchOneProductEvents
 } from "@/http/productsApi";
 import MainLayout from "@/layout/MainLayout";
 import {Context} from "@/context/AppWrapper";
@@ -35,7 +28,6 @@ import {addLastSeen, fetchLastSeen2, fetchUserInfo} from "@/http/userApi";
 import jwtDecode from "jwt-decode";
 import Link from "next/link";
 import Compilation from "@/components/shared/Compilation/Compilation";
-import InvisibleCaptcha from "@/components/shared/CaptchaYandex/Captcha"
 import '@splidejs/react-splide/css'
 import Head from "next/head";
 import gift from '@/static/icons/gift-green.svg'
@@ -43,23 +35,8 @@ import how from '@/static/icons/question-circle.svg'
 import warranty from '@/static/icons/shield-check.svg'
 import payment from '@/static/icons/credit-card.svg'
 import {useRouter} from "next/router";
-import parseHtml from 'html-react-parser'
-import change from "@/static/icons/arrow-down-up.svg";
-import map from "@/static/img/map.jpg";
 import LoyaltyFAQ from "@/components/pages/account/LoyaltyFAQ/LoyaltyFAQ";
-import gift_gard from "@/static/icons/gift-gard.svg";
-import first from "@/static/icons/first.svg";
-import shareIcon from "@/static/icons/icons8-поделиться.svg"
-import shareGif from "@/static/icons/icons8-поделиться.gif"
-import good from "@/static/icons/good.svg";
-import friend from "@/static/icons/friend.svg";
-import birth from "@/static/icons/happybirthday.svg";
-import smile from "@/static/icons/emoji-smile 1.svg";
-import giftModal from "@/static/icons/gift.svg";
 import headphones from "@/static/icons/headphones-circle.svg";
-import tg from "@/static/icons/tg_black.svg";
-import vk from "@/static/icons/vk_black.svg";
-import cashStack from "@/static/icons/cash-stack.svg";
 import cashStack1 from "@/static/icons/cash-stack 1.svg";
 import twoArrows from "@/static/icons/two_arrowsNew.svg";
 import ffIcon from '@/static/icons/ff.png'
@@ -70,39 +47,22 @@ import patch from "@/static/icons/patch-check 1.svg";
 import personCheck from "@/static/icons/person-check 1.svg";
 import file from '@/static/icons/file-earmark-check 1.svg'
 import creditCard from '@/static/icons/credit-card 2.svg'
-import aboutUs from '@/static/icons/aboutus.svg'
 import aboutUs2 from '@/static/icons/aboutus2.svg'
 import HowWeWorkModal from "@/components/shared/HowWeWorkModal/HowWeWorkModal";
-import {
-    trackAddToCart,
-    trackAddToFavorites,
-    trackRemoveToFavorites,
-    trackViewProduct,
-} from "@/components/shared/YandexMetrica/YandexMetrica";
 import TreeLine from "@/components/pages/oneProduct/TreeLines/TreeLine";
-import BreadcrumbC from "@/components/shared/BreadcrumbC/BreadcrumbC";
 import StarRating from "@/components/shared/StarRating/StarRating";
 import * as PropTypes from "prop-types";
-import ProductDetailsMob from "@/components/shared/ProductDetailsMob/ProductDetailsMob";
 import Notification from "@/components/shared/Notification/Notification";
-import ProductList from "@/components/pages/product/ProductList/ProductList";
 import TextModalDesktopProductPage
     from "@/components/shared/UI/TextModalDesktopProductPage/TextModalDesktopProductPage";
 import igBlack from "@/static/icons/igImg.svg";
 import tgBlack from "@/static/icons/tg_black.svg";
-import imgUs3 from "@/static/img/Гарантии 1.png";
-import imgUs4 from "@/static/img/гарантии 2.png";
-import imgUs5 from "@/static/img/Гарантии 3.png";
-import imgUs6 from "@/static/img/Гарантии 4.png";
-import imgUs7 from "@/static/img/Гарантии 5.png";
-import imgUs8 from "@/static/img/Гарантии 6.png";
 import productPageMainPageLinkWomen from "@/static/img/productPageMainPageLinkWomen.png";
 import productPageMainPageLinkMen from "@/static/img/productPageMainPageLinkMen.png";
 import productPageMainPageLinkAny from "@/static/img/productPageMainPageLinkAny.png";
 import productPageMainPageLinkWomenMob from "@/static/img/productPageMainPageLinkWomenMob.png";
 import productPageMainPageLinkMenMob from "@/static/img/productPageMainPageLinkMenMob.png";
 import productPageMainPageLinkAnyMob from "@/static/img/productPageMainPageLinkAnyMob.png";
-import productPageMainPageArrow from "@/static/img/productPageMainPageArrow.svg";
 import imgUs4Mob from "@/static/img/Гарантии 1 mob.png";
 import imgUs5Mob from "@/static/img/Гарантии 2 mob.png";
 import imgUs6Mob from "@/static/img/Гарантии 3 mob.png";
@@ -112,13 +72,7 @@ import imgUs9Mob from "@/static/img/Гарантии 6 mob.png";
 import imgUs10Mob from "@/static/img/Гарантии 7 mob.png";
 import imgUs11Mob from "@/static/img/Гарантии 8 mob.png";
 import arrow from "@/static/icons/chevron-right-grey.svg";
-import ProductPageMobileInfoModal from "@/components/shared/ProductPageMobileInfoModal/ProductPageMobileInfoModal";
 import ContactModal from "@/components/shared/ContactModal/ContactModal";
-import similarBrands from '@/static/jsons/similarBrands.json'
-import similarLines from '@/static/jsons/similarLines.json'
-import similarCategories from '@/static/jsons/similarCategories.json'
-import ModalRef from "@/components/shared/ModalRef/ModalRef";
-import ModalGifts from "@/components/shared/ModalGifts/ModalGifts";
 
 export const getServerSideProps = async (context) => {
     const cookies = parse(context.req.headers.cookie || '');
@@ -134,8 +88,9 @@ export const getServerSideProps = async (context) => {
             notFound: true, // Это устанавливает статус код 404
         };
     }
-    const {id} = product;
-    const prices = await fetchPrices(id, token);
+
+    const events = await fetchOneProductEvents(context.params.slug, token, ip);
+    product.events = events
 
     let userData = {}
     if (token) {
@@ -143,12 +98,12 @@ export const getServerSideProps = async (context) => {
         userData = await fetchUserInfo(context.req.headers.cookie, user_id)
     }
 
-    return {props: {product, prices, userData}};
+    return {props: {product, events, userData}};
 };
 
 
 StarRating.propTypes = {rating: PropTypes.number};
-const OneProductPage = ({product, prices, userData}) => {
+const OneProductPage = ({product, events, userData}) => {
     const router = useRouter()
     const [moreOpen, setMoreOpen] = useState(false)
     const [bonuses, setBonuses] = useState(`До ${product.price.bonus}`)
@@ -161,9 +116,10 @@ const OneProductPage = ({product, prices, userData}) => {
 
     useEffect(() => {
         productStore.clearAll()
-        if (tempPrices.length === 1) {
-            productStore.setShipps([])
-            productStore.setSizeChosen(tempPrices[0])
+        if (events.length === 1) {
+            productStore.setSizeChosen(events[0])
+            const arr = Cookies.get('cart').trim().split(' ')
+            productStore.setText(arr, productStore.sizeChosen.id)
         }
     }, [router.asPath])
 
@@ -203,92 +159,14 @@ const OneProductPage = ({product, prices, userData}) => {
         }
     }, [router.asPath])
 
-
-    useEffect(() => {
-        const checkIsBot = () => {
-            const userAgent = window.navigator.userAgent;
-            const botRegex = /bot|crawler|spider|googlebot|/i;
-            return botRegex.test(userAgent)
-        }
-        if (!product.actual_platform_price) {
-            const token = Cookies.get('access_token')
-            const {slug} = router.query
-            const interval = setInterval(() => {
-                console.log('load')
-                updateOneProduct(slug, token)
-                    .then(product => {
-                        if (product.actual_platform_price) {
-                            console.log('ok')
-                            clearInterval(interval)
-                            const chosenSize = productStore.sizeChosen
-                            if (chosenSize) {
-                                fetchShippings(product.id, chosenSize.size_for_api, token)
-                                    .then(ships => {
-                                        productStore.setShipps(ships)
-                                        productStore.setAnim(true)
-                                        setTimeout(() => {
-                                            productStore.setAnim(false)
-                                        }, 1000)
-                                    })
-                            }
-                            fetchPrices(product.id, token).then((prices) => {
-                                const {view_size} = chosenSize
-                                if (view_size) {
-                                    let foundSelected = false
-                                    prices.forEach(el => {
-                                        if (el.view_size === view_size) {
-                                            productStore.setSizeChosen(el)
-                                            foundSelected = true
-                                        }
-                                    })
-                                    if (!foundSelected) {
-                                        productStore.setSizeChosen(null)
-                                    }
-                                }
-                                router.push(`${router.asPath}`, undefined, {scroll: false})
-                            })
-                        }
-                    })
-                    .catch(err => console.log(err))
-            }, 4000)
-
-            return () => {
-                clearInterval(interval)
-                productStore.setAnim(false)
-            }
-        }
-    }, [router.asPath])
-    const changeBonusesString = (value) => {
-        setBonuses(value)
-    }
-    const brandsDisplay = () => {
-        if (product.collab) {
-            return product.collab.name
-        } else {
-            return product.brands[0].name
-        }
-    }
-    const clickBrand = () => {
-        const query = {}
-        if (product.collab) {
-            query.collab = product.collab.query_name
-        } else {
-            query.line = product.brands[0].query_name
-        }
-        return {
-            pathname: '/products',
-            query: query
-        }
-    }
-
     const renderParams = () => {
         const res = []
-        const paramsObj = tempMasterClasses.parameters
+        const paramsObj = product.parameters
         const order = paramsObj.parameters_order
         if (order) {
             const params = {}
             for (const param of order) {
-                if (param in tempMasterClasses.parameters.parameters) {
+                if (param in product.parameters.parameters) {
                     params[param] = paramsObj.parameters[param]
                 }
             }
@@ -314,7 +192,7 @@ const OneProductPage = ({product, prices, userData}) => {
 
     const renderInfo = () => {
         const res = []
-        const infoList = tempMasterClasses.details
+        const infoList = product.details
         for (let info of infoList) {
             res.push(
                 <p className={s.details}>
@@ -343,26 +221,9 @@ const OneProductPage = ({product, prices, userData}) => {
         const token = Cookies.get('access_token')
         const userId = userStore.id
         const data = await removeFromWishlist(userId, product.id, token)
-
     }
+
     const cartAdd = async () => {
-        let cart = Cookies.get('cart')
-        // Cookies.set('cart', cart + ' ' + productStore.shipChosen, {expires: 2772})
-        const arr = Cookies.get('cart').trim().split(' ')
-        productStore.setText(arr, productStore.shipChosen)
-        if (userStore.isLogged) {
-            const token = Cookies.get('access_token')
-            const userId = userStore.id
-            // const data = await addToCart(userId, productStore.shipChosen, token)
-        }
-        const priceAsString = String(product.price.final_price);
-        const productIdAsString = String(product.id);
-
-        cartStore.setCartCnt(cartStore.cartCnt + 1)
-    }
-
-    const cartAddMock = async () => {
-        // Все разкоментить
         let cart = Cookies.get('cart')
         Cookies.set('cart', cart + ' ' + productStore.sizeChosen.id + '_' + productStore.guestCounts + '_guests', {expires: 2772})
         const arr = Cookies.get('cart').trim().split(' ')
@@ -401,31 +262,6 @@ const OneProductPage = ({product, prices, userData}) => {
         Cookies.set('last_seen', newStr, {expires: 2772})
     }, [router.asPath])
 
-    const shouldRenderBonuses = () => {
-        return Number(product.price.bonus) > 0;
-    }
-    const hasOneTable = () => {
-        let bool = false
-        console.log(product.size_table_platform)
-        console.log(Array.isArray(product.size_table_platform))
-        if (Array.isArray(product.size_table_platform)) {
-            bool = product.size_table_platform.some(
-                (item) =>
-                    item.table && // Убедимся, что ключ `table` существует
-                    typeof item.table === 'object' && // Проверяем, что `table` — объект
-                    Object.keys(item.table).length > 0 // Убедимся, что объект не пустой
-            );
-        } else {
-            Object.values(product.size_table_platform.tables).forEach(table => {
-                if (Object.keys(table).length > 0) {
-                    bool = true
-                }
-            })
-        }
-
-        return bool
-    }
-
     const toggle_more_open = () => {
         if (moreOpen) {
             setMoreOpen(true)
@@ -444,7 +280,6 @@ const OneProductPage = ({product, prices, userData}) => {
 
         }
     }, [moreOpen]);
-    const infoRef = useRef(null)
     const [infoBtn, setInfoBtn] = useState(true)
     const [fadeOutInvisible, setFadeOutInvisible] = useState(false)
 
@@ -458,45 +293,7 @@ const OneProductPage = ({product, prices, userData}) => {
         }
     }, [router.asPath])
 
-    const [receivedWelcomeGift, setReceivedWelcomeGift] = useState('')
-
-    useEffect(() => {
-        setReceivedWelcomeGift(Cookies.get('receivedWelcomeGift'))
-    }, [])
-
-    function changeBrowserColor(color) {
-        // Для Chrome, Firefox, Opera на Android
-        const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-        if (themeColorMeta) {
-            themeColorMeta.setAttribute('content', color);
-        }
-
-        // Для Safari на iOS (к сожалению, не все цвета поддерживаются)
-        const statusBarMeta = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
-        if (statusBarMeta) {
-            // Изменение цвета status-bar на iOS
-            statusBarMeta.setAttribute('content', 'black-translucent'); // ограниченные возможности
-        }
-
-        // Для Microsoft Edge
-        const msNavbuttonMeta = document.querySelector('meta[name="msapplication-navbutton-color"]');
-        if (msNavbuttonMeta) {
-            msNavbuttonMeta.setAttribute('content', color);
-        }
-    }
-
-    const [howOpen, setHowOpen] = useState(false)
     const [infoOpen, setInfoOpen] = useState(false)
-    const toggleHow = () => {
-        setHowOpen(!howOpen)
-        setTimeout(() => {
-            changeBrowserColor("#000000")
-        }, 10)
-    }
-    const closeHow = () => {
-        setHowOpen(false)
-        changeBrowserColor("#ffffff")
-    }
     const toggleInfoModal = () => {
         setInfoOpen(!infoOpen)
     }
@@ -504,66 +301,6 @@ const OneProductPage = ({product, prices, userData}) => {
         setInfoOpen(false)
     }
     const addSpacesToNumber = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-
-
-    const getProductDetail = (product) => {
-        return {
-            id: product.id.toString(),
-            name: `${brandsDisplay()} ${product.model} ${product.colorway}`,
-            price: product.min_price,
-            brand: brandsDisplay()
-        };
-    };
-
-    // useEffect(() => {
-    //     trackViewProduct(getProductDetail(product))
-    // }, [product.id]);
-
-    const [selectedGender, setSelectedGender] = useState("any")
-
-    useEffect(() => {
-        if (Cookies.get('selected_gender')) {
-            setSelectedGender(Cookies.get('selected_gender'))
-        }
-        // Проверяем, что скрипт еще не добавлен
-        if (!document.getElementById('boxberry-script')) {
-            // Создаем элемент script
-
-            // Преобразуем значения в строки, если они ожидаются как строки
-            const priceAsString = String(product.price.final_price);
-            const productIdAsString = String(product.id);
-
-            // Отправляем событие goal tracking при загрузке компонента
-            window._tmr = window._tmr || [];
-            window._tmr.push({
-                type: "reachGoal",
-                id: 3470916,
-                value: priceAsString,
-                goal: "viewProduct",
-                params: {product_id: productIdAsString}
-            });
-
-            // Функция очистки (вызывается при размонтировании компонента)
-        }
-    }, []); // Пустой массив зависимостей гарантирует выполнение эффекта только один раз при монтировании компонента
-
-    const productPageMainPageLinkImage = selectedGender === "any" ? productPageMainPageLinkAny : selectedGender === "M" ? productPageMainPageLinkMen : productPageMainPageLinkWomen
-    const productPageMainPageLinkImageMob = selectedGender === "any" ? productPageMainPageLinkAnyMob : selectedGender === "M" ? productPageMainPageLinkMenMob : productPageMainPageLinkWomenMob
-
-    const [isClicked, setIsClicked] = useState(false);
-
-    const handleShareClick = () => {
-        navigator.clipboard.writeText(`https://sellout.su/products/${product.slug}`).then(() => {
-            setNotification('Ссылка скопирована');
-        }, () => {
-            setNotification('Не удалось скопировать ссылку');
-        });
-
-        setIsClicked(true);
-        setTimeout(() => {
-            setIsClicked(false);
-        }, 300);  // Duration of the animation
-    };
 
     const renderParametersForMobBlock = () => {
         const params = [];
@@ -630,127 +367,14 @@ const OneProductPage = ({product, prices, userData}) => {
         return params;
     };
 
-    const [contactOpen, setContactOpen] = useState(false);
-    const toggleContact = () => {
-        setContactOpen(!contactOpen);
-    };
-
-    const closeContact = () => {
-        setContactOpen(false);
-    };
-
-    const [giftsModalOpen, setGiftsModalOpen] = useState(false);
-
-    const toggleGifts = () => {
-        setGiftsModalOpen((prev) => !prev);
-        document.body.classList.add('body-scroll-clip')
-    };
-
-    const handleGiftsModalClose = () => {
-        setGiftsModalOpen(false); // Закрытие модалки извне
-        document.body.classList.remove('body-scroll-clip')
-    };
-
-    const tempMasterClasses = {
-        "id": 43719,
-        "in_wishlist": false,
-        "price": {
-            "start_price": 8490,
-            "final_price": 8490
-        },
-        "short_description": "Короткое описание тут. Вы сможете создать собственный тортик и чудесно провести вечер! Вы сможете создать еще один собственный тортик и опять чудесно провести вечер!",
-        "slug": "vans-old-skool-blackwhite-43719",
-        "name": "Бенто-торт",
-        "long_description": "Большое описание тут. Вы сможете создать собственный тортик и чудесно провести вечер! Вы сможете создать еще один собственный тортик и опять чудесно провести вечер! Вы сможете создать собственный тортик и чудесно провести вечер! Вы сможете создать собственный тортик и чудесно провести вечер! Вы сможете создать еще один собственный тортик и опять чудесно провести вечер! Вы сможете создать собственный тортик и чудесно провести вечер! Вы сможете создать еще один собственный тортик и опять чудесно провести вечер! Вы сможете создать собственный тортик и чудесно провести вечер! Вы сможете создать еще один собственный тортик и опять чудесно провести вечер!",
-        "bucket_link": [
-            {
-                "id": 18603709,
-                "url": "https://storage.yandexcloud.net/les-jours-bucket/PavelContainer.png"
-            }
-        ],
-        "available_flag": true,
-        "parameters": {
-            "parameters": {
-                "Адрес": [
-                    "Кремлевский дворец"
-                ],
-                "Контакты": [
-                    "+7 (007) МММ 77-77"
-                ],
-                "Возраст": [
-                    "60+"
-                ],
-                "Продолжительность": [
-                    "1 час"
-                ]
-            },
-            "parameters_order": [
-                "Адрес",
-                "Контакты",
-                "Возраст",
-                "Продолжительность"
-            ]
-        },
-        "details": [
-            "Сборка бенто-торта",
-            "Работа с красителями",
-            "Выравнивание кремом"
-        ],
-        "score_product_page": 3005,
-        "events": [
-            {
-                "id": 1,
-                "start_datetime": "2024-04-01T14:00:00Z",
-                "end_datetime": "2024-04-01T16:00:00Z",
-                "available_seats": 20,
-                "occupied_seats": 5,
-                "created_at": "2024-03-20T10:00:00Z"
-            },
-            {
-                "id": 2,
-                "start_datetime": "2024-04-02T14:00:00Z",
-                "end_datetime": "2024-04-02T16:00:00Z",
-                "available_seats": 20,
-                "occupied_seats": 8,
-                "created_at": "2024-03-20T10:00:00Z"
-            },
-            {
-                "id": 3,
-                "start_datetime": "2024-04-03T14:00:00Z",
-                "end_datetime": "2024-04-03T16:00:00Z",
-                "available_seats": 20,
-                "occupied_seats": 3,
-                "created_at": "2024-03-20T10:00:00Z"
-            },
-            {
-                "id": 4,
-                "start_datetime": "2024-04-02T14:00:00Z",
-                "end_datetime": "2024-04-02T16:00:00Z",
-                "available_seats": 0,
-                "occupied_seats": 8,
-                "created_at": "2024-03-20T10:00:00Z"
-            },
-            {
-                "id": 5,
-                "start_datetime": "2024-04-03T14:00:00Z",
-                "end_datetime": "2024-04-03T16:00:00Z",
-                "available_seats": 1,
-                "occupied_seats": 3,
-                "created_at": "2024-03-20T10:00:00Z"
-            }
-        ]
-    }
-
-    const tempPrices = tempMasterClasses.events
-
     const [count, setCount] = useState(1);
     const [max, setMax] = useState(0);
 
     useEffect(() => {
         setCount(1);
+        productStore.setGuestCounts(1);
         setMax(productStore.sizeChosen.available_seats)
     }, [productStore.sizeChosen]);
-
 
     const increment = () => {
         if (count < max) {
@@ -771,17 +395,17 @@ const OneProductPage = ({product, prices, userData}) => {
     return (
         <MainLayout>
             <Head>
-                <title>{`Посетить мастер-класс ${tempMasterClasses.name} в Москве от Les-Jours`}</title>
+                <title>{`Посетить мастер-класс ${product.name} в Москве от Les-Jours`}</title>
                 <meta property="og:image" content={product.bucket_link[0].url}/>
                 <meta property="og:image:width" content="640px"/>
                 <meta property="og:image:height" content="410px"/>
                 <meta property="og:title"
-                      content={`Посетить мастер-класс ${tempMasterClasses.name} в Москве от Les-Jours`}/>
+                      content={`Посетить мастер-класс ${product.name} в Москве от Les-Jours`}/>
                 <meta property="og:description"
-                      content={`Посетить мастер-класс ${tempMasterClasses.name} в Москве от Les-Jours`}/>
+                      content={`Посетить мастер-класс ${product.name} в Москве от Les-Jours`}/>
 
                 <meta name={'description'}
-                      content={`Посетить мастер-класс ${tempMasterClasses.name} в Москве от Les-Jours`}/>
+                      content={`Посетить мастер-класс ${product.name} в Москве от Les-Jours`}/>
             </Head>
             <div className={s.container}>
                 {notification && (
@@ -793,7 +417,7 @@ const OneProductPage = ({product, prices, userData}) => {
                 <div className={s.row + ' custom_cont'} itemScope itemType="https://schema.org/Product">
 
                     <meta itemProp="description"
-                          content={`Посетить мастер-класс ${tempMasterClasses.name} в Москве от Les-Jours`}/>
+                          content={`Посетить мастер-класс ${product.name} в Москве от Les-Jours`}/>
 
                     <div className={s.col1}>
 
@@ -801,7 +425,7 @@ const OneProductPage = ({product, prices, userData}) => {
                             <div style={{position: "relative", marginTop: '10px'}}>
                                 <div itemProp="name">
                                     <div itemProp="brand">
-                                        <Link href={clickBrand()} className={s.brand}>{brandsDisplay()}</Link>
+                                        <Link href={'/'} className={s.brand}>A</Link>
                                     </div>
                                     <div className={s.model} itemProp="model">{product.model}</div>
                                     <div className={s.color}>{product.colorway}</div>
@@ -820,20 +444,20 @@ const OneProductPage = ({product, prices, userData}) => {
                             </div>
                         }
                         {
-                            tempMasterClasses.bucket_link.length > 1
+                            product.bucket_link.length > 1
                                 ?
                                 <div className={s.slider}>
                                     <div className={s.photo}>
-                                        <ImgSlider photos={tempMasterClasses.bucket_link} key={router.asPath}/>
+                                        <ImgSlider photos={product.bucket_link} key={router.asPath}/>
                                     </div>
                                 </div>
                                 :
                                 <div className={s.slider}
                                 >
                                     <div className={s.photo}>
-                                        <Image src={tempMasterClasses.bucket_link[0].url}
+                                        <Image src={product.bucket_link[0].url}
                                                itemProp="image"
-                                               alt={`${brandsDisplay()} ${product.model} ${product.colorway}`}
+                                               alt={`A`}
                                                fill={true}
                                                loading={'eager'}
                                                style={{objectFit: 'contain'}}
@@ -845,7 +469,7 @@ const OneProductPage = ({product, prices, userData}) => {
                         {!desktopStore.isDesktop &&
                             <>
                                 {
-                                    prices.length > 0 &&
+                                    events.length > 0 &&
                                     <div style={{marginBottom: '20px'}}>
                                         <span itemProp="offers" itemScope itemType="https://schema.org/Offer"
                                               className={(product.price.start_price > product.price.final_price) ? s.price_sale : s.price_default}
@@ -871,14 +495,6 @@ const OneProductPage = ({product, prices, userData}) => {
 
                                         <br/>
                                         {
-                                            shouldRenderBonuses() &&
-                                            <p className={s.bonuses_block}>
-                                                <Image src={gift} alt='' className={s.bonus_icon}/> <span
-                                                className={s.bonuses}> {bonuses}₽</span> бонусов
-                                                в подарок!
-                                            </p>
-                                        }
-                                        {
                                             userData && userData.user_status && !userData.user_status.base &&
                                             <div className={s.privText}>
                                                 <Image src={ffIcon} alt=''
@@ -896,7 +512,7 @@ const OneProductPage = ({product, prices, userData}) => {
                                                                    color: '#83052F'
                                                                }}>Марку</a>
                                                         ) : (
-                                                            <span onClick={toggleContact} style={{
+                                                            <span style={{
                                                                 textDecoration: 'underline',
                                                                 cursor: 'pointer'
                                                             }}>нам</span>
@@ -908,22 +524,9 @@ const OneProductPage = ({product, prices, userData}) => {
                                     </div>
                                 }
                                 {
-                                    prices.length > 0 &&
-                                    <div className={s.modals_block}>
-                                        {
-                                            hasOneTable() &&
-                                            <SizeTable tables={product.size_table_platform}
-                                                       photo={product.bucket_link[0].url} key={product.id}/>
-                                        }
-                                        {/*<SizeHelp model={`${brandsDisplay()} ${product.model}`}*/}
-                                        {/*          imgSrc={product.bucket_link[0].url} manySizes={product.has_many_sizes}*/}
-                                        {/*          str={product.size_table_platform?.size_fit_recommendation ?? ''}/>*/}
-                                    </div>
-                                }
-                                {
-                                    prices.length > 0
+                                    events.length > 0
                                         ?
-                                        <SizeChoice prices={prices} productId={product.id}
+                                        <SizeChoice prices={events} productId={product.id}
                                                     config={product.size_row_name} manySizes={product.has_many_sizes}
                                                     isDesktop={desktopStore.isDesktop}/>
                                         :
@@ -933,7 +536,7 @@ const OneProductPage = ({product, prices, userData}) => {
                                     productStore.sizeChosen &&
                                     <>
                                         <div className={s.btn_group}>
-                                            <RenderBtns btns={productStore.shipps} changeBonuses={changeBonusesString}/>
+                                            <RenderBtns btns={productStore.shipps}/>
                                         </div>
                                         <div className={s.taxIncludedText}>Таможенные пошлины и другие комиссии включены
                                             в стоимость
@@ -1102,15 +705,9 @@ const OneProductPage = ({product, prices, userData}) => {
                                     </h5>
                                 </TextModalDesktopProductPage>
                                 <hr style={{marginTop: '10px', color: '#51031D', opacity: '1'}}/>
-                                {!receivedWelcomeGift &&
-                                    <div className={`${s.promoBanner} ${selectedGender === "F" ? s.womenBanner : ''}`}>
-                                        <span className={s.promoText}>До 5000₽ в подарок</span>
-                                        <button className={s.promoButton} onClick={toggleGifts}>Получить</button>
-                                    </div>
-                                }
+
                                 <button
                                     className={s.how_btn}
-                                    onClick={toggleHow}
                                 >
                                     <Image src={aboutUs2} alt="" className={s.icon_about_us}/>
                                     <div className={s.label}>
@@ -1269,18 +866,7 @@ const OneProductPage = ({product, prices, userData}) => {
                                     </div>
                                     <Image src={arrow} alt='' className={s.arrowParamsMob}/>
                                 </div>
-                                <TreeLine list={product.list_lines}/>
-                                <Link href={selectedGender === "any" ? "/" : selectedGender === "M" ? "/men" : "/women"}
-                                      className={s.containerMain}>
-                                    <Image
-                                        src={productPageMainPageLinkImageMob}
-                                        alt=""
-                                        className={s.image}
-                                        layout="responsive"
-                                        width={700} // Укажите нужную ширину
-                                        height={400} // Укажите нужную высоту
-                                    />
-                                </Link>
+
                             </>
                         }
                     </div>
@@ -1290,12 +876,12 @@ const OneProductPage = ({product, prices, userData}) => {
                                 <div>
                                     <StarRating rating={product.score_product_page} n={product.id}/>
                                     <div itemProp="name">
-                                        <div className={s.brand}>{tempMasterClasses.name}</div>
-                                        <div className={s.model}>{tempMasterClasses.long_description}</div>
+                                        <div className={s.brand}>{product.name}</div>
+                                        <div className={s.model}>{product.long_description}</div>
                                     </div>
                                 </div>
                                 {
-                                    prices.length > 0 &&
+                                    events.length > 0 &&
                                     <div style={{marginBottom: '50px'}}>
                                         {(product.price.start_price > product.price.final_price) &&
                                             <div className={s.price_default}
@@ -1315,9 +901,9 @@ const OneProductPage = ({product, prices, userData}) => {
                                     </div>
                                 }
                                 {
-                                    tempPrices.length > 0
+                                    events.length > 0
                                         ?
-                                        <SizeChoice prices={tempPrices} productId={product.id}
+                                        <SizeChoice prices={events} productId={product.id}
                                                     isDesktop={desktopStore.isDesktop}/>
                                         :
                                         <p className={s.grey_text}>Нет свободных мест на мастер-класс</p>
@@ -1694,28 +1280,14 @@ const OneProductPage = ({product, prices, userData}) => {
                                      key={product.id}/>
                     </>
                 }
-                {/*{!desktopStore.isDesktop && recProducts && recProducts.length > 0 &&*/}
-                {/*    <div className={'custom_cont'}>*/}
-                {/*        <h3 className={s.similar_title}>Рекомендации</h3>*/}
-                {/*        <ProductList products={recProducts} isAdmin={false} key={product.id}/>*/}
-                {/*        <div ref={observerRef}/>*/}
-                {/*    </div>*/}
-                {/*}*/}
                 {desktopStore.isDesktop && similarProducts.length > 0 &&
                     <Compilation arr={similarProducts} title={'Похожие мастер-классы'} paddings={'regular'}/>
                 }
-                {/*{desktopStore.isDesktop && recProducts && recProducts.length > 0 &&*/}
-                {/*    <Compilation arr={recProducts} title={'Рекомендации'} paddings={'regular'}*/}
-                {/*                 resetScrollToBeginning={true}/>*/}
-                {/*}*/}
                 {desktopStore.isDesktop && lastSeen.length > 0 &&
                     <Compilation arr={lastSeen} title={'Ранее просмотренные'} paddings={'regular'} key={product.id}/>
                 }
             </div>
-            <HowWeWorkModal show={howOpen} onHide={closeHow}/>
-            <ProductPageMobileInfoModal show={infoOpen} onHide={closeInfoModal} product={product}/>
-            <ContactModal isOpen={contactOpen} handleClose={closeContact}/>
-            <ModalGifts show={giftsModalOpen} onClose={handleGiftsModalClose}/>
+            {/*<ProductPageMobileInfoModal show={infoOpen} onHide={closeInfoModal} product={product}/>*/}
         </MainLayout>
     );
 };

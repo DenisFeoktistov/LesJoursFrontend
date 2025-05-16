@@ -54,7 +54,7 @@ const ProductListMainPage = ({products}) => {
         visibleProducts.forEach((product) => {
             result.push(
                 <ProductCard
-                    product={tempMasterClasses}
+                    product={product}
                     key={product.id}
                     cardList={true}
                 />

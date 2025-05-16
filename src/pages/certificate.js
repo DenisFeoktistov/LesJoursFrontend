@@ -1,25 +1,14 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import s from '@/styles/Certificate.module.css'
 import truck from '@/static/icons/truck.svg'
 import refund from '@/static/icons/arrow-return-left.svg'
-import returnImg from '@/static/icons/arrow-return-left.svg'
 import like from '@/static/icons/heart.svg'
 import like_fill from '@/static/icons/heart-fill.svg'
-import SizeTable from "@/components/pages/oneProduct/SizeTable/SizeTable";
-import SizeHelp from "@/components/pages/oneProduct/SizeHelp/SizeHelp";
 import SizeChoice from "@/components/pages/oneProduct/SizeChoice/SizeChoice";
 import HowToChoose from "@/components/pages/oneProduct/HowToChoose/HowToChoose";
-import TextModal from "@/components/shared/UI/TextModal/TextModal";
-import Arrow from "@/components/shared/UI/Arrow/Arrow";
 import Image from 'next/image'
 import {
-    fetchOneProduct,
-    fetchOneProductFull,
-    fetchPrices,
     fetchProductsByArray,
-    fetchShippings,
-    fetchSimilarProducts,
-    updateOneProduct,
     fetchProductsPage
 } from "@/http/productsApi";
 import MainLayout from "@/layout/MainLayout";
@@ -27,82 +16,34 @@ import {Context} from "@/context/AppWrapper";
 import {observer} from "mobx-react-lite";
 import AuthModal from "@/components/shared/AuthModal/AuthModal";
 import Cookies from "js-cookie";
-import {addToWishlist, removeFromWishlist} from "@/http/wishlistAPI";
-import {parse} from "cookie";
 import RenderBtns from "@/components/pages/oneProduct/RenderBtns/RenderBtns";
-import {addToCart, addToCartCertificate} from "@/http/cartApi";
-import {addLastSeen, fetchLastSeen2, fetchUserInfo} from "@/http/userApi";
+import {addToCartCertificate} from "@/http/cartApi";
+import {fetchLastSeen2} from "@/http/userApi";
 import jwtDecode from "jwt-decode";
 import Link from "next/link";
 import Compilation from "@/components/shared/Compilation/Compilation";
-import InvisibleCaptcha from "@/components/shared/CaptchaYandex/Captcha"
 import '@splidejs/react-splide/css'
 import Head from "next/head";
 import gift from '@/static/icons/gift-green.svg'
-import how from '@/static/icons/question-circle.svg'
 import warranty from '@/static/icons/shield-check.svg'
-import payment from '@/static/icons/credit-card.svg'
 import {useRouter} from "next/router";
-import parseHtml from 'html-react-parser'
-import change from "@/static/icons/arrow-down-up.svg";
-import map from "@/static/img/map.jpg";
 import LoyaltyFAQ from "@/components/pages/account/LoyaltyFAQ/LoyaltyFAQ";
-import gift_gard from "@/static/icons/gift-gard.svg";
-import first from "@/static/icons/first.svg";
-import shareIcon from "@/static/icons/icons8-поделиться.svg"
-import shareGif from "@/static/icons/icons8-поделиться.gif"
-import good from "@/static/icons/good.svg";
-import friend from "@/static/icons/friend.svg";
-import birth from "@/static/icons/happybirthday.svg";
-import smile from "@/static/icons/emoji-smile 1.svg";
-import giftModal from "@/static/icons/gift.svg";
-import headphones from "@/static/icons/headphones-circle.svg";
-import tg from "@/static/icons/tg_black.svg";
-import vk from "@/static/icons/vk_black.svg";
-import cashStack from "@/static/icons/cash-stack.svg";
 import cashStack1 from "@/static/icons/cash-stack 1.svg";
 import twoArrows from "@/static/icons/two_arrowsNew.svg";
 import ffIcon from '@/static/icons/ff.png'
 import selloutIcon from '@/static/icons/selloutIcon.png'
-import ImgSlider from "@/components/pages/oneProduct/ImgSlider/ImgSlider";
 import shield from "@/static/icons/shield-check 1.svg";
 import patch from "@/static/icons/patch-check 1.svg";
 import personCheck from "@/static/icons/person-check 1.svg";
 import file from '@/static/icons/file-earmark-check 1.svg'
 import creditCard from '@/static/icons/credit-card 2.svg'
-import aboutUs from '@/static/icons/aboutus.svg'
 import aboutUs2 from '@/static/icons/aboutus2.svg'
-import HowWeWorkModal from "@/components/shared/HowWeWorkModal/HowWeWorkModal";
-import {
-    trackAddToCart,
-    trackAddToFavorites,
-    trackRemoveToFavorites,
-    trackViewProduct,
-} from "@/components/shared/YandexMetrica/YandexMetrica";
-import TreeLine from "@/components/pages/oneProduct/TreeLines/TreeLine";
-import BreadcrumbC from "@/components/shared/BreadcrumbC/BreadcrumbC";
 import StarRating from "@/components/shared/StarRating/StarRating";
-import * as PropTypes from "prop-types";
-import ProductDetailsMob from "@/components/shared/ProductDetailsMob/ProductDetailsMob";
 import Notification from "@/components/shared/Notification/Notification";
-import ProductList from "@/components/pages/product/ProductList/ProductList";
 import TextModalDesktopProductPage
     from "@/components/shared/UI/TextModalDesktopProductPage/TextModalDesktopProductPage";
 import igBlack from "@/static/icons/igImg.svg";
 import tgBlack from "@/static/icons/tg_black.svg";
-import imgUs3 from "@/static/img/Гарантии 1.png";
-import imgUs4 from "@/static/img/гарантии 2.png";
-import imgUs5 from "@/static/img/Гарантии 3.png";
-import imgUs6 from "@/static/img/Гарантии 4.png";
-import imgUs7 from "@/static/img/Гарантии 5.png";
-import imgUs8 from "@/static/img/Гарантии 6.png";
-import productPageMainPageLinkWomen from "@/static/img/productPageMainPageLinkWomen.png";
-import productPageMainPageLinkMen from "@/static/img/productPageMainPageLinkMen.png";
-import productPageMainPageLinkAny from "@/static/img/productPageMainPageLinkAny.png";
-import productPageMainPageLinkWomenMob from "@/static/img/productPageMainPageLinkWomenMob.png";
-import productPageMainPageLinkMenMob from "@/static/img/productPageMainPageLinkMenMob.png";
-import productPageMainPageLinkAnyMob from "@/static/img/productPageMainPageLinkAnyMob.png";
-import productPageMainPageArrow from "@/static/img/productPageMainPageArrow.svg";
 import imgUs4Mob from "@/static/img/Гарантии 1 mob.png";
 import imgUs5Mob from "@/static/img/Гарантии 2 mob.png";
 import imgUs6Mob from "@/static/img/Гарантии 3 mob.png";
@@ -112,19 +53,12 @@ import imgUs9Mob from "@/static/img/Гарантии 6 mob.png";
 import imgUs10Mob from "@/static/img/Гарантии 7 mob.png";
 import imgUs11Mob from "@/static/img/Гарантии 8 mob.png";
 import arrow from "@/static/icons/chevron-right-grey.svg";
-import ProductPageMobileInfoModal from "@/components/shared/ProductPageMobileInfoModal/ProductPageMobileInfoModal";
 import ContactModal from "@/components/shared/ContactModal/ContactModal";
-import similarBrands from '@/static/jsons/similarBrands.json'
-import similarLines from '@/static/jsons/similarLines.json'
-import similarCategories from '@/static/jsons/similarCategories.json'
-import ModalRef from "@/components/shared/ModalRef/ModalRef";
-import ModalGifts from "@/components/shared/ModalGifts/ModalGifts";
 import certificateImg from "@/static/img/certificateImg.png";
 
 
 const Certificate = () => {
     const router = useRouter()
-    const [moreOpen, setMoreOpen] = useState(false)
     const [notification, setNotification] = useState(null);
 
     const [similarProducts, setSimilarProducts] = useState([])
@@ -152,7 +86,6 @@ const Certificate = () => {
 
             let data_products = await fetchProductsPage(url, token);
             data_products = shuffleArray(data_products.results).slice(0, 10);
-            console.log(data_products)
             setSimilarProducts(data_products);
 
         };
@@ -173,103 +106,7 @@ const Certificate = () => {
         }
     }, [router.asPath])
 
-    const changeBonusesString = (value) => {
-        setBonuses(value)
-    }
-    const brandsDisplay = () => {
-        if (product.collab) {
-            return product.collab.name
-        } else {
-            return product.brands[0].name
-        }
-    }
-    const clickBrand = () => {
-        const query = {}
-        if (product.collab) {
-            query.collab = product.collab.query_name
-        } else {
-            query.line = product.brands[0].query_name
-        }
-        return {
-            pathname: '/products',
-            query: query
-        }
-    }
-
-    const renderParams = () => {
-        const res = []
-        const paramsObj = tempMasterClasses.parameters
-        const order = paramsObj.parameters_order
-        if (order) {
-            const params = {}
-            for (const param of order) {
-                if (param in tempMasterClasses.parameters.parameters) {
-                    params[param] = paramsObj.parameters[param]
-                }
-            }
-
-            for (const key in params) {
-                res.push(
-                    <p className={s.characteristics}>{key}:
-                        <span className={s.characteristics_text}>{params[key].join(', ')}</span>
-                    </p>
-                )
-            }
-        } else {
-            for (const key in paramsObj) {
-                res.push(
-                    <p className={s.characteristics}>{key}:
-                        <span className={s.characteristics_text}>{paramsObj[key].join(', ')}</span>
-                    </p>
-                )
-            }
-        }
-        return res
-    }
-
-    const renderInfo = () => {
-        const res = []
-        const infoList = tempMasterClasses.details
-        console.log(infoList)
-        for (let info of infoList) {
-            console.log(info)
-            res.push(
-                <p className={s.details}>
-                    🎀{info}
-                </p>
-            )
-        }
-        return res
-    }
-
-
     const cartAdd = async () => {
-        let cart = Cookies.get('cart')
-        Cookies.set('cart', cart + ' ' + productStore.shipChosen, {expires: 2772})
-        const arr = Cookies.get('cart').trim().split(' ')
-        productStore.setText(arr, productStore.shipChosen)
-        if (userStore.isLogged) {
-            const token = Cookies.get('access_token')
-            const userId = userStore.id
-            const data = await addToCart(userId, productStore.shipChosen, token)
-        }
-        const priceAsString = String(product.price.final_price);
-        const productIdAsString = String(product.id);
-        const productDetails = getProductDetail(product);
-        // trackAddToCart(productDetails)
-
-        window._tmr = window._tmr || [];
-        window._tmr.push({
-            type: "reachGoal",
-            id: 3470916,
-            value: priceAsString, // Замените "VALUE" на необходимое значение
-            goal: "addToCart",
-            params: {product_id: productIdAsString} // Замените "PRODUCT_ID" на необходимое значение
-        });
-        cartStore.setCartCnt(cartStore.cartCnt + 1)
-    }
-
-    const cartAddMock = async () => {
         let cart = Cookies.get('cart')
         Cookies.set('cart', cart + ' certificate_' + productStore.certificateChosen.amount, {expires: 2772})
 
@@ -282,93 +119,7 @@ const Certificate = () => {
         cartStore.setCartCnt(cartStore.cartCnt + 1)
     }
 
-    const shouldRenderBonuses = () => {
-        return Number(product.price.bonus) > 0;
-    }
-    const hasOneTable = () => {
-        let bool = false
-        console.log(product.size_table_platform)
-        console.log(Array.isArray(product.size_table_platform))
-        if (Array.isArray(product.size_table_platform)) {
-            bool = product.size_table_platform.some(
-                (item) =>
-                    item.table && // Убедимся, что ключ `table` существует
-                    typeof item.table === 'object' && // Проверяем, что `table` — объект
-                    Object.keys(item.table).length > 0 // Убедимся, что объект не пустой
-            );
-        } else {
-            Object.values(product.size_table_platform.tables).forEach(table => {
-                if (Object.keys(table).length > 0) {
-                    bool = true
-                }
-            })
-        }
-
-        return bool
-    }
-
-
     const addSpacesToNumber = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-
-
-    const getProductDetail = (product) => {
-        return {
-            id: product.id.toString(),
-            name: `${brandsDisplay()} ${product.model} ${product.colorway}`,
-            price: product.min_price,
-            brand: brandsDisplay()
-        };
-    };
-
-    // useEffect(() => {
-    //     trackViewProduct(getProductDetail(product))
-    // }, [product.id]);
-
-    const [selectedGender, setSelectedGender] = useState("any")
-
-    useEffect(() => {
-        if (Cookies.get('selected_gender')) {
-            setSelectedGender(Cookies.get('selected_gender'))
-        }
-        // Проверяем, что скрипт еще не добавлен
-        if (!document.getElementById('boxberry-script')) {
-            // Создаем элемент script
-
-            // Преобразуем значения в строки, если они ожидаются как строки
-            const priceAsString = String(tempMasterClasses.price.final_price);
-            const productIdAsString = String(tempMasterClasses.id);
-
-            // Отправляем событие goal tracking при загрузке компонента
-            window._tmr = window._tmr || [];
-            window._tmr.push({
-                type: "reachGoal",
-                id: 3470916,
-                value: priceAsString,
-                goal: "viewProduct",
-                params: {product_id: productIdAsString}
-            });
-
-            // Функция очистки (вызывается при размонтировании компонента)
-        }
-    }, []); // Пустой массив зависимостей гарантирует выполнение эффекта только один раз при монтировании компонента
-
-    const productPageMainPageLinkImage = selectedGender === "any" ? productPageMainPageLinkAny : selectedGender === "M" ? productPageMainPageLinkMen : productPageMainPageLinkWomen
-    const productPageMainPageLinkImageMob = selectedGender === "any" ? productPageMainPageLinkAnyMob : selectedGender === "M" ? productPageMainPageLinkMenMob : productPageMainPageLinkWomenMob
-
-    const [isClicked, setIsClicked] = useState(false);
-
-    const handleShareClick = () => {
-        navigator.clipboard.writeText(`https://sellout.su/products/${product.slug}`).then(() => {
-            setNotification('Ссылка скопирована');
-        }, () => {
-            setNotification('Не удалось скопировать ссылку');
-        });
-
-        setIsClicked(true);
-        setTimeout(() => {
-            setIsClicked(false);
-        }, 300);  // Duration of the animation
-    };
 
     const renderParametersForMobBlock = () => {
         const params = [];
@@ -444,135 +195,6 @@ const Certificate = () => {
         setContactOpen(false);
     };
 
-    const [giftsModalOpen, setGiftsModalOpen] = useState(false);
-
-    const toggleGifts = () => {
-        setGiftsModalOpen((prev) => !prev);
-        document.body.classList.add('body-scroll-clip')
-    };
-
-    const handleGiftsModalClose = () => {
-        setGiftsModalOpen(false); // Закрытие модалки извне
-        document.body.classList.remove('body-scroll-clip')
-    };
-
-    const tempMasterClasses = {
-        "id": 43719,
-        "in_wishlist": false,
-        "price": {
-            "start_price": 8490,
-            "final_price": 8490
-        },
-        "short_description": "Короткое описание тут. Вы сможете создать собственный тортик и чудесно провести вечер! Вы сможете создать еще один собственный тортик и опять чудесно провести вечер!",
-        "slug": "vans-old-skool-blackwhite-43719",
-        "name": "Бенто-торт",
-        "long_description": "Большое описание тут. Вы сможете создать собственный тортик и чудесно провести вечер! Вы сможете создать еще один собственный тортик и опять чудесно провести вечер! Вы сможете создать собственный тортик и чудесно провести вечер! Вы сможете создать собственный тортик и чудесно провести вечер! Вы сможете создать еще один собственный тортик и опять чудесно провести вечер! Вы сможете создать собственный тортик и чудесно провести вечер! Вы сможете создать еще один собственный тортик и опять чудесно провести вечер! Вы сможете создать собственный тортик и чудесно провести вечер! Вы сможете создать еще один собственный тортик и опять чудесно провести вечер!",
-        "bucket_link": [
-            {
-                "id": 18603709,
-                "url": "https://s924sas.storage.yandex.net/rdisk/66469d23ef4d6469c7be0ff30ad9e0be6640277f614eafee65991675fe10b403/681d0840/fKqInKw3d7bLFOeFnMGnhDKsgUKR9221F9Ryb_3IFBA6wErnhUrv2ZfJ_nk3YAGBC8Dqr7j1VREAxSCY6yKxk-W79QwjkicFAhXHWHAa6tmr8npumZHI4midPdWhecNq?uid=1130000061336583&filename=mkImgTest.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1130000061336583&fsize=429466&hid=f2e8cc2019a0dfc651cb64562b8770d0&media_type=image&tknv=v3&etag=692ca033d9d235f6c696a5027f958773&ts=634a4ff229000&s=67881f61d5f7a214e67e6f4f8a6615d9d5a798c6ac281b728318d514dac60d84&pb=U2FsdGVkX18op807rLqhwQ0lMBUMyaUxtd3J_b8gUDe7GpUGNRw3p8DM45GNNnevaZo4EH_BgxJqEeA-lpki7USKoNtczoIPi65xYfl8wArrcEMzi-9eSsMTcLdSa1WB"
-            }
-        ],
-        "available_flag": true,
-        "parameters": {
-            "parameters": {
-                "Адрес": [
-                    "Кремлевский дворец"
-                ],
-                "Контакты": [
-                    "+7 (007) МММ 77-77"
-                ],
-                "Возраст": [
-                    "60+"
-                ],
-                "Продолжительность": [
-                    "1 час"
-                ]
-            },
-            "parameters_order": [
-                "Адрес",
-                "Контакты",
-                "Возраст",
-                "Продолжительность"
-            ]
-        },
-        "details": [
-            "Сборка бенто-торта",
-            "Работа с красителями",
-            "Выравнивание кремом"
-        ],
-        "score_product_page": 3005,
-        "events": [
-            {
-                "id": 1,
-                "start_datetime": "2024-04-01T14:00:00Z",
-                "end_datetime": "2024-04-01T16:00:00Z",
-                "available_seats": 20,
-                "occupied_seats": 5,
-                "created_at": "2024-03-20T10:00:00Z"
-            },
-            {
-                "id": 2,
-                "start_datetime": "2024-04-02T14:00:00Z",
-                "end_datetime": "2024-04-02T16:00:00Z",
-                "available_seats": 20,
-                "occupied_seats": 8,
-                "created_at": "2024-03-20T10:00:00Z"
-            },
-            {
-                "id": 3,
-                "start_datetime": "2024-04-03T14:00:00Z",
-                "end_datetime": "2024-04-03T16:00:00Z",
-                "available_seats": 20,
-                "occupied_seats": 3,
-                "created_at": "2024-03-20T10:00:00Z"
-            },
-            {
-                "id": 4,
-                "start_datetime": "2024-04-02T14:00:00Z",
-                "end_datetime": "2024-04-02T16:00:00Z",
-                "available_seats": 0,
-                "occupied_seats": 8,
-                "created_at": "2024-03-20T10:00:00Z"
-            },
-            {
-                "id": 5,
-                "start_datetime": "2024-04-03T14:00:00Z",
-                "end_datetime": "2024-04-03T16:00:00Z",
-                "available_seats": 1,
-                "occupied_seats": 3,
-                "created_at": "2024-03-20T10:00:00Z"
-            }
-        ]
-    }
-
-    const tempPrices = tempMasterClasses.events
-
-    const [count, setCount] = useState(1);
-    const [max, setMax] = useState(0);
-
-    useEffect(() => {
-        setCount(1);
-        setMax(productStore.sizeChosen.available_seats)
-    }, [productStore.sizeChosen]);
-
-
-    const increment = () => {
-        if (count < max) {
-            const newCount = count + 1;
-            setCount(newCount);
-            productStore.setGuestCounts(newCount);
-        }
-    };
-
-    const decrement = () => {
-        if (count > 1) {
-            const newCount = count - 1;
-            setCount(newCount);
-            productStore.setGuestCounts(newCount);
-        }
-    };
-
     return (
         <MainLayout>
             <Head>
@@ -607,7 +229,7 @@ const Certificate = () => {
                             <div style={{position: "relative", marginTop: '10px'}}>
                                 <div itemProp="name">
                                     <div itemProp="brand">
-                                        <Link href={clickBrand()} className={s.brand}>{brandsDisplay()}</Link>
+                                        <Link href={'/'} className={s.brand}>A</Link>
                                     </div>
                                     <div className={s.model} itemProp="model">{product.model}</div>
                                     <div className={s.color}>{product.colorway}</div>
@@ -705,19 +327,6 @@ const Certificate = () => {
                                     </div>
                                 }
                                 {
-                                    prices.length > 0 &&
-                                    <div className={s.modals_block}>
-                                        {
-                                            hasOneTable() &&
-                                            <SizeTable tables={product.size_table_platform}
-                                                       photo={product.bucket_link[0].url} key={product.id}/>
-                                        }
-                                        {/*<SizeHelp model={`${brandsDisplay()} ${product.model}`}*/}
-                                        {/*          imgSrc={product.bucket_link[0].url} manySizes={product.has_many_sizes}*/}
-                                        {/*          str={product.size_table_platform?.size_fit_recommendation ?? ''}/>*/}
-                                    </div>
-                                }
-                                {
                                     prices.length > 0
                                         ?
                                         <SizeChoice prices={prices} productId={product.id}
@@ -730,7 +339,7 @@ const Certificate = () => {
                                     productStore.sizeChosen &&
                                     <>
                                         <div className={s.btn_group}>
-                                            <RenderBtns btns={productStore.shipps} changeBonuses={changeBonusesString}/>
+                                            <RenderBtns btns={productStore.shipps}/>
                                         </div>
                                         <div className={s.taxIncludedText}>Таможенные пошлины и другие комиссии включены
                                             в стоимость
@@ -899,12 +508,7 @@ const Certificate = () => {
                                     </h5>
                                 </TextModalDesktopProductPage>
                                 <hr style={{marginTop: '10px', color: '#51031D', opacity: '1'}}/>
-                                {!receivedWelcomeGift &&
-                                    <div className={`${s.promoBanner} ${selectedGender === "F" ? s.womenBanner : ''}`}>
-                                        <span className={s.promoText}>До 5000₽ в подарок</span>
-                                        <button className={s.promoButton} onClick={toggleGifts}>Получить</button>
-                                    </div>
-                                }
+
                                 <button
                                     className={s.how_btn}
                                     onClick={toggleHow}
@@ -1066,18 +670,6 @@ const Certificate = () => {
                                     </div>
                                     <Image src={arrow} alt='' className={s.arrowParamsMob}/>
                                 </div>
-                                <TreeLine list={product.list_lines}/>
-                                <Link href={selectedGender === "any" ? "/" : selectedGender === "M" ? "/men" : "/women"}
-                                      className={s.containerMain}>
-                                    <Image
-                                        src={productPageMainPageLinkImageMob}
-                                        alt=""
-                                        className={s.image}
-                                        layout="responsive"
-                                        width={700} // Укажите нужную ширину
-                                        height={400} // Укажите нужную высоту
-                                    />
-                                </Link>
                             </>
                         }
                     </div>
@@ -1124,20 +716,9 @@ const Certificate = () => {
                                      key={product.id}/>
                     </>
                 }
-                {/*{!desktopStore.isDesktop && recProducts && recProducts.length > 0 &&*/}
-                {/*    <div className={'custom_cont'}>*/}
-                {/*        <h3 className={s.similar_title}>Рекомендации</h3>*/}
-                {/*        <ProductList products={recProducts} isAdmin={false} key={product.id}/>*/}
-                {/*        <div ref={observerRef}/>*/}
-                {/*    </div>*/}
-                {/*}*/}
                 {desktopStore.isDesktop && similarProducts.length > 0 &&
                     <Compilation arr={similarProducts} title={'Мастер-классы'} paddings={'regular'}/>
                 }
-                {/*{desktopStore.isDesktop && recProducts && recProducts.length > 0 &&*/}
-                {/*    <Compilation arr={recProducts} title={'Рекомендации'} paddings={'regular'}*/}
-                {/*                 resetScrollToBeginning={true}/>*/}
-                {/*}*/}
                 {desktopStore.isDesktop && lastSeen.length > 0 &&
                     <Compilation arr={lastSeen} title={'Ранее просмотренные'} paddings={'regular'}/>
                 }

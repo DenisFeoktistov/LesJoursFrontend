@@ -4,10 +4,7 @@ import {Context} from "@/context/AppWrapper";
 
 const StarRating = ({rating, n}) => {
 
-    rating = Math.min(
-        4.3 + Math.round(Math.min(rating / 700, 10)) / 10 + (0.1 * (n % 2)),
-        5
-    ).toFixed(1);
+    rating = Math.min(4.0 + rating / 100, 5).toFixed(1);
     const {desktopStore} = useContext(Context)
     const getStarClass = (index) => {
 
@@ -44,7 +41,7 @@ const StarRating = ({rating, n}) => {
                     ★
                 </div>
             ))}
-            <span className={styles.tooltip_mobile}>{Math.round(Math.max((n / 1000)))}</span>
+            <span className={styles.tooltip_mobile}>{Math.round(Math.min(n * rating, 200))}</span>
             {desktopStore.isDesktop &&
                 <span className={styles.tooltip}>{`Рейтинг: ${rating}`}</span>}
 

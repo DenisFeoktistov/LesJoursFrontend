@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import Image from "next/image";
 import s from './WelcomeMainPage.module.css'
 import {observer} from "mobx-react-lite";
-import Link from "next/link";
 import welcomeImg from "@/static/img/welcomeImg.png";
 import welcomeFlowerLogo from "@/static/img/welcomeFlowerLogo.png";
 

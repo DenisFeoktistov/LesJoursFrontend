@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import Image from "next/image";
 import s from './CertificateMainPage.module.css'
 import {observer} from "mobx-react-lite";
