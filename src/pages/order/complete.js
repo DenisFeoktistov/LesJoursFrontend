@@ -20,53 +20,70 @@ export const getServerSideProps = async (context) => {
     const cookies = parse(context.req.headers.cookie || '')
     const token = cookies['access_token']
     const {id} = context.query
-    const order = await fetchOneOrder(id, token)
-    const {user_id} = jwtDecode(token)
-    const userData = await fetchUserInfo(context.req.headers.cookie, user_id)
-    return {props : {order, userData}}
+    // const order = await fetchOneOrder(id, token)
+    // const {user_id} = jwtDecode(token)
+    // const userData = await fetchUserInfo(context.req.headers.cookie, user_id)
+
+    const order = {
+        "id": 1113,
+        "order_units": [
+            {
+                "id": 1544,
+                "name": "Бенто-торт",
+                "bucket_link": [
+                    {
+                        "url": "https://storage.yandexcloud.net/les-jours-bucket/1.png"
+                    }
+                ],
+                "slug": "vans-old-skool-blackwhite-43719",
+                "price": {
+                    "start_price": 3900,
+                    "final_price": 3900
+                },
+                "guestsAmount": 2,
+                "totalPrice": 7800,
+                "date": {
+                    "start_datetime": "2024-04-01T14:00:00Z",
+                    "end_datetime": "2024-04-01T16:00:00Z"
+                },
+                "address": "Кремлевский дворец",
+                "contacts": "+7 (007) МММ 77-77",
+                "type": "master_class"
+            },
+            {
+                "type": "certificate",
+                "amount": "5000"
+            }
+        ],
+        "formatted_date": "16.11.24",
+        "number": "115536",
+        "total_amount": 13190,
+        "final_amount": 10640,
+        "total_sale": 3100,
+        "email": "markenson888@mail.ru",
+        "phone": "+7 916 114-92-27",
+        "surname": "Фельдман",
+        "name": "Марк",
+        "telegram": "@markermann"
+    }
+
+    const userData = {
+        "id": 114,
+        "formatted_happy_birthday_date": "16.10.2004",
+        "first_name": "Марк",
+        "last_name": "Фельдман",
+        "email": "markenson888@mail.ru",
+        "phone_number": "+7 916 114-92-27",
+        "gender": {
+            "id": 1,
+            "name": "M"
+        }
+    }
+
+
+    return {props: {order, userData}}
 }
 const Complete = ({order, userData}) => {
-    useEffect(() => {
-
-        // const priceAsString = String(product.price.final_price);
-        // const productIdAsString = String(product.id);
-        //
-        // window._tmr = window._tmr || [];
-        // window._tmr.push({
-        //     type: "reachGoal",
-        //     id: 3470916,
-        //     value: priceAsString, // Замените "VALUE" на необходимое значение
-        //     goal: "addToCart",
-        //     params: { product_id: productIdAsString } // Замените "PRODUCT_ID" на необходимое значение
-        // });
-        const orderItems = order.order_units
-        const idList = [];
-        //
-        // for (const orderItem of orderItems) {
-        //     // Предположим, что у каждой позиции заказа есть свойство "id"
-        //     const itemId = orderItem.product.id;
-        //     window._tmr = window._tmr || [];
-        //     window._tmr.push({
-        //         type: "reachGoal",
-        //         id: 3470916,
-        //         value: String(orderItem.final_price), // Замените "VALUE" на необходимое значение
-        //         goal: "addToCart",
-        //         params: { product_id: String(itemId) } // Замените "PRODUCT_ID" на необходимое значение
-        //     });
-        //
-        //     // Преобразуем ID в строку и добавляем в список
-        //     // idList.push(String(itemId));
-        // }
-
-        // Получаем текущий путь
-        const currentPath = window.location.pathname;
-
-        // Добавляем логику для отслеживания откуда совершен переход
-
-        // Другие действия, которые вы хотите выполнить при загрузке компонента
-
-    }, []); // Пустой массив зависимостей означает, что эффект будет выполнен только при монтировании компонента
-
     const {userStore, cartStore} = useContext(Context)
 
     const {desktopStore} = useContext(Context)
@@ -84,7 +101,7 @@ const Complete = ({order, userData}) => {
         <MainLayout>
             <div className={s.cont + ' custom_cont'}>
                 <div className={s.thanks_block}>
-                    <Image  src={check} alt='' width={desktopStore.isDesktop ? 80 : 40}/>
+                    <Image src={check} alt='' width={desktopStore.isDesktop ? 50 : 40}/>
                     <div>
                         {userStore.firstName}, спасибо за заказ!
                     </div>
@@ -100,48 +117,13 @@ const Complete = ({order, userData}) => {
                 <hr/>
                 <CompleteCard order={order}/>
                 <hr/>
-                {/*<div className={s.info_block}>*/}
-                {/*    <Image src={info} alt='' width={isDesktop ? 80 : 40}/>*/}
-                {/*    <div className={s.info_text}>*/}
-                {/*        Ваш заказ успешно создан. Мы должны подтвердить ваш заказ, обычно это происходит моментально, и*/}
-                {/*        статус заказа в личном кабинете меняется с “Ожидает подтверждения” на “Заказ подтвержден”.*/}
-                {/*        Как только это произойдет, вам придет письмо на почту. Также все изменения по статусу заказа*/}
-                {/*        Вы можете отслеживать в <Link href="/account/orders" className={s.link}>личном кабинете</Link>.*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-                {/*<hr/>*/}
-                <div className={s.faq_block}>
-                    <h5 className={'text-center'}>Часто задаваемые вопросы</h5>
-                    <LoyaltyFAQ title={'Как быстро обрабатываются заказы?'}>
-                        После успешной оплаты заказа ваш заказ получает статус “Принят”. Мы стремимся как можно быстрее обрабатывать заказы, обычно это происходят в течение нескольких часов, после чего ваш заказ получает статус “В пути”. Подробнее про статусы заказов читайте ниже.
-
-                    </LoyaltyFAQ>
-                    <LoyaltyFAQ title={'Что делать, если не пришло письмо-подтверждение на указанную почту?'}>
-                        Пожалуйста, проверьте спам или другие папки с письмами. Если вы считаете, что произошла какая-то ошибка или вы указали неверную почту, незамедлительно обратитесь в службу поддержки, и мы обязательно вам поможем!
-
-                    </LoyaltyFAQ>
-                    <LoyaltyFAQ title={'Где отслеживать изменения статуса заказа?'}>
-                        Следить за статусом заказа вы всегда можете в своем личном кабинете в разделе “Заказы”, а также об изменениях статуса заказа мы будем сообщать вам на указанную почту!
-
-                    </LoyaltyFAQ>
-                </div>
-                {
-                    !userData.user_status.base &&
-                    <div className={s.info_block}>
-                        <Image src={info} alt='' width={desktopStore.isDesktop ? 80 : 40} className={s.icon}/>
-                        <div>
-                            Мы свяжемся с вами по указанному контакту: {userData.extra_contact} для подтверждения и оплаты заказа!
-                            <br/>
-                            Обычно это занимает не более 24 часов. Если по какой-то причине мы долго вам не пишем,
-                            <br/>
-                            просьба обратиться в <span className={s.link} onClick={toggleContact}>службу поддержки</span>
-                        </div>
-                    </div>
-                }
                 <div className={s.info_block}>
                     <Image src={heart} alt='' width={desktopStore.isDesktop ? 80 : 40} className={s.icon}/>
                     <div>
-                        Благодарим вас за выбор нашего сервиса и доверие к Sellout!
+                        В ближайшее время мы свяжемся с вами, сообщим все детали и ответим на любые вопросы!<br/><br/>
+                    </div>
+                    <div>
+                        Благодарим вас за выбор нашего сервиса и доверие к Les-Jours!
                     </div>
                     <div>
                         Ответы на большинство вопросов вы всегда можете найти

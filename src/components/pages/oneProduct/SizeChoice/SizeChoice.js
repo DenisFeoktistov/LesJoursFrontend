@@ -265,7 +265,8 @@ const SizeChoice = ({prices = [], productId = -1, isDesktop, isCertificate = fal
                                                             placeholder="5000"
                                                             onClick={(e) => e.stopPropagation()}
                                                             onChange={(e) => {
-                                                                const raw = e.target.value.replace(/\D/g, ''); // убрать всё, кроме цифр
+                                                                let raw = e.target.value.replace(/\D/g, ''); // убрать всё, кроме цифр
+                                                                raw = raw.replace(/^0+/, '');
                                                                 const num = parseInt(raw, 10);
                                                                 if (!isNaN(num) && num > 0) {
                                                                     productStore.certificateChosen.amount = `${num}₽`;

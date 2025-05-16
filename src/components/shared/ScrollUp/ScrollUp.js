@@ -71,7 +71,7 @@ const ScrollUp = () => {
     const router = useRouter();
 
     return (
-        <div className={cn(s.scroll_btn, { [s.visible]: visible })} onClick={click} style={{bottom: `${router.pathname === '/' ? '40px' : ''}`}}>
+        <div className={cn(s.scroll_btn, { [s.visible]: visible })} onClick={click}>
             <Image width={25} src={arrow} alt='' className={s.icon}/>
         </div>
     );

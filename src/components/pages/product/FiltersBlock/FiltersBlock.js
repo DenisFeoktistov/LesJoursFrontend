@@ -25,16 +25,8 @@ const FiltersBlock = () => {
         const {pathname} = router
         const query = {...router.query}
 
-        changeQuery(query, 'gender', filterStore.checkedGendersQuery)
-        changeQuery(query, 'category', filterStore.checkedCategory)
-        changeQuery(query, 'line', filterStore.checkedLine)
-        changeQuery(query, 'collab', filterStore.checkedCollectionsQuery)
-        changeQuery(query, 'size', filterStore.checkedSize)
-        changeQuery(query, 'color', filterStore.checkedColorsQuery)
-        changeQuery(query, 'material', filterStore.checkedMaterials)
-        changeQuery(query, 'is_fast_ship', filterStore.checkedFastShip)
+        changeQuery(query, 'age', filterStore.checkedAgesQuery)
         changeQuery(query, 'is_sale', filterStore.checkedSale)
-        changeQuery(query, 'q', filterStore.QActive)
         query.page = 1
         router.push({pathname, query}, undefined, {scroll: false})
     }
@@ -91,11 +83,10 @@ const FiltersBlock = () => {
                 renderPrice()
             }
             {filterStore.activeFilters.map(el => {
-                if (el.query !== "M" && el.query !== "F" && el.query !== "K") {
-                    return (
-                        <div className={s.border}>
-                            {el.hasOwnProperty('viewName') ? el.viewName : el.text}
-                            <span className={s.cross}>
+                return (
+                    <div className={s.border}>
+                        {el.hasOwnProperty('viewName') ? el.viewName : el.text}
+                        <span className={s.cross}>
                                 <Image
                                     src={close}
                                     alt=''
@@ -105,9 +96,8 @@ const FiltersBlock = () => {
                                     }}
                                 />
                             </span>
-                        </div>
-                    );
-                }
+                    </div>
+                );
                 return null; // Если условие не выполняется, возвращаем null или другой пустой элемент
             })}
         </ScrollableBlock2>

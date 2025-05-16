@@ -1,5 +1,5 @@
 .cont {
-    margin-top: 150px;
+    margin-top: 110px;
     margin-bottom: 70px;
 }
 .thanks_block {
@@ -9,7 +9,7 @@
     flex-direction: column;
     margin-bottom: 30px;
 
-    font-size: 26px;
+    font-size: 20px;
 }
 .header {
     display: flex;

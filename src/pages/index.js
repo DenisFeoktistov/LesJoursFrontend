@@ -92,7 +92,7 @@ const Home = ({data}) => {
         )
 
         arr.push(
-            <ProductListMainPage products={products.results} isAdmin={false} showPromos={false}/>
+            <ProductListMainPage products={products.results}/>
         )
 
         arr.push(

@@ -8,11 +8,10 @@ import {Context} from "@/context/AppWrapper";
 const SortDropdown = () => {
     const {filterStore} = useContext(Context)
     const sorts = [
-        ['По популярности', '-rel_num'],
-        ['Случайная подборка', 'random'],
-        ['По новизне', '-exact_date'],
+        ['По популярности', 'popular'],
+        ['По новизне', 'new'],
         ['По возрастанию цены', 'min_price'],
-        ['По убыванию цены', '-min_price']
+        ['По убыванию цены', 'max_price']
     ]
     const router = useRouter()
     useEffect(() => {

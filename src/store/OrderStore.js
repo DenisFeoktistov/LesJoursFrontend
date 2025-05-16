@@ -3,6 +3,7 @@ import {makeAutoObservable} from "mobx";
 class OrderStore {
     constructor() {
         this._email = ''
+        this._telegram = ''
         this._phone = ''
         this._name = ''
         this._surname = ''
@@ -22,6 +23,12 @@ class OrderStore {
     }
     setEmail(value) {
         this._email = value
+    }
+    get telegram() {
+        return this._telegram
+    }
+    setTelegram(value) {
+        this._telegram = value
     }
     get phone() {
         return this._phone

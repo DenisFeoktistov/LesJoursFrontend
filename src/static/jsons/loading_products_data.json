@@ -5,1624 +5,592 @@
   "max_price": 50000000,
   "results": [
     {
-      "id": 115146,
+      "id": 0,
       "in_wishlist": false,
       "price": {
         "start_price": 1,
         "final_price": 1
       },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
+      "short_description": "Загрузка",
       "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
+      "name": "Загрузка",
+      "long_description": "Загрузка",
       "bucket_link": [
         {
           "url": "logo"
         }
       ],
-      "is_sale": false
+      "available_flag": true,
+      "parameters": {
+        "parameters": {
+          "Адрес": [
+            "Кремлевский дворец"
+          ],
+          "Контакты": [
+            "+7 (007) МММ 77-77"
+          ],
+          "Возраст": [
+            "6+"
+          ],
+          "Продолжительность": [
+            "1 час"
+          ]
+        },
+        "parameters_order": [
+          "Адрес",
+          "Контакты",
+          "Возраст",
+          "Продолжительность"
+        ]
+      },
+      "details": [
+        "Сборка бенто-торта",
+        "Работа с красителями",
+        "Выравнивание кремом"
+      ],
+      "location": "Загрузка",
+      "score_product_page": 0,
+      "events": [
+      ]
     },
     {
-      "id": 115147,
+      "id": 0,
       "in_wishlist": false,
       "price": {
         "start_price": 1,
         "final_price": 1
       },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
+      "short_description": "Загрузка",
       "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
+      "name": "Загрузка",
+      "long_description": "Загрузка",
       "bucket_link": [
         {
           "url": "logo"
         }
       ],
-      "is_sale": false
+      "available_flag": true,
+      "parameters": {
+        "parameters": {
+          "Адрес": [
+            "Кремлевский дворец"
+          ],
+          "Контакты": [
+            "+7 (007) МММ 77-77"
+          ],
+          "Возраст": [
+            "6+"
+          ],
+          "Продолжительность": [
+            "1 час"
+          ]
+        },
+        "parameters_order": [
+          "Адрес",
+          "Контакты",
+          "Возраст",
+          "Продолжительность"
+        ]
+      },
+      "details": [
+        "Сборка бенто-торта",
+        "Работа с красителями",
+        "Выравнивание кремом"
+      ],
+      "location": "Загрузка",
+      "score_product_page": 0,
+      "events": [
+      ]
     },
     {
-      "id": 115148,
+      "id": 0,
       "in_wishlist": false,
       "price": {
         "start_price": 1,
         "final_price": 1
       },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
+      "short_description": "Загрузка",
       "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
+      "name": "Загрузка",
+      "long_description": "Загрузка",
       "bucket_link": [
         {
           "url": "logo"
         }
       ],
-      "is_sale": false
+      "available_flag": true,
+      "parameters": {
+        "parameters": {
+          "Адрес": [
+            "Кремлевский дворец"
+          ],
+          "Контакты": [
+            "+7 (007) МММ 77-77"
+          ],
+          "Возраст": [
+            "6+"
+          ],
+          "Продолжительность": [
+            "1 час"
+          ]
+        },
+        "parameters_order": [
+          "Адрес",
+          "Контакты",
+          "Возраст",
+          "Продолжительность"
+        ]
+      },
+      "details": [
+        "Сборка бенто-торта",
+        "Работа с красителями",
+        "Выравнивание кремом"
+      ],
+      "location": "Загрузка",
+      "score_product_page": 0,
+      "events": [
+      ]
     },
     {
-      "id": 115187,
+      "id": 0,
       "in_wishlist": false,
       "price": {
         "start_price": 1,
         "final_price": 1
       },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
+      "short_description": "Загрузка",
       "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
+      "name": "Загрузка",
+      "long_description": "Загрузка",
       "bucket_link": [
         {
           "url": "logo"
         }
       ],
-      "is_sale": false
+      "available_flag": true,
+      "parameters": {
+        "parameters": {
+          "Адрес": [
+            "Кремлевский дворец"
+          ],
+          "Контакты": [
+            "+7 (007) МММ 77-77"
+          ],
+          "Возраст": [
+            "6+"
+          ],
+          "Продолжительность": [
+            "1 час"
+          ]
+        },
+        "parameters_order": [
+          "Адрес",
+          "Контакты",
+          "Возраст",
+          "Продолжительность"
+        ]
+      },
+      "details": [
+        "Сборка бенто-торта",
+        "Работа с красителями",
+        "Выравнивание кремом"
+      ],
+      "location": "Загрузка",
+      "score_product_page": 0,
+      "events": [
+      ]
     },
     {
-      "id": 115189,
+      "id": 0,
       "in_wishlist": false,
       "price": {
         "start_price": 1,
         "final_price": 1
       },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
+      "short_description": "Загрузка",
       "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
+      "name": "Загрузка",
+      "long_description": "Загрузка",
       "bucket_link": [
         {
           "url": "logo"
         }
       ],
-      "is_sale": false
+      "available_flag": true,
+      "parameters": {
+        "parameters": {
+          "Адрес": [
+            "Кремлевский дворец"
+          ],
+          "Контакты": [
+            "+7 (007) МММ 77-77"
+          ],
+          "Возраст": [
+            "6+"
+          ],
+          "Продолжительность": [
+            "1 час"
+          ]
+        },
+        "parameters_order": [
+          "Адрес",
+          "Контакты",
+          "Возраст",
+          "Продолжительность"
+        ]
+      },
+      "details": [
+        "Сборка бенто-торта",
+        "Работа с красителями",
+        "Выравнивание кремом"
+      ],
+      "location": "Загрузка",
+      "score_product_page": 0,
+      "events": [
+      ]
     },
     {
-      "id": 115190,
+      "id": 0,
       "in_wishlist": false,
       "price": {
         "start_price": 1,
         "final_price": 1
       },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
+      "short_description": "Загрузка",
       "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
+      "name": "Загрузка",
+      "long_description": "Загрузка",
       "bucket_link": [
         {
           "url": "logo"
         }
       ],
-      "is_sale": false
+      "available_flag": true,
+      "parameters": {
+        "parameters": {
+          "Адрес": [
+            "Кремлевский дворец"
+          ],
+          "Контакты": [
+            "+7 (007) МММ 77-77"
+          ],
+          "Возраст": [
+            "6+"
+          ],
+          "Продолжительность": [
+            "1 час"
+          ]
+        },
+        "parameters_order": [
+          "Адрес",
+          "Контакты",
+          "Возраст",
+          "Продолжительность"
+        ]
+      },
+      "details": [
+        "Сборка бенто-торта",
+        "Работа с красителями",
+        "Выравнивание кремом"
+      ],
+      "location": "Загрузка",
+      "score_product_page": 0,
+      "events": [
+      ]
     },
     {
-      "id": 115191,
+      "id": 0,
       "in_wishlist": false,
       "price": {
         "start_price": 1,
         "final_price": 1
       },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
+      "short_description": "Загрузка",
       "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
+      "name": "Загрузка",
+      "long_description": "Загрузка",
       "bucket_link": [
         {
           "url": "logo"
         }
       ],
-      "is_sale": false
+      "available_flag": true,
+      "parameters": {
+        "parameters": {
+          "Адрес": [
+            "Кремлевский дворец"
+          ],
+          "Контакты": [
+            "+7 (007) МММ 77-77"
+          ],
+          "Возраст": [
+            "6+"
+          ],
+          "Продолжительность": [
+            "1 час"
+          ]
+        },
+        "parameters_order": [
+          "Адрес",
+          "Контакты",
+          "Возраст",
+          "Продолжительность"
+        ]
+      },
+      "details": [
+        "Сборка бенто-торта",
+        "Работа с красителями",
+        "Выравнивание кремом"
+      ],
+      "location": "Загрузка",
+      "score_product_page": 0,
+      "events": [
+      ]
     },
     {
-      "id": 115192,
+      "id": 0,
       "in_wishlist": false,
       "price": {
         "start_price": 1,
         "final_price": 1
       },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
+      "short_description": "Загрузка",
       "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
+      "name": "Загрузка",
+      "long_description": "Загрузка",
       "bucket_link": [
         {
           "url": "logo"
         }
       ],
-      "is_sale": false
+      "available_flag": true,
+      "parameters": {
+        "parameters": {
+          "Адрес": [
+            "Кремлевский дворец"
+          ],
+          "Контакты": [
+            "+7 (007) МММ 77-77"
+          ],
+          "Возраст": [
+            "6+"
+          ],
+          "Продолжительность": [
+            "1 час"
+          ]
+        },
+        "parameters_order": [
+          "Адрес",
+          "Контакты",
+          "Возраст",
+          "Продолжительность"
+        ]
+      },
+      "details": [
+        "Сборка бенто-торта",
+        "Работа с красителями",
+        "Выравнивание кремом"
+      ],
+      "location": "Загрузка",
+      "score_product_page": 0,
+      "events": [
+      ]
     },
     {
-      "id": 115193,
+      "id": 0,
       "in_wishlist": false,
       "price": {
         "start_price": 1,
         "final_price": 1
       },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
+      "short_description": "Загрузка",
       "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
+      "name": "Загрузка",
+      "long_description": "Загрузка",
       "bucket_link": [
         {
           "url": "logo"
         }
       ],
-      "is_sale": false
+      "available_flag": true,
+      "parameters": {
+        "parameters": {
+          "Адрес": [
+            "Кремлевский дворец"
+          ],
+          "Контакты": [
+            "+7 (007) МММ 77-77"
+          ],
+          "Возраст": [
+            "6+"
+          ],
+          "Продолжительность": [
+            "1 час"
+          ]
+        },
+        "parameters_order": [
+          "Адрес",
+          "Контакты",
+          "Возраст",
+          "Продолжительность"
+        ]
+      },
+      "details": [
+        "Сборка бенто-торта",
+        "Работа с красителями",
+        "Выравнивание кремом"
+      ],
+      "location": "Загрузка",
+      "score_product_page": 0,
+      "events": [
+      ]
     },
     {
-      "id": 115194,
+      "id": 0,
       "in_wishlist": false,
       "price": {
         "start_price": 1,
         "final_price": 1
       },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
+      "short_description": "Загрузка",
       "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
+      "name": "Загрузка",
+      "long_description": "Загрузка",
       "bucket_link": [
         {
           "url": "logo"
         }
       ],
-      "is_sale": false
+      "available_flag": true,
+      "parameters": {
+        "parameters": {
+          "Адрес": [
+            "Кремлевский дворец"
+          ],
+          "Контакты": [
+            "+7 (007) МММ 77-77"
+          ],
+          "Возраст": [
+            "6+"
+          ],
+          "Продолжительность": [
+            "1 час"
+          ]
+        },
+        "parameters_order": [
+          "Адрес",
+          "Контакты",
+          "Возраст",
+          "Продолжительность"
+        ]
+      },
+      "details": [
+        "Сборка бенто-торта",
+        "Работа с красителями",
+        "Выравнивание кремом"
+      ],
+      "location": "Загрузка",
+      "score_product_page": 0,
+      "events": [
+      ]
     },
     {
-      "id": 115195,
+      "id": 0,
       "in_wishlist": false,
       "price": {
         "start_price": 1,
         "final_price": 1
       },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
+      "short_description": "Загрузка",
       "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
+      "name": "Загрузка",
+      "long_description": "Загрузка",
       "bucket_link": [
         {
           "url": "logo"
         }
       ],
-      "is_sale": false
+      "available_flag": true,
+      "parameters": {
+        "parameters": {
+          "Адрес": [
+            "Кремлевский дворец"
+          ],
+          "Контакты": [
+            "+7 (007) МММ 77-77"
+          ],
+          "Возраст": [
+            "6+"
+          ],
+          "Продолжительность": [
+            "1 час"
+          ]
+        },
+        "parameters_order": [
+          "Адрес",
+          "Контакты",
+          "Возраст",
+          "Продолжительность"
+        ]
+      },
+      "details": [
+        "Сборка бенто-торта",
+        "Работа с красителями",
+        "Выравнивание кремом"
+      ],
+      "location": "Загрузка",
+      "score_product_page": 0,
+      "events": [
+      ]
     },
     {
-      "id": 115196,
+      "id": 0,
       "in_wishlist": false,
       "price": {
         "start_price": 1,
         "final_price": 1
       },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
+      "short_description": "Загрузка",
       "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
+      "name": "Загрузка",
+      "long_description": "Загрузка",
       "bucket_link": [
         {
           "url": "logo"
         }
       ],
-      "is_sale": false
-    },
-    {
-      "id": 115197,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
+      "available_flag": true,
+      "parameters": {
+        "parameters": {
+          "Адрес": [
+            "Кремлевский дворец"
+          ],
+          "Контакты": [
+            "+7 (007) МММ 77-77"
+          ],
+          "Возраст": [
+            "6+"
+          ],
+          "Продолжительность": [
+            "1 час"
+          ]
+        },
+        "parameters_order": [
+          "Адрес",
+          "Контакты",
+          "Возраст",
+          "Продолжительность"
+        ]
       },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115198,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115199,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 1111,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 1112,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 1113,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 1114,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 1115,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 1116,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115149,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115150,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115151,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115152,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115153,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115154,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115155,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115156,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115157,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115158,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115159,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115160,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115161,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115162,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115163,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115164,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115165,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115166,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115167,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115168,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115169,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115170,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115171,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115172,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115173,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115176,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115174,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115177,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115178,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115179,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115180,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115181,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115182,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115183,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115184,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 115185,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 11518,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 11186,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
-    },
-    {
-      "id": 11617,
-      "in_wishlist": false,
-      "price": {
-        "start_price": 1,
-        "final_price": 1
-      },
-      "model": "Загрузка",
-      "colorway": "Загрузка",
-      "slug": "",
-      "is_collab": false,
-      "collab": null,
-      "brands": [
-        {
-          "id": 57,
-          "name": "Загрузка",
-          "query_name": "nike",
-          "score": 10
-        }
-      ],
-      "bucket_link": [
-        {
-          "url": "logo"
-        }
-      ],
-      "is_sale": false
+      "details": [
+        "Сборка бенто-торта",
+        "Работа с красителями",
+        "Выравнивание кремом"
+      ],
+      "location": "Загрузка",
+      "score_product_page": 0,
+      "events": [
+      ]
     }
   ],
   "mobile": {

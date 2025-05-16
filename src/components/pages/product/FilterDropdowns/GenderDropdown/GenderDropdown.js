@@ -27,7 +27,7 @@ const GenderDropdown = () => {
     const reloadPage = () => {
         const {pathname} = router
         const query = {...router.query}
-        changeQuery(query, 'gender', filterStore.checkedGendersQuery)
+        changeQuery(query, 'age', filterStore.checkedAgesQuery)
         query.page = 1
         router.push({pathname, query}, undefined, {scroll: false})
     }
@@ -45,7 +45,7 @@ const GenderDropdown = () => {
                     className={s.dropdown_toggle}
                 >
                     <div className={s.dropdown_toggle_text}>
-                        Пол
+                        Возраст
                         <Arrow isOpen={isOpen}/>
                     </div>
                 </div>
@@ -54,7 +54,7 @@ const GenderDropdown = () => {
                 <div>
                     <div className={s.dropdown_items_block}>
                         {
-                            filterStore.gender.map(item =>
+                            filterStore.age.map(item =>
                                 <div
                                     key={item.query}
                                     className={s.dropdown_item}

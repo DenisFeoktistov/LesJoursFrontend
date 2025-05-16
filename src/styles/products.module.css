@@ -1,5 +1,5 @@
 .cont {
-    margin-top: 150px;
+    margin-top: 70px;
 }
 .border {
     border: 2px solid #222222;
@@ -40,17 +40,24 @@
     justify-content: space-between;
     align-items: center;
     background: white;
-    padding: 10px 0;
+    padding: 15px 0 15px 0;
     position: sticky;
     top: 0px;
     z-index: 6;
 
-    transition: 0.3s;
+    transition: top 0.2s ease;
     opacity: 1;
 }
-.filter_sort_row.visible {
-    opacity: 1;
+
+.withNavbar {
+    top: 110px;
 }
+
+.withoutNavbar {
+    top: 0;
+}
+
+
 .mobile_sort_row {
     position: sticky;
     background: white;
@@ -61,6 +68,8 @@
 .product_list_row {
     display: flex;
     position: relative;
+    min-height: 60vh;
+    margin-bottom: 20px;
 }
 .modal {
     position: fixed;

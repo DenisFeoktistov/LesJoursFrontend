@@ -5,11 +5,9 @@ import {observer} from "mobx-react-lite";
 import {desktopStore} from "@/store/DesktopStore";
 import Link from "next/link";
 
-const ProductListMainPage = ({products, isAdmin, showPromos = false}) => {
+const ProductListMainPage = ({products}) => {
     const calculateCardsPerRow = () => {
         const width = window.innerWidth;
-        console.log(width)
-        console.log(0.8 * width / 356)
         if (width < 650) return 2; // 2 карточки в ряду
         if (width < 1210) return 3; // 3 карточки в ряду
         if (width < 1515) return 4; // 4 карточки в ряду

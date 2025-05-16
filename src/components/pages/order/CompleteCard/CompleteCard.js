@@ -26,13 +26,13 @@ const CompleteCard = ({order}) => {
             <div className={s.final_block}>
                 <div className={s.final_col}>
                     <div className={s.prices}>
-                        Адрес: {order.pvz_address ? order.pvz_address : order.address.address}
+                        Фамилия Имя: {order.surname} {order.name}
                     </div>
                     <div className={s.prices}>
                         Телефон: {order.phone}
                     </div>
                     <div className={s.prices}>
-                        Способ получения: {order.delivery}
+                        Телеграм: {order.telegram}
                     </div>
                 </div>
                 <div className={s.final_col}>
@@ -47,10 +47,6 @@ const CompleteCard = ({order}) => {
                             <div>{order.total_sale} ₽</div>
                         </div>
                     }
-                    <div className={s.prices}>
-                        <div>Доставка:</div>
-                        <div>{addSpacesToNumber(order.delivery_view_price)} ₽</div>
-                    </div>
                     <div className={s.prices}>
                         <div>Итого:</div>
                         <div>{addSpacesToNumber(order.final_amount)} ₽</div>

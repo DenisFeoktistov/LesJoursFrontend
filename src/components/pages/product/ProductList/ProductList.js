@@ -28,12 +28,6 @@ const ProductList = ({products, isAdmin, showPromos=false}) => {
         return Math.floor(0.7 * width / 356); // 4 карточки в ряду
     };
 
-    const [receivedWelcomeGift, setReceivedWelcomeGift] = useState('')
-
-    useEffect(() => {
-        setReceivedWelcomeGift(Cookies.get('receivedWelcomeGift'))
-    }, [])
-
     const modifiedProductsPage = () => {
         const result = [];
         products.forEach((product, index) => {
@@ -44,51 +38,6 @@ const ProductList = ({products, isAdmin, showPromos=false}) => {
                     cardList={true}
                 />
             );
-            const row = Math.floor(index / cardsPerRow) + 1;
-            if (showPromos) {
-                if (desktopStore.isDesktop) {
-                    if (row === 2 && (index + 1) % cardsPerRow === 0) {
-                        result.push(<PromoBannerProductsPageAnyProduct/>);
-                    } else if (row === 4 && (index + 1) % cardsPerRow === 0) {
-                        result.push(<PromoBannerProductsPageAboutAndGuarantee/>);
-                    } else if (row === 6 && (index + 1) % cardsPerRow === 0) {
-                        if (receivedWelcomeGift) {
-                            result.push(<PromoBannerProductsPageRef/>);
-                        } else {
-                            result.push(<PromoBannerProductsPageGiftAndRefDesktop/>);
-                        }
-                    } else if (row === 9 && (index + 1) % cardsPerRow === 0) {
-                        result.push(<PromoBannerProductsPageSocial/>);
-                    }
-                } else {
-                    if (row === 2 && (index + 1) % cardsPerRow === 0) {
-                        result.push(<PromoBannerProductsPageAnyProduct/>);
-                    } else if (row === 4 && (index + 1) % cardsPerRow === 0) {
-                        if (receivedWelcomeGift) {
-                            result.push(<PromoBannerProductsPageAboutAndGuarantee/>);
-                        } else {
-                            result.push(<PromoBannerProductsPageGiftMobile/>);
-                        }
-                    } else if (row === 7 && (index + 1) % cardsPerRow === 0) {
-                        if (receivedWelcomeGift) {
-                            result.push(<PromoBannerProductsPageRef/>);
-                        } else {
-                            result.push(<PromoBannerProductsPageAboutAndGuarantee/>);
-                        }
-                    } else if (row === 10 && (index + 1) % cardsPerRow === 0) {
-                        if (receivedWelcomeGift) {
-                            result.push(<PromoBannerProductsPageSocial/>);
-                        } else {
-                            result.push(<PromoBannerProductsPageRef/>);
-                        }
-                    } else if (row === 14 && (index + 1) % cardsPerRow === 0) {
-                        if (receivedWelcomeGift) {
-                        } else {
-                            result.push(<PromoBannerProductsPageSocial/>);
-                        }
-                    }
-                }
-            }
         });
         return result;
     };
@@ -115,24 +64,13 @@ const ProductList = ({products, isAdmin, showPromos=false}) => {
 
     useEffect(() => {
         setProductsPageBlocks(modifiedProductsPage())
-    }, [cardsPerRow, products, showPromos]);
+    }, [cardsPerRow, products]);
 
     return (
         <div className={s.container}>
             <div className={s.product_list}>
-                {!isAdmin
-                    ? productsPageBlocks
-                    :
-                    products.map(el =>
-                        <AdminCard
-                            categories={['el.categories']}
-                            lines={el.lines}
-                            mainLine={'el.main_line.view_name'}
-                            product={el}
-                            key={el.id}
-                            cardList={true}
-                        />
-                    )
+                {productsPageBlocks.length !== 0 &&
+                    productsPageBlocks
                 }
                 {products.length === 0 &&
                     <div className={s.nothing}>

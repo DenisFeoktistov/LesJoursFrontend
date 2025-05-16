@@ -18,15 +18,8 @@ const FilterDropdowns = () => {
         <div>
             <div className={s.container}
                  style={desktopStore.navbarVisible ? {top: 230} : {top: 80, maxHeight: 'calc(100vh - 80px)'}}>
-                <CategoryDropdown/>
-                <BrandDropdown/>
-                <CollectionsDropdown/>
                 <GenderDropdown/>
-                <SizeDropdown/>
-                <ColorDropdown/>
-                <MaterialsDropdown/>
                 <PriceDropdown/>
-                {/*<FastShip/>*/}
                 <Sale/>
             </div>
         </div>
