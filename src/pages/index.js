@@ -1,18 +1,15 @@
 import React, {useState} from "react";
-import Image from "next/image";
 import {observer} from "mobx-react-lite";
 import MainLayout from "@/layout/MainLayout";
-
 import Head from "next/head";
-import {desktopStore} from "@/store/DesktopStore";
 import s from "@/styles/Home.module.css";
-import logo from "@/static/img/sellout_logo_light_blood.svg";
 import {fetchProductsPage} from "@/http/productsApi";
 import ProductListMainPage from "@/components/shared/UI/ProductListMainPage/ProductListMainPage";
 import EventsMainPage from "@/components/shared/UI/EventsMainPage/EventsMainPage";
 import CertificateMainPage from "@/components/shared/UI/CertificateMainPage/CertificateMainPage";
 import WelcomeMainPage from "@/components/shared/UI/WelcomeMainPage/WelcomeMainPage";
 import {parse} from "cookie";
+import AboutUsMainPage from "@/components/shared/UI/AboutUsMainPage/AboutUsMainPage";
 
 export const getServerSideProps = async (context) => {
     const cookies = parse(context.req.headers.cookie || '')
@@ -32,6 +29,10 @@ const Home = ({productsAll}) => {
 
         arr.push(
             <WelcomeMainPage/>
+        )
+
+        arr.push(
+            <AboutUsMainPage/>
         )
 
         arr.push(
@@ -66,17 +67,6 @@ const Home = ({productsAll}) => {
                 <div>
                     <div className={s.cont}>
                         <>
-                            {!desktopStore.isDesktop &&
-                                <div className={s.headerM}>
-                                    <div className={s.headerTop}>
-                                        <div className={s.logoContainer}>
-                                            <Image src={logo} alt="Logo" className={s.logo} width={370}
-                                                   height={50}/>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-
                             {renderPage()}
                         </>
                     </div>

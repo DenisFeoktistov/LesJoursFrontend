@@ -10,7 +10,7 @@ import ProductList from "@/components/pages/product/ProductList/ProductList";
 import Cookies from "js-cookie";
 import filter from '@/static/icons/filter.svg'
 import Image from "next/image";
-import {fetchPagesCnt, fetchProductsPage, fetchProductsTemp} from "@/http/productsApi";
+import {fetchProductsByArray, fetchProductsPage} from "@/http/productsApi";
 import {useRouter} from "next/router";
 import {Context} from "@/context/AppWrapper";
 import {observer} from "mobx-react-lite";
@@ -38,20 +38,13 @@ export const getServerSideProps = async (context) => {
         if (cookies.last_seen) {
             arr = cookies['last_seen'].trim().split(' ')
             if (arr[0] !== '') {
-                // lastSeen = await fetchProductsByArray(arr, token)
-                lastSeen = []
+                lastSeen = await fetchProductsByArray(arr, token)
             }
         }
     }
 
-    // const productsAmount = await fetchPagesCnt(url, token)
-    const productsAmount = 13;
-
-    // Получение IP-адреса пользователя из заголовка X-Forwarded-For
-    const ip = context.req.headers['x-forwarded-for'] || context.req.connection.remoteAddress;
-
-    // const productsAll = await fetchProductsTemp(token, ip);
     const productsAll = await fetchProductsPage(url, token);
+    const productsAmount = productsAll.count;
 
     return {
         props: {lastSeen, url, productsAll, productsAmount}
@@ -67,18 +60,6 @@ const Products = ({lastSeen, url, productsAll, productsAmount}) => {
     const {filterStore, desktopStore} = useContext(Context)
     const [products, setProducts] = useState(productsAll)
 
-    useEffect(() => {
-        filterStore.deactivateFilters(filterStore.filters)
-        filterStore.reactivateFilters(router.query)
-
-        // filterStore.setMinPrice(products.min_price)
-        // filterStore.setMaxPrice(products.max_price)
-        filterStore.setMinPrice(2000)
-        filterStore.setMaxPrice(4000)
-        filterStore.setRef(productListRef)
-    }, [router.asPath])
-
-
     const handleClick = () => {
         if (desktopStore.isDesktop) {
             setIsOpen(!isOpen)
@@ -89,6 +70,7 @@ const Products = ({lastSeen, url, productsAll, productsAmount}) => {
                 document.body.classList.remove('body-scroll-clip')
             }
             setModalOpen(!modalOpen)
+            filterStore.handleScrollTo()
         }
     }
     const clearFilters = () => {
@@ -96,19 +78,23 @@ const Products = ({lastSeen, url, productsAll, productsAmount}) => {
         filterStore.handleScrollTo()
         filterStore.setPriceFrom('')
         filterStore.setPriceTo('')
+
+        router.push(`/products`, undefined, {scroll: false})
     }
-    // useEffect(() => {
-    //     const token = Cookies.get('access_token')
-    //     fetchPagesCnt(router.query, token).then(res => {
-    //         setTotalProducts(res.count)
-    //     })
-    // }, [router.asPath])
+
     useEffect(() => {
         const token = Cookies.get('access_token')
-        console.log("WTF")
         fetchProductsPage(router.query, token).then(res => {
             setProducts(res)
+            filterStore.setMinPrice(res?.min_price ?? 1)
+            filterStore.setMaxPrice(res?.max_price ?? 100_000)
+            setTotalProducts(res.count)
         })
+
+        filterStore.deactivateFilters(filterStore.filters)
+        filterStore.reactivateFilters(router.query)
+
+        filterStore.setRef(productListRef)
     }, [router.asPath])
 
 
@@ -136,8 +122,7 @@ const Products = ({lastSeen, url, productsAll, productsAmount}) => {
                                     onClick={() => desktopStore.setFilterOpen(!desktopStore.filtersOpen)}
                             >Фильтры
                             </button>
-                            {(filterStore.activeFilters.length !== 0 &&
-                                    filterStore.activeFilters.some(el => !["M", "F", "K"].includes(el.query)) || router.query.price_min) &&
+                            {(filterStore.activeFilters.length !== 0) &&
                                 <button
                                     className={s.border}
                                     onClick={clearFilters}

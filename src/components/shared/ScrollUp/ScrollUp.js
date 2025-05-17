@@ -4,7 +4,7 @@ import arrow from '@/static/icons/chevron-up.svg'
 import Image from "next/image";
 import cn from 'classnames';
 import {desktopStore} from "@/store/DesktopStore";
-import {useRouter} from "next/router"; // Импортируйте библиотеку 'classnames'
+import {useRouter} from "next/router";
 
 const ScrollUp = () => {
     const [visible, setVisible] = useState(false);

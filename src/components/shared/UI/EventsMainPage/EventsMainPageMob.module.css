@@ -1,0 +1,193 @@
+.sectionWrapper {
+    background-color: #F5EAF0;
+    background-position: center;
+    padding: 50px 0 100px 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.sectionWrapper::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; /* Глубина "вогнутости" */
+    background-color: #fff; /* тот же цвет, что и фон страницы снаружи */
+    border-top-left-radius: 50% 50%;
+    border-top-right-radius: 50% 50%;
+    transform: translateY(50%);
+    z-index: 1;
+}
+
+.contentWrapper {
+    position: relative;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 35px;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.topBlock, .bottomBlock {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    position: relative;
+}
+
+.bottomBlock {
+    /*margin-top: -350px;*/
+}
+
+.imageBlock {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.image {
+    object-fit: cover;
+    width: 70%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 3px;
+}
+
+.textBlock {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.text {
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.text1_1 {
+    font-size: 17px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+}
+
+.text1_2 {
+    font-size: 17px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    margin-top: 150px;
+    text-align: center;
+    padding-left: 30px;
+}
+
+.text2 {
+    font-size: 17px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.flower {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.flower1 {
+    top: 50px;
+    left: 10%;
+    transform: rotate(-20deg);
+}
+
+.flower2 {
+    top: 50px;
+    right: 10%;
+    transform: rotate(15deg);
+}
+
+.flower3 {
+    top: 420px;
+    left: 5%;
+    transform: rotate(-10deg);
+}
+
+.flower4 {
+    top: 250px;
+    right: 5%;
+    transform: rotate(25deg);
+}
+
+.flower5 {
+    top: 670px;
+    right: 20%;
+    transform: rotate(70deg);
+}
+
+.flower6 {
+    top: 670px;
+    left: 2%;
+    transform: rotate(-20deg);
+}
+
+.flower7 {
+    top: 800px;
+    right: 4%;
+    transform: rotate(25deg);
+}
+
+.flower8 {
+    top: 900px;
+    left: 3%;
+    transform: rotate(70deg);
+}
+
+.flower9 {
+    top: 1100px;
+    right: 3%;
+    transform: rotate(25deg);
+}
+
+.flower10 {
+    top: 1400px;
+    left: 3%;
+    transform: rotate(70deg);
+}
+
+.contactButton {
+    background-color: #51031D;
+    align-self: center;
+    opacity: 80%;
+    color: white;
+    border: none;
+    padding: 12px 100px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    max-width: 90%;
+}
+
+.contactButton:hover {
+    opacity: 100%;
+}

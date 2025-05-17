@@ -1,9 +1,7 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import s from './ProductCard.module.css'
 import like from '@/static/icons/heart.svg'
 import like_fill from '@/static/icons/heart-fill.svg'
-import truck from '@/static/icons/truck.svg'
-import re from '@/static/icons/arrow-return-left.svg'
 import Image from 'next/image'
 import {useRouter} from "next/router";
 import Cookies from 'js-cookie'
@@ -13,7 +11,6 @@ import AuthModal from "@/components/shared/AuthModal/AuthModal";
 import Link from "next/link";
 import desktop from '@/static/img/desktop_background.jpg'
 import mobile from '@/static/img/mobile_background.jpg'
-import {trackAddToFavorites, trackRemoveToFavorites} from "@/components/shared/YandexMetrica/YandexMetrica";
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Pagination, Navigation, Zoom} from 'swiper/modules';
 import 'swiper/css';
@@ -34,13 +31,6 @@ const ProductCard = ({cardList = false, bigCard = false, product}) => {
     const [isInWishlist, setIsInWishlist] = useState(inWishlist)
     const {userStore, desktopStore} = useContext(Context)
 
-    // const brandsDisplay = () => {
-    //     if (collab) {
-    //         return collab.name
-    //     } else {
-    //         return brands.length ? brands[0].name : 'no brand'
-    //     }
-    // }
     const [photos, setPhotos] = useState([])
     useEffect(() => {
         if (photosArr) {
@@ -60,16 +50,6 @@ const ProductCard = ({cardList = false, bigCard = false, product}) => {
         setIsHovered(false);
     };
 
-    // const getProductDetail = (product) => {
-    //     const productDetails = {
-    //         id: product.id.toString(),
-    //         name: `${brandsDisplay()} ${product.model} ${product.colorway}`,
-    //         price: product.min_price,
-    //         brand: brandsDisplay()
-    //     };
-    //     return productDetails;
-    // };
-
     const addToWL = async () => {
         setIsInWishlist(true)
         const token = Cookies.get('access_token')
@@ -77,8 +57,6 @@ const ProductCard = ({cardList = false, bigCard = false, product}) => {
         const data = await addToWishlist(userId, id, token)
 
         const {pathname, query} = router
-        // const productDetails = getProductDetail(product);
-        // trackAddToFavorites(productDetails)
         router.push({pathname, query}, undefined, {scroll: false})
     }
     const deleteFromWL = async () => {
@@ -87,47 +65,9 @@ const ProductCard = ({cardList = false, bigCard = false, product}) => {
         const userId = userStore.id
         const data = await removeFromWishlist(userId, id, token)
         const {pathname, query} = router
-        // const productDetails = getProductDetail(product);
-        // trackRemoveToFavorites(productDetails)
         router.push({pathname, query}, undefined, {scroll: false})
     }
     const [isLoading, setIsLoading] = useState(true)
-
-    // const sizesRef = useRef(null)
-    // const [sizesIsShown, setSizesIsShown] = useState(false)
-    // const showSizes = () => {
-    //     if (product.available_sizes && product.available_sizes.sizes?.length) {
-    //         setSizesIsShown(true)
-    //     }
-    // }
-    // const hideSizes = () => {
-    //     setSizesIsShown(false)
-    // }
-    // const handleTouchCancel = () => {
-    //     hideSizes();
-    // };
-    // const renderSizes = () => {
-    //     const n = desktopStore.isDesktop ? 20 : 10
-    //     const sizes = product.available_sizes.sizes
-    //     return sizes.length <= n ? sizes.join(', ') : `${sizes[0]} - ${sizes[sizes.length - 1]}`
-    // }
-    // useEffect(() => {
-    //     const handleClickOutside = (event) => {
-    //         if (sizesRef.current && sizesRef.current.contains(event.target)) {
-    //             if (product.available_sizes && product.available_sizes.sizes?.length) {
-    //                 setSizesIsShown(true)
-    //             }
-    //         } else {
-    //             setSizesIsShown(false)
-    //         }
-    //     };
-    //
-    //     document.addEventListener('mousemove', handleClickOutside);
-    //
-    //     return () => {
-    //         document.removeEventListener('mousemove', handleClickOutside);
-    //     };
-    // }, []);
 
     const [windowWidth, setWindowWidth] = useState(0);
 
@@ -153,7 +93,6 @@ const ProductCard = ({cardList = false, bigCard = false, product}) => {
                 <Link className={cardList ? s.card_list : bigCard ? s.bigCard : s.card}
                       href={slug && slug !== "" ? `/products/${slug}` : '#'}
                       key={slug}
-
                 >
                     <div className={s.icons_block}>
                         <div style={{display: 'flex', alignItems: 'center'}}>
@@ -190,7 +129,6 @@ const ProductCard = ({cardList = false, bigCard = false, product}) => {
                         (!desktopStore.isDesktop
                                 ?
                                 <div className={s.image_container}>
-
                                     <Swiper
                                         className={s.swiper_container}
                                         // style={{zIndex: -1}}
@@ -224,8 +162,6 @@ const ProductCard = ({cardList = false, bigCard = false, product}) => {
                                             // "--swiper-pagination-right": "0",
 
                                         }}
-
-
                                     >
                                         {photos.map((el, index) =>
                                             <SwiperSlide
@@ -243,6 +179,7 @@ const ProductCard = ({cardList = false, bigCard = false, product}) => {
                                                             bottom: 0,
                                                             opacity: isLoading ? 0.4 : 1, // Начальная прозрачность в зависимости от состояния загрузки
                                                             transition: el === "logo" ? "" : 'opacity 0.4s ease', // Анимация изменения прозрачности
+                                                            borderRadius: 7
                                                         }}
                                                         loading={index === 0 ? "eager" : "lazy"}
                                                         fill={true}
@@ -272,16 +209,6 @@ const ProductCard = ({cardList = false, bigCard = false, product}) => {
                                         }}
                                         sizes={'100%'}
                                     />
-                                    {/*{isLoading &&*/}
-                                    {/*<Image src={mobile} alt=''*/}
-                                    {/*       className={'placeholder_img'} fill={true}*/}
-                                    {/*       style={{*/}
-                                    {/*           position: 'absolute',*/}
-                                    {/*           objectFit: 'contain',*/}
-                                    {/*           objectPosition: "center bottom",*/}
-                                    {/*       }}*/}
-                                    {/*       sizes={'100%'}/>}*/}
-
                                 </div>
                                 :
                                 <div className={s.image_container}
@@ -303,7 +230,8 @@ const ProductCard = ({cardList = false, bigCard = false, product}) => {
                                         style={{
                                             position: 'absolute',
                                             objectFit: 'contain',
-                                            objectPosition: "center bottom"
+                                            objectPosition: "center bottom",
+                                            borderRadius: 4
                                         }}
                                         loading={'eager'}
                                         fill={true}
@@ -319,7 +247,8 @@ const ProductCard = ({cardList = false, bigCard = false, product}) => {
                                             style={{
                                                 position: 'absolute',
                                                 objectFit: 'contain',
-                                                objectPosition: "center bottom"
+                                                objectPosition: "center bottom",
+                                                borderRadius: 4
                                             }}
 
                                             fill={true}

@@ -3,7 +3,6 @@ import {observer} from "mobx-react-lite";
 import s from "./ShipDropdown.module.css";
 import {Context} from "@/context/AppWrapper";
 import Cookies from "js-cookie";
-import {updateProductUnit} from "@/http/cartApi";
 import {useRouter} from "next/router";
 
 const ShipDropdown = ({cardId, unitId}) => {
@@ -58,7 +57,7 @@ const ShipDropdown = ({cardId, unitId}) => {
         if (userStore.isLogged) {
             // await removeFromCart(userStore.id, currId, Cookies.get('access_token'))
             // await addToCart(userStore.id, item.id, Cookies.get('access_token'))
-            await updateProductUnit(userStore.id, currId, item.id, Cookies.get('access_token'))
+            // await updateProductUnit(userStore.id, currId, item.id, Cookies.get('access_token'))
         }
         cartStore.setIsShipChosen(true)
         router.push('/cart', undefined, {scroll: false})

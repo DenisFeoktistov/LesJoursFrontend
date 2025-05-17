@@ -285,7 +285,7 @@ const OneProductPage = ({product, events, userData}) => {
 
     useEffect(() => {
         setMoreOpen(false)
-        if (contentRef && contentRef.current.clientHeight > 144) {
+        if (contentRef && contentRef.current && contentRef.current.clientHeight > 144) {
             setInfoBtn(true)
         } else {
             setInfoBtn(false)
@@ -423,24 +423,15 @@ const OneProductPage = ({product, events, userData}) => {
 
                         {!desktopStore.isDesktop &&
                             <div style={{position: "relative", marginTop: '10px'}}>
-                                <div itemProp="name">
-                                    <div itemProp="brand">
-                                        <Link href={'/'} className={s.brand}>A</Link>
+                                <div>
+                                    <div itemProp="name">
+                                        <div className={s.brand}>{product.name}</div>
+                                        <div className={s.model}>{product.long_description}</div>
                                     </div>
-                                    <div className={s.model} itemProp="model">{product.model}</div>
-                                    <div className={s.color}>{product.colorway}</div>
+                                    <div className={s.iconContainer}>
+                                        <StarRating rating={product.score_product_page} n={product.id}/>
+                                    </div>
                                 </div>
-                                <div className={s.iconContainer}>
-                                    <StarRating rating={product.score_product_page} n={product.id}/>
-                                </div>
-                                {/*<div className={s.iconContainer}>*/}
-                                {/*    <Image*/}
-                                {/*        src={shareIcon}*/}
-                                {/*        alt="Share"*/}
-                                {/*        className={isClicked ? `${s.shareIcon} ${s.clicked}` : s.shareIcon}*/}
-                                {/*        onClick={handleShareClick}*/}
-                                {/*    />*/}
-                                {/*</div>*/}
                             </div>
                         }
                         {
@@ -466,7 +457,7 @@ const OneProductPage = ({product, events, userData}) => {
                                 </div>
 
                         }
-                        {!desktopStore.isDesktop &&
+                        {false && !desktopStore.isDesktop &&
                             <>
                                 {
                                     events.length > 0 &&
@@ -1225,8 +1216,7 @@ const OneProductPage = ({product, events, userData}) => {
 
                                 <hr style={{color: '#d1838c', opacity: '1', marginTop: 10, marginBottom: 10}}/>
 
-                                {desktopStore.isDesktop
-                                    ?
+                                {desktopStore.isDesktop &&
                                     <div ref={contentRef}
                                          className={[s.more, moreOpen ? s.more_open : ""].join(" ")}
                                          style={{maxHeight: contentHeight}}>
@@ -1245,8 +1235,6 @@ const OneProductPage = ({product, events, userData}) => {
                                         <div
                                             className={`${moreOpen || fadeOutInvisible ? s.invisible : s.fadeOut}`}></div>
                                     </div>
-                                    :
-                                    <div ref={contentRef}></div>
                                 }
 
                                 {
@@ -1268,21 +1256,22 @@ const OneProductPage = ({product, events, userData}) => {
                 </div>
                 {desktopStore.isDesktop &&
                     <hr className={s.margins}/>}
-                {!desktopStore.isDesktop && similarProducts.map(el =>
-                    <>
-                        <Compilation arr={el.products} title={'Похожие товары'} paddings={'regular'}
-                                     rows={1} key={product.id}/>
-                    </>
-                )}
+                {/*{!desktopStore.isDesktop && similarProducts.map(el =>*/}
+                {/*    <>*/}
+                {/*        <Compilation arr={el.products} title={'Похожие мастер-классы'} paddings={'regular'}*/}
+                {/*                     rows={1} key={product.id}/>*/}
+                {/*    </>*/}
+                {/*)}*/}
+                {similarProducts.length > 0 &&
+                    <Compilation arr={similarProducts} title={'Похожие мастер-классы'} paddings={'regular'}/>
+                }
                 {!desktopStore.isDesktop && lastSeen.length > 0 &&
                     <>
                         <Compilation arr={lastSeen} title={'Ранее просмотренные'} paddings={'regular'}
                                      key={product.id}/>
                     </>
                 }
-                {desktopStore.isDesktop && similarProducts.length > 0 &&
-                    <Compilation arr={similarProducts} title={'Похожие мастер-классы'} paddings={'regular'}/>
-                }
+
                 {desktopStore.isDesktop && lastSeen.length > 0 &&
                     <Compilation arr={lastSeen} title={'Ранее просмотренные'} paddings={'regular'} key={product.id}/>
                 }

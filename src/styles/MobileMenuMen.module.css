@@ -13,7 +13,6 @@
 /* Стили для первой части: Логотип и крестик */
 .headerTop {
     display: flex;
-    justify-content: center;
     align-items: center;
     width: 100%;
     position: relative;
@@ -24,10 +23,11 @@
 /* Логотип по центру */
 .logoContainer {
     position: relative;
+    margin-left: 15px;
 }
 
 .logo {
-    width: 230px; /* Размер логотипа */
+    width: 97px; /* Размер логотипа */
     height: auto;
 }
 

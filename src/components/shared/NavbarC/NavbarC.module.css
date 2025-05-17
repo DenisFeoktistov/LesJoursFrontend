@@ -14,7 +14,7 @@
 }
 
 .headerMob {
-    background: white;
+    background: transparent;
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -334,11 +334,15 @@
 
 /* BottomNav.module.css */
 .bottom_nav {
-    height: 55px;
+    height: 60px;
     background-color: #fff;
     display: flex;
     justify-content: space-around;
     align-items: center;
+
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.07); /* мягкая тень */
 }
 
 .nav_item {

@@ -1,0 +1,158 @@
+.sectionWrapper {
+    background-color: #F5EAF0;
+    background-position: center;
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.contentWrapper {
+    position: relative;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    width: 1200px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.topBlock, .bottomBlock {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    position: relative;
+}
+
+.bottomBlock {
+    margin-top: -350px;
+}
+
+.imageBlock {
+    flex-shrink: 0;
+}
+
+.image {
+    object-fit: cover;
+    width: 270px;
+    height: auto;
+    border-radius: 3px;
+}
+
+.textBlock {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.text {
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 40px;
+    padding: 0 70px;
+}
+
+.text1_1 {
+    font-size: 17px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    margin-top: 40px;
+    text-align: center;
+    display: flex;
+    align-self: center;
+}
+
+.text1_2 {
+    font-size: 17px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    margin-top: 150px;
+    text-align: center;
+    width: 500px;
+    padding-left: 30px;
+}
+
+.text2 {
+    font-size: 17px;
+    font-weight: 300;
+    text-align: center;
+    width: 800px;
+}
+
+.flower {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.flower1 {
+    top: 50px;
+    left: 30%;
+    transform: rotate(-20deg);
+}
+
+.flower2 {
+    top: 50px;
+    right: 30%;
+    transform: rotate(15deg);
+}
+
+.flower3 {
+    top: 250px;
+    left: 30%;
+    transform: rotate(-10deg);
+}
+
+.flower4 {
+    top: 100px;
+    right: 15%;
+    transform: rotate(25deg);
+}
+
+.flower5 {
+    top: 300px;
+    right: 30%;
+    transform: rotate(70deg);
+}
+
+.flower6 {
+    top: 270px;
+    left: 47%;
+    transform: rotate(-20deg);
+}
+
+.flower7 {
+    top: 500px;
+    right: 40%;
+    transform: rotate(25deg);
+}
+
+.flower8 {
+    top: 550px;
+    left: 35%;
+    transform: rotate(70deg);
+}
+
+.flower9 {
+    top: 777px;
+    right: 3%;
+    transform: rotate(25deg);
+}
+
+.flower10 {
+    top: 777px;
+    left: 3%;
+    transform: rotate(70deg);
+}

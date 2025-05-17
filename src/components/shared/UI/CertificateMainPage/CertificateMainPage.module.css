@@ -56,3 +56,23 @@
 .link:hover {
     background-color: #d1838c;
 }
+
+@media (max-width: 1200px) {
+    .title {
+        margin-top: 50px;
+    }
+    .text2 {
+        margin-bottom: 15px;
+        padding: 0 10px;
+    }
+    .frame {
+        width: 90%;
+    }
+
+    .image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        display: block;
+    }
+}

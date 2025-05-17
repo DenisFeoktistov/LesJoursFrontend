@@ -37,7 +37,7 @@
 
 .card_list {
     width: 356px;
-    height: 570px;
+    height: 590px;
     padding: 15px;
     display: flex;
     flex-direction: column;
@@ -105,7 +105,7 @@
     flex-direction: column;
     justify-content: flex-start;
     margin-top: 5px;
-    min-height: 115px;
+    min-height: 135px;
     z-index: -1;
 }
 
@@ -213,6 +213,11 @@
     font-weight: 500;
     font-size: 13px;
     color: #222222;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;      /* Количество строк, после которых обрезаем */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Добавляем многоточие для обрезанного текста */
 }
 
 .name {
@@ -336,6 +341,11 @@
 @media (max-width: 1515px) {
     .card_list {
         width: 325px;
+        height: 547px;
+    }
+
+    .text_block {
+        min-height: 130px;
     }
 
 }
@@ -343,18 +353,33 @@
 @media (max-width: 1385px) {
     .card_list {
         width: 300px;
+        height: 517px;
+    }
+
+    .text_block {
+        min-height: 130px;
     }
 }
 
 @media (max-width: 1300px) {
     .card_list {
         width: 280px;
+        height: 517px;
+    }
+
+    .text_block {
+        min-height: 135px;
     }
 }
 
 @media (max-width: 1210px) {
     .card_list {
         width: 33%;
+        height: 527px;
+    }
+
+    .text_block {
+        min-height: 135px;
     }
 }
 
@@ -372,7 +397,7 @@
 }
 
 
-@media (max-width: 650px) {
+@media (max-width: 850px) {
     .card {
         width: 172px;
         height: 270px;
@@ -387,14 +412,13 @@
 
     .card_list {
         width: 48%;
-        height: 340px;
+        height: 407px;
         padding: 0;
         margin: 20px 0;
     }
 
     .text_block {
-        height: 40%;
-        min-height: 103px;
+        min-height: 130px;
     }
 
     .text_block_big_card {
@@ -409,18 +433,23 @@
     }
 
     .info {
-        max-height: 83px;
+        max-height: 100px;
     }
 
     .tag, .brand, .name {
         font-size: 13px;
         overflow: hidden;
         text-overflow: ellipsis; /* Добавляем многоточие для обрезанного текста */
-        white-space: nowrap; /* Запрещаем перенос текста на новую строку */
+        /*white-space: nowrap; !* Запрещаем перенос текста на новую строку *!*/
 
     }
     .brand {
         font-size: 12px;
+        max-height: 57px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;      /* Количество строк, после которых обрезаем */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
     .colorway{
         font-size: 11px;

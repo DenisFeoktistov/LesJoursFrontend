@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column; /* теперь можно располагать заголовок над списком */
     align-items: center;
+    margin-bottom: 50px;
 }
 
 .title {

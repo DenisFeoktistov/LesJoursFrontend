@@ -15,13 +15,6 @@ export async function fetchCart2(id, token) {
     return data
 }
 
-export async function updateCart2(id, token) {
-    const {data} = await $host.get(`order/cart/${id}?is_update=true`, {
-        headers: {Authorization: `Bearer ${token}`}
-    })
-    return data
-}
-
 // Принимает id конкретного юнита (сеанс/мероприятие)
 export async function addToCart(userId, productUnitId, guestsAmount, token) {
     const {data} = await $host.post(`order/cart/${userId}/${productUnitId}/${guestsAmount}`, {}, {
@@ -50,13 +43,6 @@ export async function removeFromCart(userId, productUnitId, token) {
 // Удаление из корзины сертификата по его номиналу (один такой сертификат удаляем, а не все с таким номиналом!)
 export async function removeFromCartCertificate(userId, amount, token) {
     const {data} = await $host.delete(`order/cart/${userId}/${amount}?is_certificate=true`, {
-        headers: {Authorization: `Bearer ${token}`}
-    })
-    return data
-}
-
-export async function updateProductUnit(userId, productUnitId, newProductUnitId, token) {
-    const {data} = await $host.put(`order/cart/${userId}/${productUnitId}/${newProductUnitId}`, {
         headers: {Authorization: `Bearer ${token}`}
     })
     return data
@@ -116,16 +102,5 @@ export async function promoUnauth(promoStr, cartArr) {
         promo: promoStr
     }
     const {data} = await $host.post(`promo/anon_check`, JSON.stringify(obj))
-    return data
-}
-
-export async function useBonuses(bonusesVal, token) {
-    const obj = {
-        bonus: bonusesVal
-    }
-    const {data} = await $host.post(`order/cart/use_bonus`, JSON.stringify(obj), {
-            headers: {Authorization: `Bearer ${token}`}
-        }
-    )
     return data
 }

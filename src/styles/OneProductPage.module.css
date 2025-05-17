@@ -452,14 +452,16 @@
     }
 
     .model {
-        font-weight: 600;
-        font-size: 16px;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 1.4;
+        margin-bottom: 5px;
     }
 
     .container {
         /*margin-top: 0;*/
         margin-top: 0;
-    /*    ВРЕМЕННОЕ ИЗМНЕНИЕ*/
+        /*    ВРЕМЕННОЕ ИЗМНЕНИЕ*/
     }
 
     .row {
@@ -481,12 +483,13 @@
     }
 
     .slider {
-        margin-top: 27px;
+        margin-top: 5px;
         margin-bottom: 50px;
     }
 
     .photo {
-        height: 50vh;
+        width: 100%;
+        height: calc(100vw * 780 / 625);
     }
 
     .more {
@@ -747,6 +750,7 @@
     position: relative;
     cursor: pointer;
 }
+
 /* Градиентный прямоугольник с правым блюром */
 .containerParamsMob::after {
     content: '';
@@ -881,17 +885,21 @@
         gap: 10px;
 
     }
+
     .icons_block {
         gap: 25px;
         flex-direction: column;
     }
+
     .socialsCont {
         gap: 10px;
         width: 200px;
     }
+
     .mainSocialsText {
         font-size: 16px;
     }
+
     .image {
         margin-top: 20px;
         margin-bottom: 30px;
@@ -995,18 +1003,21 @@
     margin-right: 3vw;
     margin-left: 3vw;
 }
+
 @media (max-width: 1200px) {
     .margins {
         margin-right: 8px;
         margin-left: 8px;
     }
 }
+
 @media (min-width: 2000px) {
     .margins {
         margin-right: 10vw;
         margin-left: 10vw;
     }
 }
+
 @media (min-width: 2500px) {
     .margins {
         margin-right: 15vw;

@@ -35,7 +35,7 @@ const SortDropdown = () => {
         const query = {...router.query}
         const {path} = router
         query.ordering = sort
-        query.page = 1
+        delete query.page;
         router.push({path, query}, undefined, {scroll: false})
         filterStore.handleScrollTo()
     }

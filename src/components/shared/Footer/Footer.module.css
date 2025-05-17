@@ -151,17 +151,17 @@
     }
 
     .footer_link {
-        margin-top: 7px;
-        color: #cccccc;
+        margin-top: 10px;
+        color: #000000;
         font-size: 19px;
     }
 
     .footer_link:hover {
-        color: #c4c0c0;
+        color: #5b5b5b;
     }
 
     .footer_link:active {
-        color: #9a9999;
+        color: #5b5b5b;
     }
 
     .social_media {

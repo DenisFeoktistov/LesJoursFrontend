@@ -8,7 +8,7 @@ const CookieComponent = ({isOpen, close}) => {
 
     return (
         isOpen &&
-        <div className={s.modal} style={{bottom: !desktopStore.isDesktop ? '110px' : ''}}>
+        <div className={s.modal} style={{bottom: !desktopStore.isDesktop ? '70px' : ''}}>
             <div className={s.text}>
                 <Link href={'/docs/Политика%20конфиденциальности.pdf'}
                       target={'_blank'} style={{color: "white"}}>Мы собираем Cookie.</Link>
