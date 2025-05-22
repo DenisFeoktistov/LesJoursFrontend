@@ -1,21 +1,19 @@
-import {createContext, useEffect, useLayoutEffect} from "react";
+import {createContext, useEffect} from "react";
 import {productStore} from "@/store/ProductsStore";
 import {desktopStore} from "@/store/DesktopStore";
 import {filterStore} from "@/store/FilterStore";
 import {adminStore} from "@/store/AdminStore";
 import {userStore} from "@/store/UserStore";
-import {googleAuth, refreshToken} from "@/http/userApi";
+import {fetchUserInfo, refreshToken} from "@/http/userApi";
 import jwtDecode from "jwt-decode";
 import Cookies from 'js-cookie';
 import {cartStore} from "@/store/CartStore";
 import {orderStore} from "@/store/OrderStore";
-import {useRouter} from "next/router";
-import {fetchCart2, updateCartFromCookies} from "@/http/cartApi";
+import {fetchCart2} from "@/http/cartApi";
 
 export const Context = createContext(null);
 
 export default function AppWrapper({children}) {
-    const router = useRouter()
     let sharedState = {
         desktopStore,
         productStore,

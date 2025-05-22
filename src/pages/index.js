@@ -10,6 +10,7 @@ import CertificateMainPage from "@/components/shared/UI/CertificateMainPage/Cert
 import WelcomeMainPage from "@/components/shared/UI/WelcomeMainPage/WelcomeMainPage";
 import {parse} from "cookie";
 import AboutUsMainPage from "@/components/shared/UI/AboutUsMainPage/AboutUsMainPage";
+import Cookies from "js-cookie";
 
 export const getServerSideProps = async (context) => {
     const cookies = parse(context.req.headers.cookie || '')
@@ -28,23 +29,23 @@ const Home = ({productsAll}) => {
         const arr = []
 
         arr.push(
-            <WelcomeMainPage/>
+            <WelcomeMainPage key={'1'}/>
         )
 
         arr.push(
-            <AboutUsMainPage/>
+            <AboutUsMainPage key={'2'}/>
         )
 
         arr.push(
-            <ProductListMainPage products={products.results}/>
+            <ProductListMainPage products={products.results} key={'3'}/>
         )
 
         arr.push(
-            <EventsMainPage/>
+            <EventsMainPage key={'4'}/>
         )
 
         arr.push(
-            <CertificateMainPage/>
+            <CertificateMainPage key={'5'}/>
         )
 
         return arr

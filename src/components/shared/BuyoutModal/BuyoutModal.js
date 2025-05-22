@@ -5,7 +5,6 @@ import close from '@/static/icons/x-lg.svg'
 import Image from 'next/image'
 import InputMask from "react-input-mask";
 import {Context} from "@/context/AppWrapper";
-import {fetchUserInfo2} from "@/http/userApi";
 import Cookies from "js-cookie";
 import {buyout} from "@/http/productsApi";
 

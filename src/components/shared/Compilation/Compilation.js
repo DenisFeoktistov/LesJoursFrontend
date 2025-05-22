@@ -12,6 +12,7 @@ const Compilation = ({arr, title, paddings='none', rows=1, resetScrollToBeginnin
                     arr.map(el =>
                         <ProductCard
                                      product={el}
+                                     key={el.id}
                         />
                     )
                 }

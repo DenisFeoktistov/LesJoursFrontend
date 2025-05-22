@@ -13,7 +13,7 @@ import Image from 'next/image'
 import {
     fetchOneProduct,
     fetchProductsByArray,
-    fetchProductsPage, fetchOneProductEvents
+    fetchProductsPage
 } from "@/http/productsApi";
 import MainLayout from "@/layout/MainLayout";
 import {Context} from "@/context/AppWrapper";
@@ -89,8 +89,10 @@ export const getServerSideProps = async (context) => {
         };
     }
 
-    const events = await fetchOneProductEvents(context.params.slug, token, ip);
-    product.events = events
+    const events = product.events
+
+    // const events = await fetchOneProductEvents(context.params.slug, token, ip);
+    // product.events = events
 
     let userData = {}
     if (token) {
@@ -104,6 +106,9 @@ export const getServerSideProps = async (context) => {
 
 StarRating.propTypes = {rating: PropTypes.number};
 const OneProductPage = ({product, events, userData}) => {
+    console.log(product)
+    console.log(events)
+    console.log(userData)
     const router = useRouter()
     const [moreOpen, setMoreOpen] = useState(false)
     const [bonuses, setBonuses] = useState(`До ${product.price.bonus}`)
@@ -215,6 +220,7 @@ const OneProductPage = ({product, events, userData}) => {
         const token = Cookies.get('access_token')
         const userId = userStore.id
         const data = await addToWishlist(userId, product.id, token)
+        console.log(data)
     }
     const deleteFromWL = async () => {
         setIsInWishlist(false)
@@ -232,7 +238,11 @@ const OneProductPage = ({product, events, userData}) => {
         if (userStore.isLogged) {
             const token = Cookies.get('access_token')
             const userId = userStore.id
+            console.log(userId)
+            console.log(productStore.sizeChosen.id)
+            console.log(productStore.guestCounts)
             const data = await addToCart(userId, productStore.sizeChosen.id, productStore.guestCounts, token)
+            console.log(data)
         }
 
         cartStore.setCartCnt(cartStore.cartCnt + 1)

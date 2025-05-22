@@ -1,9 +1,6 @@
 import React, {useContext, useEffect, useLayoutEffect, useState} from 'react';
 import s from './CartItem.module.css'
 import Image from "next/image";
-import SizeDropdown from "@/components/pages/cart/SizeDropdown/SizeDropdown";
-import {fetchPrices} from "@/http/productsApi";
-import ShipDropdown from "@/components/pages/cart/ShipDropdown/ShipDropdown";
 import close from '@/static/icons/x-lg.svg'
 import {Context} from "@/context/AppWrapper";
 import {useRouter} from "next/router";

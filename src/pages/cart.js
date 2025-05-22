@@ -64,9 +64,9 @@ export const getServerSideProps = async (context) => {
         finalPrice = cart.final_amount
         sale = cart.sale
         totalSale = cart.total_sale
-        productUnits = cart.productUnits
+        productUnits = cart.product_units
         defaultPromo = cart.promo_code ? cart.promo_code.string_representation : ''
-        isUpdate = cart.isUpdate
+        isUpdate = cart.is_update
     } else {
         defaultPromo = ''
         const promoStr = cookies['promo']
@@ -123,8 +123,10 @@ const Cart = ({
     useEffect(() => {
         const token = Cookies.get('access_token')
         if (token) {
+            console.log("lastSeen: ")
             const {user_id} = jwtDecode(token)
             fetchLastSeen2(token, user_id).then(res => setLastSeen(res))
+            console.log(lastSeen)
         } else {
             let arr
             if (Cookies.get('last_seen')) {

@@ -4,7 +4,7 @@ import s from '@/styles/Account.module.css'
 import AccountLayout from "@/layout/AccountLayout";
 import {Context} from "@/context/AppWrapper";
 import InputMask from 'react-input-mask';
-import {confirmEmail, editUserInfo, fetchSizeInfo, fetchUserInfo, getSizeTable, sendSizeInfo} from "@/http/userApi";
+import {editUserInfo, fetchUserInfo} from "@/http/userApi";
 import {parse} from "cookie";
 import jwtDecode from "jwt-decode";
 import Arrow from "@/components/shared/UI/Arrow/Arrow";
@@ -18,11 +18,10 @@ export const getServerSideProps = async (context) => {
     const token = cookies['access_token']
     const {user_id} = jwtDecode(token)
     const userData = await fetchUserInfo(context.req.headers.cookie, user_id)
-    const sizeTable = await getSizeTable(context.req.headers.cookie)
-    const sizeInfo = await fetchSizeInfo(context.req.headers.cookie)
-    return {props: {userData, sizeTable, sizeInfo}}
+    return {props: {userData}}
 }
-const Account = ({userData, sizeTable, sizeInfo}) => {
+const Account = ({userData}) => {
+    console.log(userData)
     const {userStore} = useContext(Context)
     const [firstname, setFirstname] = useState(userData.first_name)
     const [lastname, setLastname] = useState(userData.last_name)
@@ -125,17 +124,12 @@ const Account = ({userData, sizeTable, sizeInfo}) => {
             obj.date = birthday
         }
         const token = Cookies.get('access_token')
-        console.log(obj)
         try {
             const changeRes = await editUserInfo(token, userStore.id, obj)
         } catch (e) {
             setEmailBusy(true)
             return false
         }
-        // if (email !== userData.email) {
-        //     setEmailChanged(true)
-        //     // await confirmEmail(token, userStore.id, window.location.href)
-        // }
         setSent(true)
     }
 

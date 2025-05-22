@@ -5,7 +5,7 @@ import close from '@/static/icons/x-lg.svg'
 import RadioGroup from "../UI/RadioGroup/RadioGroup";
 import CustomCheckbox from "../UI/CustoCheckbox/CustomCheckbox";
 import Image from 'next/image'
-import {confirmEmail, login, registration} from "@/http/userApi";
+import {login, registration} from "@/http/userApi";
 import {promoAuth, promoUnauth, updateCartFromCookies} from "@/http/cartApi";
 import Cookies from "js-cookie";
 import {useRouter} from "next/router";
@@ -118,6 +118,7 @@ const AuthModal = ({
         };
         try {
             const res = await login(JSON.stringify(data))
+            console.log(res)
             setWrong(false)
             const cookieCart = Cookies.get('cart')
             let cartFromBack
@@ -147,6 +148,7 @@ const AuthModal = ({
                 router.push(urlToGo)
             }
         } catch (e) {
+            console.log(e)
             setWrong(true)
         }
     }
