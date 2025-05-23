@@ -2,7 +2,6 @@ import React from 'react';
 import s from './CookieComponent.module.css'
 import Link from "next/link";
 import {desktopStore} from "@/store/DesktopStore";
-import Cookies from "js-cookie";
 
 const CookieComponent = ({isOpen, close}) => {
 

@@ -1,6 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
 import s from './PriceDropdown.module.css'
-import RangeSlider from "@/components/shared/UI/RangeSlider/RangeSlider";
 import Arrow from "@/components/shared/UI/Arrow/Arrow";
 import {Context} from "@/context/AppWrapper";
 import {observer} from "mobx-react-lite";

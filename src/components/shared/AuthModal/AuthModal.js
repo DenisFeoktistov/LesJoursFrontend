@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import s from './AuthModal.module.css'
 import {Container, Modal} from "react-bootstrap";
 import close from '@/static/icons/x-lg.svg'
@@ -6,13 +6,11 @@ import RadioGroup from "../UI/RadioGroup/RadioGroup";
 import CustomCheckbox from "../UI/CustoCheckbox/CustomCheckbox";
 import Image from 'next/image'
 import {login, registration} from "@/http/userApi";
-import {promoAuth, promoUnauth, updateCartFromCookies} from "@/http/cartApi";
+import {updateCartFromCookies} from "@/http/cartApi";
 import Cookies from "js-cookie";
 import {useRouter} from "next/router";
 import InputMask from "react-input-mask";
 import {Context} from "@/context/AppWrapper";
-import google from '@/static/icons/google.svg'
-import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 import PasswordInput from "@/components/shared/UI/PasswordInput/PasswordInput";
 import PassEmailModal from "@/components/shared/PassEmailModal/PassEmailModal";
 

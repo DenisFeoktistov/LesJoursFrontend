@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import Link from "next/link";
 import s from "@/styles/500.module.css";
 import MainLayout from "@/layout/MainLayout";
-import Cookies from "js-cookie";
 
 const Error404 = () => {
     return (

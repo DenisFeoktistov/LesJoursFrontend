@@ -459,7 +459,7 @@
     }
 
     .model {
-        font-weight: 600;
+        font-weight: 400;
         font-size: 16px;
     }
 
@@ -489,11 +489,12 @@
 
     .slider {
         margin-top: 27px;
-        margin-bottom: 50px;
+        margin-bottom: 20px;
     }
 
     .photo {
-        height: 50vh;
+        max-height: 50vh;
+        height: auto;
     }
 
     .more {
@@ -851,6 +852,9 @@
 
 
 @media (max-width: 1200px) {
+    .cart_btn2 {
+        margin-bottom: 100px;
+    }
     .cont {
         margin-top: 80px;
     }

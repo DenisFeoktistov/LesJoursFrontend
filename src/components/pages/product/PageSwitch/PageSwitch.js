@@ -1,6 +1,5 @@
 import React, {useContext} from 'react';
 import s from './PageSwitch.module.css'
-import {Container} from "react-bootstrap";
 import {useRouter} from "next/router";
 import {Context} from "@/context/AppWrapper";
 
@@ -8,7 +7,7 @@ const PageSwitch = ({currentPage, totalProducts}) => {
     const {filterStore} = useContext(Context)
     const router = useRouter()
     const getTotalPages = () => {
-        return Math.ceil(totalProducts/12)
+        return Math.ceil(totalProducts / 12)
     }
     const previousPage = (e) => {
         e.preventDefault()
@@ -16,7 +15,7 @@ const PageSwitch = ({currentPage, totalProducts}) => {
         if (currentPage !== 1) {
             const {pathname} = router
             const query = {...router.query}
-            query.page = currentPage-1
+            query.page = currentPage - 1
             router.push({pathname, query}, undefined, {scroll: false})
             filterStore.handleScrollTo()
         }
@@ -27,7 +26,7 @@ const PageSwitch = ({currentPage, totalProducts}) => {
         if (currentPage < getTotalPages()) {
             const {pathname} = router
             const query = {...router.query}
-            query.page = currentPage+1
+            query.page = currentPage + 1
             router.push({pathname, query}, undefined, {scroll: false})
             filterStore.handleScrollTo()
         }

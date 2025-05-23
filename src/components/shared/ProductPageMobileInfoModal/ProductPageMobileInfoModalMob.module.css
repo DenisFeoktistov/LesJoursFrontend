@@ -18,12 +18,14 @@
 /* Логотип по центру сверху */
 .logoContainer {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    width: 100%;
     margin-top: 20px;
+    margin-left: 20px;
 }
 
 .logo {
-    width: 230px;
+    width: 97px; /* Размер логотипа */
     height: auto;
 }
 

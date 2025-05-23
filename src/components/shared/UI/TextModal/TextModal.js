@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import s from './TextModal.module.css'
 import {Modal} from "react-bootstrap";
 import close from "@/static/icons/x-lg.svg";
@@ -18,7 +18,7 @@ const TextModal = ({children, title, img, titleClassname}) => {
         <>
             {
                 !titleClassname
-                ?
+                    ?
                     <>
                         <button
                             className={s.toggle_btn}
@@ -26,7 +26,11 @@ const TextModal = ({children, title, img, titleClassname}) => {
                         >
                             <Image src={img} alt="" className={s.icon}/>
 
-                            <div className={s.label} style={title === "Нашли тот же товар дешевле?" ? {fontWeight: 700, fontSize: "110%", color: 'black'} : {}}>
+                            <div className={s.label} style={title === "Нашли тот же товар дешевле?" ? {
+                                fontWeight: 700,
+                                fontSize: "110%",
+                                color: 'black'
+                            } : {}}>
                                 {title}
                             </div>
                         </button>

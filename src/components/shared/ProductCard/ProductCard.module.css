@@ -214,7 +214,7 @@
     font-size: 13px;
     color: #222222;
     display: -webkit-box;
-    -webkit-line-clamp: 3;      /* Количество строк, после которых обрезаем */
+    -webkit-line-clamp: 1;      /* Количество строк, после которых обрезаем */
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis; /* Добавляем многоточие для обрезанного текста */
@@ -389,18 +389,11 @@
     }
 }
 
-@media (max-width: 850px) {
-    .card {
-        width: 200px;
-        height: 300px;
-    }
-}
-
 
 @media (max-width: 850px) {
     .card {
         width: 172px;
-        height: 270px;
+        height: 320px;
     }
 
     .empty_card {
@@ -479,6 +472,6 @@
 @media (max-width: 410px) {
     .card {
         width: 161px;
-        height: 265px;
+        height: 300px;
     }
 }

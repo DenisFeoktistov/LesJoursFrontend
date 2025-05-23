@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import s from './Stage1.module.css'
 import {Context} from "@/context/AppWrapper";
 import {useRouter} from "next/router";

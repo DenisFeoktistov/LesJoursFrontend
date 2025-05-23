@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import s from './TextModalDesktopProductPage.module.css'
 import {Modal} from "react-bootstrap";
 import close from "@/static/icons/x-lg.svg";

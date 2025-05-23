@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import s from '../components/shared/UI/EventsMainPage/EventsMainPage.module.css'
 import MainLayout from "@/layout/MainLayout";
 import Image from "next/image";

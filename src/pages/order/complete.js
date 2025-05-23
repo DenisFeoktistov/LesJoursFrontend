@@ -2,18 +2,14 @@ import React, {useContext, useEffect, useState} from 'react';
 import MainLayout from "@/layout/MainLayout";
 import s from '@/styles/OrderComplete.module.css'
 import check from '@/static/icons/check2-circle.svg'
-import info from '@/static/icons/info.svg'
 import Image from "next/image";
 import {Context} from "@/context/AppWrapper";
 import CompleteCard from "@/components/pages/order/CompleteCard/CompleteCard";
 import {observer} from "mobx-react-lite";
 import Link from "next/link";
 import {parse} from "cookie";
-import {fetchOneOrder, fetchUserInfo} from "@/http/userApi";
 import ContactModal from "@/components/shared/ContactModal/ContactModal";
-import LoyaltyFAQ from "@/components/pages/account/LoyaltyFAQ/LoyaltyFAQ";
 import heart from '@/static/icons/circle_heart.svg'
-import jwtDecode from "jwt-decode";
 
 
 export const getServerSideProps = async (context) => {

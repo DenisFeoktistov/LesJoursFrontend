@@ -17,14 +17,10 @@ const nextConfig = {
     images: {
         dangerouslyAllowSVG: true,
         domains: [
-            'cdn.poizon.com',
             'drive.google.com',
             'storage.yandexcloud.net',
             's924sas.storage.yandex.net',
-            'img.stadiumgoods.com',
             'console.cloud.yandex.ru',
-            'bucket.sellout.su',
-            'sellout.su',
             'img.icons8.com'
         ],
     },

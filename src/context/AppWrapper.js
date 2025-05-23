@@ -2,9 +2,8 @@ import {createContext, useEffect} from "react";
 import {productStore} from "@/store/ProductsStore";
 import {desktopStore} from "@/store/DesktopStore";
 import {filterStore} from "@/store/FilterStore";
-import {adminStore} from "@/store/AdminStore";
 import {userStore} from "@/store/UserStore";
-import {fetchUserInfo, refreshToken} from "@/http/userApi";
+import {refreshToken} from "@/http/userApi";
 import jwtDecode from "jwt-decode";
 import Cookies from 'js-cookie';
 import {cartStore} from "@/store/CartStore";
@@ -18,7 +17,6 @@ export default function AppWrapper({children}) {
         desktopStore,
         productStore,
         filterStore,
-        adminStore,
         userStore,
         cartStore,
         orderStore
@@ -35,6 +33,7 @@ export default function AppWrapper({children}) {
                 const userData = jwtDecode(data.access)
                 // Set user data in userStore
                 userStore.setIsLogged(true)
+                console.log(userData)
                 userStore.setId(userData.user_id)
                 userStore.setUsername(userData.username)
                 userStore.setFirstName(userData.first_name)

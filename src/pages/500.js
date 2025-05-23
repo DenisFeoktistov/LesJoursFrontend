@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import MainLayout from "@/layout/MainLayout";
 import s from '@/styles/500.module.css'
 import Link from "next/link";
-import Cookies from "js-cookie";
 
 const Error500 = () => {
     return (

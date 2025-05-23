@@ -17,7 +17,6 @@ import refund from "@/static/icons/arrow-return-left.svg";
 import PartnershipsImg from "@/static/icons/PartnershipsImg.svg";
 import mastersImg from "@/static/icons/mastersImg.svg";
 import LoyaltyFAQ from "@/components/pages/account/LoyaltyFAQ/LoyaltyFAQ";
-import HowWeWorkModal from "@/components/shared/HowWeWorkModal/HowWeWorkModal";
 import {Context} from "@/context/AppWrapper";
 
 

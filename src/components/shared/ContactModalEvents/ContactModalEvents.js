@@ -5,9 +5,6 @@ import cross from '@/static/icons/x-lg.svg'
 import Image from "next/image";
 import headphones from '@/static/icons/headphones-circle.svg'
 import Link from "next/link";
-import tg from "@/static/icons/tg_black.svg";
-import vk from "@/static/icons/vk_black.svg";
-import inst_star from "@/static/icons/instagram_star.svg";
 import igBlack from "@/static/icons/igImg.svg";
 import tgBlack from "@/static/icons/tg_black.svg";
 import {Context} from "@/context/AppWrapper";

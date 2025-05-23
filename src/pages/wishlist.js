@@ -37,37 +37,11 @@ const Wishlist = ({wishlist}) => {
             num % 10 <= 4 &&
             (num % 100 < 10 || num % 100 >= 20)
         ) {
-            form = "мастер-класс";
+            form = "мастер-класса";
         }
         return `${num} ${form}`;
     }
 
-    const tempMasterClasses = {
-        "id": 43719,
-        "in_wishlist": false,
-        "price": {
-            "start_price": 8490,
-            "final_price": 8490
-        },
-        "short_description": "Вы сможете создать собственный тортик и чудесно провести вечер! Вы сможете создать еще один собственный тортик и опять чудесно провести вечер!",
-        "slug": "vans-old-skool-blackwhite-43719",
-        "location": "м. Новокузнецкая",
-        "name": "Бенто-торт",
-        "bucket_link": [
-            {
-                "id": 18603709,
-                "url": "https://storage.yandexcloud.net/les-jours-bucket/1.png"
-            },
-            {
-                "id": 18603710,
-                "url": "https://cdn.poizon.com/pro-img/origin-img/20230721/037c574fa17445ea9a85215e6ebb63a7.jpg"
-            },
-            {
-                "id": 18603711,
-                "url": "https://cdn.poizon.com/pro-img/origin-img/20230721/df71fdc035fb40668def489de323e230.jpg"
-            }
-        ]
-    }
 
     return (
         <MainLayout>
@@ -96,7 +70,7 @@ const Wishlist = ({wishlist}) => {
                                 }
                                 {wishlist.map(el =>
                                     <ProductCard
-                                        product={tempMasterClasses}
+                                        product={el}
                                         cardList={true}
                                         key={el.id}/>
                                 )}

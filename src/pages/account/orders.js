@@ -8,7 +8,6 @@ import {parse} from "cookie";
 import jwtDecode from "jwt-decode";
 import {fetchUserOrders} from "@/http/userApi";
 import Link from "next/link";
-import LoyaltyFAQ from "@/components/pages/account/LoyaltyFAQ/LoyaltyFAQ";
 import ContactModal from "@/components/shared/ContactModal/ContactModal";
 
 export const getServerSideProps = async (context) => {
@@ -16,7 +15,7 @@ export const getServerSideProps = async (context) => {
     const token = cookies['access_token']
     const {user_id} = jwtDecode(token)
     const orders = await fetchUserOrders(user_id, token)
-    return { props: {orders} }
+    return {props: {orders}}
 }
 const Orders = ({orders}) => {
     const [contactOpen, setContactOpen] = useState(false)
@@ -56,9 +55,11 @@ const Orders = ({orders}) => {
                     </div>
                     <div className={s.faq_block}>
                         <h5 className={`text-center ${s.questions_text}`}>Ответы на большинство вопросов
-                            вы найдете здесь: <Link href={'/faq'} className={'text-black'} target={'_blank'}>FAQ</Link></h5>
+                            вы найдете здесь: <Link href={'/faq'} className={'text-black'} target={'_blank'}>FAQ</Link>
+                        </h5>
                         <h5 className={`text-center ${s.questions_text}`}>Если у вас остались вопросы, вы всегда
-                            можете обратиться в <span className={s.link_text} onClick={toggleContact}>службу поддержки</span> и мы будем
+                            можете обратиться в <span className={s.link_text}
+                                                      onClick={toggleContact}>службу поддержки</span> и мы будем
                             рады вам помочь!</h5>
                     </div>
                 </div>

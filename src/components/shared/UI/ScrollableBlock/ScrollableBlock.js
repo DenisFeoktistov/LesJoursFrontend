@@ -1,9 +1,7 @@
 import React, {forwardRef, useEffect, useImperativeHandle, useRef, useState} from 'react';
 import s from './ScrollableBlock.module.css'
 import arrowNew from "@/static/icons/arrowSlider.svg";
-import arrow from '@/static/icons/chevron-right.svg'
 import Image from "next/image";
-import styles from "@/styles/CatalogAccessoriesDesktopMen.module.css";
 import {desktopStore} from "@/store/DesktopStore";
 import more from "@/static/icons/moreIcon.svg";
 import Link from "next/link";

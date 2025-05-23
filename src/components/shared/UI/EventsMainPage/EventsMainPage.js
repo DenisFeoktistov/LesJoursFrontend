@@ -7,8 +7,6 @@ import {desktopStore} from "@/store/DesktopStore";
 import eventsImg1 from "@/static/img/eventsImg1.png";
 import eventsImg2 from "@/static/img/eventsImg2.png";
 import ContactModalEvents from "@/components/shared/ContactModalEvents/ContactModalEvents";
-import aboutUsImg2 from "@/static/img/aboutUsImg2.png";
-import aboutUsImg1 from "@/static/img/aboutUsImg1.png";
 import welcomeFlowerLogo from "@/static/img/welcomeFlowerLogo.png";
 
 const EventsMainPage = () => {

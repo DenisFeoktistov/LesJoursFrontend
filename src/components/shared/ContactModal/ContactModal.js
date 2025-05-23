@@ -5,9 +5,6 @@ import cross from '@/static/icons/x-lg.svg'
 import Image from "next/image";
 import headphones from '@/static/icons/headphones-circle.svg'
 import Link from "next/link";
-import tg from "@/static/icons/tg_black.svg";
-import vk from "@/static/icons/vk_black.svg";
-import inst_star from "@/static/icons/instagram_star.svg";
 import igBlack from "@/static/icons/igImg.svg";
 import tgBlack from "@/static/icons/tg_black.svg";
 
@@ -34,11 +31,13 @@ const ContactModal = ({isOpen, handleClose}) => {
                             </div>
                             <div>
                                 Telegram: <a href={'https://t.me/les_jour_mk'}
-                                   target={'_blank'}
-                                   className={s.link}>@les_jour_mk</a>
+                                             target={'_blank'}
+                                             className={s.link}>@les_jour_mk</a>
                             </div>
                         </div>
-                        <h5>Ответы на большинство вопросов вы найдете здесь: <Link href={'/faq'} className={s.link} onClick={handleClose} target={'_blank'}>FAQ</Link></h5>
+                        <h5>Ответы на большинство вопросов вы найдете здесь: <Link href={'/faq'} className={s.link}
+                                                                                   onClick={handleClose}
+                                                                                   target={'_blank'}>FAQ</Link></h5>
                         <div>
                             <h5>Мы в социальных сетях:</h5>
                             <div className={s.icons_block}>

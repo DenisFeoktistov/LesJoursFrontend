@@ -15,20 +15,11 @@ import Head from "next/head";
 import Link from "next/link";
 import {fetchLastSeen2} from "@/http/userApi";
 import how from "@/static/icons/question-circle.svg";
-import change from "@/static/icons/arrow-down-up.svg";
-import gift from "@/static/icons/gift.svg";
 import TextModal from "@/components/shared/UI/TextModal/TextModal";
-import gift_gard from '@/static/icons/gift-gard.svg'
-import smile from '@/static/icons/emoji-smile 1.svg'
-import first from '@/static/icons/first.svg'
-import good from '@/static/icons/good.svg'
-import friend from '@/static/icons/friend.svg'
-import birth from '@/static/icons/happybirthday.svg'
 import Image from "next/image";
 import LoyaltyFAQ from "@/components/pages/account/LoyaltyFAQ/LoyaltyFAQ";
 import headphones from "@/static/icons/headphones-circle.svg";
 import tgBlack from "@/static/icons/tg_black.svg";
-import map from '@/static/img/map.jpg'
 import Compilation from "@/components/shared/Compilation/Compilation";
 import {fetchProductsByArray} from "@/http/productsApi";
 import igBlack from "@/static/icons/igImg.svg";
@@ -48,6 +39,7 @@ export const getServerSideProps = async (context) => {
             product_unit_list: cartArr
         }
         productUnits = await fetchProductUnits(JSON.stringify(obj), token)
+        console.log(productUnits)
     } else {
         productUnits = []
     }

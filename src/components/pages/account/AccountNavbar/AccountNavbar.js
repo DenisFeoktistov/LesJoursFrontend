@@ -19,33 +19,9 @@ const AccountNavbar = () => {
 
         },
         {
-            name: 'Адреса',
-            address: 'addresses',
-            link: '/account/addresses'
-
-        },
-        {
             name: 'Заказы',
             address: 'orders',
             link: '/account/orders'
-
-        },
-        {
-            name: 'Любимые бренды',
-            address: 'favorite-brands',
-            link: '/account/favorite-brands'
-
-        },
-        {
-            name: 'Программа лояльности',
-            address: 'loyalty',
-            link: '/account/loyalty'
-
-        },
-        {
-            name: 'Реферальная программа',
-            address: 'referral',
-            link: '/account/referral'
 
         }
     ]

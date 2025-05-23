@@ -8,7 +8,6 @@ import {editUserInfo, fetchUserInfo} from "@/http/userApi";
 import {parse} from "cookie";
 import jwtDecode from "jwt-decode";
 import Arrow from "@/components/shared/UI/Arrow/Arrow";
-import SizeDropdown from "@/components/pages/account/SizeDropdown/SizeDropdown";
 import Cookies from "js-cookie";
 import Head from "next/head";
 import ResetPasswordModal from "@/components/pages/account/ResetPasswordModal/ResetPasswordModal";

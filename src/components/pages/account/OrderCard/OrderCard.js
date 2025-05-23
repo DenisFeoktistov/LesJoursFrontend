@@ -1,11 +1,9 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import s from './OrderCard.module.css'
 import minus from '@/static/icons/dash-lg.svg'
 import plus from '@/static/icons/plus-lg.svg'
 import Image from "next/image";
-import shoe from "@/static/img/shoe2.png";
 import ProductBlock from "@/components/pages/account/ProductBlock/ProductBlock";
-import {Context} from "@/context/AppWrapper";
 
 const OrderCard = ({order}) => {
     const [isOpen, setIsOpen] = useState(false)

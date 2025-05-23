@@ -1,5 +1,4 @@
 import React from 'react';
-import s from './Arrow.module.css'
 
 const Arrow = ({isOpen, white = false}) => {
     return (

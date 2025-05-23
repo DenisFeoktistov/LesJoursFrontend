@@ -239,7 +239,8 @@ const SizeChoice = ({prices = [], productId = -1, isDesktop, isCertificate = fal
                                             ?
                                             <div className={s.size_block}>
                                                 <div className={s.icons}>
-                                                    Введите свой номинал:
+                                                    {/*Введите свой номинал:*/}
+                                                    <div>Введите свой номинал:</div>
                                                     <div className={s.inputWrapper}
                                                          onClick={(e) => e.stopPropagation()}>
                                                         <input

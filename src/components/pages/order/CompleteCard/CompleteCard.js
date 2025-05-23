@@ -1,6 +1,4 @@
 import React from 'react';
-import Image from "next/image";
-import shoe from "@/static/img/shoe2.png";
 import s from './CompleteCard.module.css'
 import ProductBlock from "@/components/pages/account/ProductBlock/ProductBlock";
 

@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useLayoutEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import s from './CartItem.module.css'
 import Image from "next/image";
 import close from '@/static/icons/x-lg.svg'
@@ -11,12 +11,6 @@ import like_fill from "@/static/icons/heart-fill.svg";
 import like from "@/static/icons/heart.svg";
 import AuthModal from "@/components/shared/AuthModal/AuthModal";
 import {observer} from "mobx-react-lite";
-import {
-    trackAddToFavorites,
-    trackRemoveToCart,
-    trackRemoveToFavorites
-} from "@/components/shared/YandexMetrica/YandexMetrica";
-import green_gift from "@/static/icons/gift-green.svg";
 import Link from "next/link";
 import certificateImg from "@/static/img/certificateImg.png";
 

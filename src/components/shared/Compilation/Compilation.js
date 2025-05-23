@@ -3,7 +3,7 @@ import s from './Compilation.module.css'
 import ProductCard from "@/components/shared/ProductCard/ProductCard";
 import ScrollableBlock from "@/components/shared/UI/ScrollableBlock/ScrollableBlock";
 
-const Compilation = ({arr, title, paddings='none', rows=1, resetScrollToBeginning=false}) => {
+const Compilation = ({arr, title, paddings = 'none', rows = 1, resetScrollToBeginning = false}) => {
     return (
         <div>
             <h3 className={`${s.title} ${paddings === 'regular' ? s.margins : ''}`}>{title}</h3>
@@ -11,8 +11,8 @@ const Compilation = ({arr, title, paddings='none', rows=1, resetScrollToBeginnin
                 {
                     arr.map(el =>
                         <ProductCard
-                                     product={el}
-                                     key={el.id}
+                            product={el}
+                            key={el.id}
                         />
                     )
                 }

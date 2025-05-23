@@ -3,7 +3,6 @@ import {Modal} from "react-bootstrap";
 import s from "./PassEmailModal.module.css";
 import Image from "next/image";
 import cross from "@/static/icons/x-lg.svg";
-import {sendPassEmail} from "@/http/userApi";
 
 const PassEmailModal = ({show, onHide, defEmail}) => {
     const [email, setEmail] = useState(defEmail)
@@ -49,13 +48,16 @@ const PassEmailModal = ({show, onHide, defEmail}) => {
                         <div className={'d-flex justify-content-center'}>
                             <button className={s.btn}
                                     type={'submit'}
-                            >Отправить</button>
+                            >Отправить
+                            </button>
                         </div>
                         {!validEmail &&
                             <div className={'red_text text-center mt-2'}>Некорректный формат почты</div>
                         }
                         {sent &&
-                            <div className={'yellow_text text-center mt-2'}>Восстановление пароля временно не работает. Просим прощения за неудобства! Напишите нам в службу поддержки, и мы восстановим ваш пароль!</div>
+                            <div className={'yellow_text text-center mt-2'}>Восстановление пароля временно не работает.
+                                Просим прощения за неудобства! Напишите нам в службу поддержки, и мы восстановим ваш
+                                пароль!</div>
                         }
                     </form>
                 </Modal.Body>

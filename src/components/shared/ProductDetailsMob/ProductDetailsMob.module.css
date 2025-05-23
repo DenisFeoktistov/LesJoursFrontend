@@ -191,3 +191,10 @@
 .invisible {
     display: none;
 }
+
+.details {
+    margin: 7px 0;
+
+    font-size: 15px;
+    color: #1e1e1e;
+}

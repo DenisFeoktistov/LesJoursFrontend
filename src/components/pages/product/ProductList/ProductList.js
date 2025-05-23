@@ -1,21 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import ProductCard from "@/components/shared/ProductCard/ProductCard";
-import AdminCard from "@/components/shared/AdminCard/AdminCard";
 import s from './ProductList.module.css'
 import {observer} from "mobx-react-lite";
-import PromoBannerProductsPageAboutAndGuarantee
-    from "@/components/shared/UI/PromoBannerProductsPageAboutAndGuarantee/PromoBannerProductsPageAboutAndGuarantee";
-import PromoBannerProductsPageGiftAndRefDesktop
-    from "@/components/shared/UI/PromoBannerProductsPageGiftAndRefDesktop/PromoBannerProductsPageGiftAndRefDesktop";
-import PromoBannerProductsPageSocial
-    from "@/components/shared/UI/PromoBannerProductsPageSocial/PromoBannerProductsPageSocial";
-import {desktopStore} from "@/store/DesktopStore";
-import PromoBannerProductsPageGiftMobile
-    from "@/components/shared/UI/PromoBannerProductsPageGiftMobile/PromoBannerProductsPageGiftMobile";
-import PromoBannerProductsPageRef from "@/components/shared/UI/PromoBannerProductsPageRef/PromoBannerProductsPageRef";
-import Cookies from "js-cookie";
-import PromoBannerProductsPageAnyProduct
-    from "@/components/shared/UI/PromoBannerProductsPageAnyProduct/PromoBannerProductsPageAnyProduct";
 
 const ProductList = ({products, isAdmin, showPromos=false}) => {
     const calculateCardsPerRow = () => {

@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import s from './PromoInput.module.css'
 import Image from "next/image";
 import icon from "@/static/icons/chevron-right.svg";
 
-const PromoInput = ({value, placeholder, onChange,onClick}) => {
+const PromoInput = ({value, placeholder, onChange, onClick}) => {
     return (
         <div>
             <div className={s.input}>

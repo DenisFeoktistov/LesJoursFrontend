@@ -254,7 +254,7 @@
     border: none;
     outline: none;
     border-radius: 7px;
-    background: #51031D;
+    background: #e36375;
     color: white;
     min-height: 48px;
     flex: 1; /* Растянуть на всё оставшееся пространство */
@@ -266,7 +266,7 @@
 }
 
 .cart_btn:disabled {
-    background: rgb(81, 3, 29, 0.77);
+    background: rgb(252, 93, 117, 0.4);
 }
 
 .cart_btn2 {
@@ -274,7 +274,7 @@
     border: none;
     outline: none;
     border-radius: 7px;
-    background: #51031D;
+    background: #fc5d75;
     color: white;
     min-height: 48px;
     width: 82%;
@@ -287,7 +287,7 @@
 .cart_btn2:disabled {
     /*background: rgba(0, 0, 0, 0.25);*/
     /*background: linear-gradient(0deg, rgb(81, 3, 29, 1) -60%, rgba(23, 0, 0, 0.25) 100%);*/
-    background: rgb(81, 3, 29, 0.77);
+    background: rgb(252, 93, 117, 0.4);
     cursor: initial;
 }
 
@@ -449,6 +449,7 @@
 @media (max-width: 1200px) {
     .brand {
         font-size: 20px;
+        max-width: 67vw;
     }
 
     .model {
@@ -484,12 +485,13 @@
 
     .slider {
         margin-top: 5px;
-        margin-bottom: 50px;
+        margin-bottom: 20px;
     }
 
     .photo {
         width: 100%;
         height: calc(100vw * 780 / 625);
+        max-height: 70vh;
     }
 
     .more {
@@ -745,8 +747,8 @@
     justify-content: center;
     overflow-x: hidden;
     margin-top: 10px;
-    margin-bottom: 20px;
-    border-radius: 2px;
+    margin-bottom: 100px;
+    border-radius: 7px;
     position: relative;
     cursor: pointer;
 }
@@ -903,6 +905,24 @@
     .image {
         margin-top: 20px;
         margin-bottom: 30px;
+    }
+
+    .separator {
+        padding: 0 5px;
+    }
+
+    .total {
+        width: 43%;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .wrapper2 {
+        display: flex;
+        align-items: center;
+        width: 57%;
+        gap: 10px;
+        justify-content: left;
     }
 }
 

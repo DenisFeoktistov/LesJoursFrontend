@@ -1,7 +1,4 @@
 import {makeAutoObservable} from "mobx";
-import cn from "classnames";
-import Cookies from "js-cookie";
-import sizes from '@/static/jsons/size_table.json'
 
 class FilterStore {
     constructor() {

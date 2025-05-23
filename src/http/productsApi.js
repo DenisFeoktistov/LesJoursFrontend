@@ -1,11 +1,4 @@
 import {$host} from "@/http/index";
-import collabs_filter_data from '@/static/jsons/collabs.json'
-import tree_cat_filter_data from '@/static/jsons/tree_cat.json'
-import tree_line_filter_data from '@/static/jsons/tree_line.json'
-import colors_filter_data from '@/static/jsons/colors.json'
-import age_filters from '@/static/jsons/age_filters.json'
-import materials_filter_data from '@/static/jsons/materials.json'
-
 
 export async function fetchProductsPage(query, token = '') {
     let allQuery = ''

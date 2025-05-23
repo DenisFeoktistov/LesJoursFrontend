@@ -1,18 +1,14 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext} from 'react';
 import s from './AccountLayout.module.css'
 import {Context} from "@/context/AppWrapper";
 import Cookies from "js-cookie";
 import {useRouter} from "next/router";
 import person from '@/static/icons/person.svg'
-import geo from '@/static/icons/geo-alt.svg'
 import Image from "next/image";
 import {observer} from "mobx-react-lite";
 import AccountNavbar from "@/components/pages/account/AccountNavbar/AccountNavbar";
 import Link from "next/link";
 import orders from '@/static/icons/box-seam.svg'
-import loyal from '@/static/icons/loyalty.svg'
-import referral from '@/static/icons/referral.svg'
-import heart from '@/static/icons/heart.svg'
 
 const AccountLayout = ({children}) => {
     const {userStore, cartStore} = useContext(Context)
@@ -33,16 +29,20 @@ const AccountLayout = ({children}) => {
     const makeBold = (currPage) => {
         const {pathname} = router
         const arr = pathname.split('/')
-        if (arr[arr.length-1] === currPage) {
+        if (arr[arr.length - 1] === currPage) {
             return s.bold
         }
     }
+
+    console.log(userStore.firstName)
+    console.log(userStore.lastName)
 
     const {desktopStore} = useContext(Context)
     return (
         <div className={s.cont + ' custom_cont'}>
             <div className={s.header}>
-                <h3 style={{marginBottom: '0px'}}>{`${userStore.firstName} ${userStore.lastName}`}</h3>
+                <h3 style={{marginBottom: '0px'}}>{`Добро пожаловать!`}</h3>
+                {/*<h3 style={{marginBottom: '0px'}}>{`${userStore.firstName} ${userStore.lastName}`}</h3>*/}
                 <a href="/" className={s.link} onClick={(e) => logout(e)}>Выйти</a>
             </div>
             <hr style={{marginTop: '5px'}} className={s.hr}/>

@@ -23,17 +23,12 @@
 }
 .text {
     min-height: 48px;
-    /*padding: 1px;*/
     align-items: center;
     padding-right: 15px;
     padding-left: 15px;
-    /*margin-left: 12px;*/
-    /*margin-right: 12px;*/
-    /*font-size: 11pt;*/
     display: flex;
     justify-content: space-between;
     cursor: pointer;
-    /*color: #6A6B6B;*/
     font-weight: 500;
 }
 .text:hover {
@@ -68,6 +63,8 @@
 .icons {
     font-weight: 700;
     margin-right: 10px;
+    display: flex;
+    align-items: center;
 }
 .inputWrapper {
     position: relative;
@@ -115,4 +112,47 @@
 }
 .link:hover {
     color: black;
+}
+
+@media (max-width: 1200px) {
+    .icons {
+        font-weight: 700;
+        margin-right: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        padding: 7px;
+    }
+
+    .text {
+        /*min-height: 48px;*/
+        align-items: center;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        cursor: pointer;
+        font-weight: 500;
+        gap: 5px;
+    }
+
+    .items {
+        padding: 10px;
+        align-items: center;
+        border-top: 1px solid black;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        cursor: pointer;
+    }
+
+    .items_not {
+        padding: 10px;
+        border-top: 1px solid black;
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
 }

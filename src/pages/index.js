@@ -10,7 +10,6 @@ import CertificateMainPage from "@/components/shared/UI/CertificateMainPage/Cert
 import WelcomeMainPage from "@/components/shared/UI/WelcomeMainPage/WelcomeMainPage";
 import {parse} from "cookie";
 import AboutUsMainPage from "@/components/shared/UI/AboutUsMainPage/AboutUsMainPage";
-import Cookies from "js-cookie";
 
 export const getServerSideProps = async (context) => {
     const cookies = parse(context.req.headers.cookie || '')
@@ -59,10 +58,6 @@ const Home = ({productsAll}) => {
                     name="description"
                     content="Мастер-классы от Les-Jours"
                 />
-                <meta property="og:image"
-                      content="https://sellout.su/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo_sq.02469b83.png&w=640&q=75"/>
-                <meta property="og:image:width" content="640px"/>
-                <meta property="og:image:height" content="640px"/>
             </Head>
             <div>
                 <div>
