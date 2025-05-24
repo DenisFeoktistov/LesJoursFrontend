@@ -119,11 +119,14 @@ const AuthModal = ({
             console.log(res)
             setWrong(false)
             const cookieCart = Cookies.get('cart')
+            console.log(cookieCart)
             let cartFromBack
             if (cookieCart) {
                 cartFromBack = await updateCartFromCookies(cookieCart, res.user_id, res.access)
+                console.log(cartFromBack)
             } else {
                 cartFromBack = await updateCartFromCookies('', res.user_id, res.access)
+                console.log(cartFromBack)
             }
             cartStore.setCartCnt(cartFromBack.length)
             let newStr = ''

@@ -30,7 +30,9 @@ const CartItem = ({
         const unitIdStr = String(unitId);
 
         const currCart = Cookies.get('cart').trim().split(' ').filter(el => el !== ' ' && el !== '');
+        console.log(currCart)
         const newCart = currCart.filter(el => !el.startsWith(`${unitIdStr}_`));
+        console.log(newCart)
         Cookies.set('cart', newCart.join(' '), {expires: 2772});
         if (userStore.isLogged) {
             const data = await removeFromCart(userStore.id, unitId, Cookies.get('access_token'));
@@ -47,6 +49,8 @@ const CartItem = ({
 
         const target = `certificate_${amount}`;
         let removed = false;
+        console.log(currCart)
+        console.log(target)
         const newCart = currCart.filter(el => {
             if (!removed && el === target) {
                 removed = true;
@@ -54,14 +58,18 @@ const CartItem = ({
             }
             return true;
         });
+        console.log(newCart)
 
         Cookies.set('cart', newCart.join(' '), {expires: 2772});
         if (userStore.isLogged) {
-            const data = await removeFromCartCertificate(userStore.id, amount, Cookies.get('access_token'));
+            const data = await removeFromCartCertificate(userStore.id, Math.floor(amount), Cookies.get('access_token'));
+            console.log(data)
         }
         cartStore.setCartCnt(newCart.length);
 
-        router.push('/cart', undefined, {scroll: false});
+        // router.push('/cart', undefined, {scroll: false});
+        router.replace(router.asPath, undefined, {scroll: false});
+
     }
 
     const [isInWishlist, setIsInWishlist] = useState(inWL)
@@ -209,7 +217,7 @@ const CartItem = ({
                             <div className={s.col}>
                                 <div>
                                     <div className={s.brand}>Сертификат на сумму:</div>
-                                    <div className={s.text}>{amount}₽</div>
+                                    <div className={s.text}>{Math.floor(amount)}₽</div>
                                 </div>
                             </div>
                         </div>

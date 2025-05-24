@@ -233,9 +233,6 @@ const Account = ({userData}) => {
                     {!validBirthday && <div className={s.red_text}>Некорректный формат даты рождения</div>}
                     {fillLines && <div className={s.red_text}>Заполните все поля</div>}
                     {sent && <div className={'green_text text-center'}>Изменения успешно сохранены</div>}
-                    {/*{emailChanged &&*/}
-                    {/*    <div className={'green_text text-center'}>Письмо подтверждение было выслано на новую*/}
-                    {/*        почту</div>}*/}
                     {emailBusy && <div className={s.red_text}>Пользователь с такой почтой уже существует</div>}
                     <div className={'d-flex justify-content-center mt-2 mb-5'}>
                         <button onClick={toggleModal} className={s.change_pass_btn}>

@@ -12,37 +12,23 @@ import Image from "next/image";
 import heart from "@/static/icons/circle_heart.svg";
 import {desktopStore} from "@/store/DesktopStore";
 import ContactModal from "@/components/shared/ContactModal/ContactModal";
+import jwtDecode from "jwt-decode";
+import {fetchCart} from "@/http/cartApi";
+import {fetchUserInfo} from "@/http/userApi";
+import {parse} from "cookie";
 
 export const getServerSideProps = async (context) => {
-    // const cookies = parse(context.req.headers.cookie || '')
-    // const token = cookies['access_token']
-    // const {user_id} = jwtDecode(token)
-    // const cart = await fetchCart(user_id, context.req.headers.cookie)
-    // const defaultPrice = cart.total_amount
-    // const finalPrice = cart.final_amount
-    // const sale = cart.total_sale
-    // const maxBonuses = cart.bonus + cart.promo_bonus + cart.first_order_bonus
-    // const skipPayment = cart.promo_code ? cart.promo_code.skip_payment : false
-    // const userData = await fetchUserInfo(context.req.headers.cookie, user_id)
+    const cookies = parse(context.req.headers.cookie || '')
+    const token = cookies['access_token']
+    const {user_id} = jwtDecode(token)
+    const cart = await fetchCart(user_id, context.req.headers.cookie)
+    const defaultPrice = cart.total_amount
+    const finalPrice = cart.final_amount
+    const sale = cart.total_sale
 
-
-    const defaultPrice = 70460
-    const finalPrice = 53160
-    const sale = 17300
+    // Временное решение
     const skipPayment = true
-    const userData = {
-        "id": 114,
-        "formatted_happy_birthday_date": "16.10.2004",
-        "first_name": "Марк",
-        "last_name": "Фельдман",
-        "email": "markenson888@mail.ru",
-        "phone_number": "+7 916 114-92-27",
-        "gender": {
-            "id": 1,
-            "name": "M"
-        }
-    }
-
+    const userData = await fetchUserInfo(context.req.headers.cookie, user_id)
 
     return {
         props: {
@@ -61,6 +47,13 @@ const Order = ({
                    userData,
                    skipPayment
                }) => {
+    console.log(defaultPrice)
+    console.log(finalPrice)
+    console.log(sale)
+    console.log(userData)
+    console.log(skipPayment)
+
+
     const router = useRouter()
     const {orderStore, userStore} = useContext(Context)
     const [defAmount, setDefAmount] = useState(defaultPrice)
@@ -81,8 +74,6 @@ const Order = ({
 
 
     const [fillAll, setFillAll] = useState(false)
-    const [fillPatronymic, setFillPatronymic] = useState(false)
-    const [fillAddress, setFillAddress] = useState(false)
     const [order, setOrder] = useState({})
     const checkoutRef = useRef(null)
     const checkout = async () => {
@@ -114,7 +105,10 @@ const Order = ({
         const token = Cookies.get('access_token')
         const id = userStore.id
 
+        console.log(orderObj)
+
         const checkout = await checkoutOrder(orderObj, id, token).catch()
+        console.log(checkout)
         Cookies.set('cart', '', {expires: 2772})
         Cookies.set('promo', '', {expires: 2772})
         const invoiceStr = JSON.stringify(checkout.invoice_data)

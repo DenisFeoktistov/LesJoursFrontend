@@ -47,10 +47,10 @@ export const getServerSideProps = async (context) => {
     const productsAmount = productsAll.count;
 
     return {
-        props: {lastSeen, url, productsAll, productsAmount}
+        props: {lastSeen, productsAll, productsAmount}
     }
 }
-const Products = ({lastSeen, url, productsAll, productsAmount}) => {
+const Products = ({lastSeen, productsAll, productsAmount}) => {
     console.log(lastSeen)
     const productListRef = useRef(null)
     const router = useRouter()

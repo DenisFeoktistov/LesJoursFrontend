@@ -32,68 +32,6 @@ const OrderCard = ({order}) => {
         }
     }, [isOpen]);
 
-    const orderTemp = {
-        "id": 1113,
-        "order_units": [
-            {
-                "id": 1544,
-                "name": "Бенто-торт",
-                "bucket_link": [
-                    {
-                        "url": "https://storage.yandexcloud.net/les-jours-bucket/1.png"
-                    }
-                ],
-                "slug": "vans-old-skool-blackwhite-43719",
-                "price": {
-                    "start_price": 3900,
-                    "final_price": 3900
-                },
-                "guestsAmount": 2,
-                "totalPrice": 7800,
-                "date": {
-                    "start_datetime": "2024-04-01T14:00:00Z",
-                    "end_datetime": "2024-04-01T16:00:00Z"
-                },
-                "address": "Кремлевский дворец",
-                "contacts": "+7 (007) МММ 77-77",
-                "type": "master_class"
-            },
-            {
-                "id": 1544,
-                "name": "Бенто-торт",
-                "bucket_link": [
-                    {
-                        "url": "https://storage.yandexcloud.net/les-jours-bucket/1.png"
-                    }
-                ],
-                "slug": "vans-old-skool-blackwhite-43719",
-                "price": {
-                    "start_price": 3900,
-                    "final_price": 3900
-                },
-                "guestsAmount": 2,
-                "totalPrice": 7800,
-                "date": {
-                    "start_datetime": "2024-04-01T14:00:00Z",
-                    "end_datetime": "2024-04-01T16:00:00Z"
-                },
-                "address": "Кремлевский дворец",
-                "contacts": "+7 (007) МММ 77-77",
-                "type": "master_class"
-            },
-            {
-                "type": "certificate",
-                "amount": "5000"
-            }
-        ],
-        "formatted_date": "16.11.24",
-        "number": "115536",
-        "total_amount": 13190,
-        "final_amount": 10640,
-        "total_sale": 3100,
-    }
-
-
     return (
 
         <div className={s.dropdown_wrapper}>
@@ -107,13 +45,13 @@ const OrderCard = ({order}) => {
                     <div className={s.header_block}>
                         <div className={s.header_col}>
                             <div className={`${s.header_text} ${s.num}`}>
-                                № {orderTemp.number}
+                                № {order.number}
                             </div>
                             <div className={`${s.header_text} ${s.date}`}>
-                                Дата заказа: {orderTemp.formatted_date}
+                                Дата заказа: {order.formatted_date}
                             </div>
                             <div className={`${s.header_text} ${s.sum}`}>
-                                Сумма: {addSpacesToNumber(orderTemp.final_amount)} ₽
+                                Сумма: {addSpacesToNumber(order.final_amount)} ₽
                             </div>
                         </div>
                     </div>
@@ -132,11 +70,11 @@ const OrderCard = ({order}) => {
                     <div className={s.details_block}>
                         <div className={s.order}>
                             {
-                                orderTemp.order_units.map((el, ind) =>
+                                order.order_units.map((el, ind) =>
                                     <>
                                         <ProductBlock unit={el}/>
                                         {
-                                            ind !== orderTemp.order_units.length - 1 &&
+                                            ind !== order.order_units.length - 1 &&
                                             <hr className={s.hr}/>
                                         }
                                     </>
@@ -147,18 +85,18 @@ const OrderCard = ({order}) => {
                             <div className={s.final_col}>
                                 <div className={s.prices}>
                                     <div>Товаров на сумму:</div>
-                                    <div>{addSpacesToNumber(orderTemp.total_amount)} ₽</div>
+                                    <div>{addSpacesToNumber(order.total_amount)} ₽</div>
                                 </div>
                                 {
-                                    Number(orderTemp.total_sale) > 0 &&
+                                    Number(order.total_sale) > 0 &&
                                     <div className={s.prices}>
                                         <div>Скидка:</div>
-                                        <div>{addSpacesToNumber(orderTemp.total_sale)} ₽</div>
+                                        <div>{addSpacesToNumber(order.total_sale)} ₽</div>
                                     </div>
                                 }
                                 <div className={s.prices}>
                                     <div>Итого:</div>
-                                    <div>{addSpacesToNumber(orderTemp.final_amount)} ₽</div>
+                                    <div>{addSpacesToNumber(order.final_amount)} ₽</div>
                                 </div>
                             </div>
                         </div>

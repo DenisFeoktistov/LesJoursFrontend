@@ -45,6 +45,7 @@ export default function AppWrapper({children}) {
                 }
                 fetchCart2(userData.user_id, data.access).then(cart => {
                     cartStore.setCartCnt(cart.product_units.length)
+                    console.log(cart)
                 })
 
             }).catch(() => {

@@ -24,6 +24,7 @@ import Compilation from "@/components/shared/Compilation/Compilation";
 import {fetchProductsByArray} from "@/http/productsApi";
 import igBlack from "@/static/icons/igImg.svg";
 import refund from "@/static/icons/arrow-return-left.svg";
+import {cartStore} from "@/store/CartStore";
 
 
 export const getServerSideProps = async (context) => {
@@ -38,8 +39,7 @@ export const getServerSideProps = async (context) => {
         const obj = {
             product_unit_list: cartArr
         }
-        productUnits = await fetchProductUnits(JSON.stringify(obj), token)
-        console.log(productUnits)
+        productUnits = await fetchProductUnits(obj, token)
     } else {
         productUnits = []
     }
@@ -71,6 +71,7 @@ export const getServerSideProps = async (context) => {
         sale = res.sale
         totalSale = res.sale
     }
+
     return {
         props: {
             productUnits,
@@ -92,13 +93,6 @@ const Cart = ({
                   defaultPromo,
                   isUpdate
               }) => {
-    console.log(productUnits)
-    console.log(defaultPrice)
-    console.log(finalPrice)
-    console.log(sale)
-    console.log(totalSale)
-    console.log(defaultPromo)
-    console.log(isUpdate)
 
     const router = useRouter()
     const [lastSeen, setLastSeen] = useState([])
@@ -115,10 +109,8 @@ const Cart = ({
     useEffect(() => {
         const token = Cookies.get('access_token')
         if (token) {
-            console.log("lastSeen: ")
             const {user_id} = jwtDecode(token)
             fetchLastSeen2(token, user_id).then(res => setLastSeen(res))
-            console.log(lastSeen)
         } else {
             let arr
             if (Cookies.get('last_seen')) {
@@ -130,17 +122,16 @@ const Cart = ({
         }
     }, [router.asPath])
 
-    // Надо потестить промики как работают
-    // useEffect(() => {
-    //     cartStore.setCartCnt(productUnits.length)
-    //     setDefAmount(defaultPrice)
-    //     setFinAmount(finalPrice)
-    //     setSaleAmount(sale)
-    //     setTotalSaleAmount(totalSale)
-    //
-    //     checkPromo()
-    //
-    // }, [Cookies.get('cart'), productUnits, Cookies.get('promo')]);
+    useEffect(() => {
+        cartStore.setCartCnt(productUnits.length)
+        setDefAmount(defaultPrice)
+        setFinAmount(finalPrice)
+        setSaleAmount(sale)
+        setTotalSaleAmount(totalSale)
+
+        checkPromo()
+
+    }, [Cookies.get('cart'), productUnits, Cookies.get('promo')]);
 
     const checkPromo = async () => {
         const token = Cookies.get('access_token')
@@ -240,7 +231,7 @@ const Cart = ({
                                         slug={el.slug}
                                         inWL={el.in_wishlist}
                                         available={el?.availability}
-                                        amount={el?.amount}
+                                        amount={Math.floor(el?.amount)}
                                     />
                                 )
                             }

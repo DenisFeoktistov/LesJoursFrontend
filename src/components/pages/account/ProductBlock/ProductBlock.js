@@ -3,6 +3,7 @@ import s from './ProductBlock.module.css'
 import Image from "next/image";
 import Link from "next/link";
 import certificateImg from "@/static/img/certificateImg.png";
+import {desktopStore} from "@/store/DesktopStore";
 
 const ProductBlock = ({unit}) => {
     const addSpacesToNumber = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
@@ -27,61 +28,121 @@ const ProductBlock = ({unit}) => {
     return (
         <>
             {unit.type === "master_class" &&
-                <div className={s.row}>
-                    <Link href={`/products/${unit.slug}`} className={s.col1}>
-                        {unit.bucket_link[0] &&
-                            <Image
-                                src={unit.bucket_link[0].url}
-                                alt=''
-                                className={s.img}
-                                width={400}
-                                height={400}
-                            />}
-                    </Link>
-                    <div className={s.inner_row}>
-                        <div className={s.inner_row2}>
-                            <div className={s.col2}>
-                                <div>
-                                    <div className={s.brand}>Мастер-класс</div>
-                                    <div className={s.text}>{unit.name}</div>
+                <>
+                    {desktopStore.isDesktop ?
+                        <div className={s.row}>
+                            <Link href={`/products/${unit.slug}`} className={s.col1}>
+                                {unit.bucket_link[0] &&
+                                    <Image
+                                        src={unit.bucket_link[0].url}
+                                        alt=''
+                                        className={s.img}
+                                        width={400}
+                                        height={400}
+                                    />}
+                            </Link>
+                            <div className={s.inner_row}>
+                                <div className={s.inner_row2}>
+                                    <div className={s.col2}>
+                                        <div>
+                                            <div className={s.brand}>Мастер-класс</div>
+                                            <div className={s.text}>{unit.name}</div>
+                                        </div>
+
+                                        <div className={s.number_block}>
+                                            <div className={s.brand}>Дата проведения</div>
+                                            <div
+                                                className={s.text}>{formatDateTime(unit.date.start_datetime, unit.date.end_datetime)}</div>
+                                        </div>
+                                    </div>
+                                    <div className={s.col}>
+                                        <div>
+                                            <div className={s.brand}>Число гостей</div>
+                                            <div className={s.text}>{unit.guestsAmount}</div>
+                                        </div>
+                                        {unit.contacts &&
+                                            <div className={s.number_block}>
+                                                <div className={s.brand}>Контакты локации</div>
+                                                <div className={s.text}>{unit.contacts}</div>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div className={s.col}>
+                                        <div>
+                                            <div className={s.brand}>Общая стоимость</div>
+                                            <div
+                                                className={s.text}>{addSpacesToNumber(unit.price.final_price * unit.guestsAmount)} ₽
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div className={s.number_block}>
+                                {unit.address &&
+                                    <div className={s.number_block}>
+                                        <div className={s.brand}>Адрес проведения</div>
+                                        <div className={s.text}>{unit.address}</div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        :
+                        <div className={s.row}>
+                            <Link href={`/products/${unit.slug}`} className={s.col1}>
+                                {unit.bucket_link[0] &&
+                                    <Image
+                                        src={unit.bucket_link[0].url}
+                                        alt=''
+                                        className={s.img}
+                                        width={400}
+                                        height={400}
+                                    />}
+                            </Link>
+                            <div className={s.inner_row}>
+                                <div className={s.inner_row2}>
+                                    <div className={s.col2}>
+                                        <div>
+                                            <div className={s.brand}>Мастер-класс</div>
+                                            <div className={s.text}>{unit.name}</div>
+                                        </div>
+
+                                        <div className={s.number_block}>
+                                            <div className={s.brand}>Контакты локации</div>
+                                            <div
+                                                className={s.text}>{unit.contacts}</div>
+                                        </div>
+                                    </div>
+                                    <div className={s.col}>
+                                        <div>
+                                            <div className={s.brand}>Число гостей</div>
+                                            <div className={s.text}>{unit.guestsAmount}</div>
+                                        </div>
+                                        {unit.contacts &&
+                                            <div className={s.number_block}>
+                                                <div className={s.brand}>Общая стоимость</div>
+                                                <div
+                                                    className={s.text}>{addSpacesToNumber(unit.price.final_price * unit.guestsAmount)} ₽
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div className={s.number_block} style={{marginTop: 7, marginBottom: 0}}>
                                     <div className={s.brand}>Дата проведения</div>
                                     <div
                                         className={s.text}>{formatDateTime(unit.date.start_datetime, unit.date.end_datetime)}</div>
                                 </div>
-                            </div>
-                            <div className={s.col}>
-                                <div>
-                                    <div className={s.brand}>Число гостей</div>
-                                    <div className={s.text}>{unit.guestsAmount}</div>
-                                </div>
-                                {unit.contacts &&
+
+                                {unit.address &&
                                     <div className={s.number_block}>
-                                        <div className={s.brand}>Контакты локации</div>
-                                        <div className={s.text}>{unit.contacts}</div>
+                                        <div className={s.brand}>Адрес проведения</div>
+                                        <div className={s.text}>{unit.address}</div>
                                     </div>
                                 }
                             </div>
-                            <div className={s.col}>
-                                <div>
-                                    <div className={s.brand}>Общая стоимость</div>
-                                    <div
-                                        className={s.text}>{addSpacesToNumber(unit.price.final_price * unit.guestsAmount)} ₽
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-
-                        {unit.address &&
-                            <div className={s.number_block}>
-                                <div className={s.brand}>Адрес проведения</div>
-                                <div className={s.text}>{unit.address}</div>
-                            </div>
-                        }
-                    </div>
-                </div>
+                    }
+                </>
             }
             {unit.type === "certificate" &&
                 <div className={s.row}>

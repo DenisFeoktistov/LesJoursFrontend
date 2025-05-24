@@ -24,8 +24,10 @@ const SizeChoice = ({prices = [], productId = -1, isDesktop, isCertificate = fal
         setIsOpen(false);
         if (!isCertificate) {
             productStore.setSizeChosen(item)
-            const arr = Cookies.get('cart').trim().split(' ')
-            productStore.setText(arr, productStore.sizeChosen.id)
+            if (Cookies.get('cart')) {
+                const arr = Cookies.get('cart').trim().split(' ')
+                productStore.setText(arr, productStore.sizeChosen.id)
+            }
         } else {
             productStore.setCertificateChosen(item)
         }

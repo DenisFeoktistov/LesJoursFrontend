@@ -2,10 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import s from '@/styles/Certificate.module.css'
 import SizeChoice from "@/components/pages/oneProduct/SizeChoice/SizeChoice";
 import Image from 'next/image'
-import {
-    fetchProductsByArray,
-    fetchProductsPage
-} from "@/http/productsApi";
+import {fetchProductsByArray, fetchProductsPage} from "@/http/productsApi";
 import MainLayout from "@/layout/MainLayout";
 import {Context} from "@/context/AppWrapper";
 import {observer} from "mobx-react-lite";
@@ -18,7 +15,6 @@ import '@splidejs/react-splide/css'
 import Head from "next/head";
 import {useRouter} from "next/router";
 import Notification from "@/components/shared/Notification/Notification";
-import ContactModal from "@/components/shared/ContactModal/ContactModal";
 import certificateImg from "@/static/img/certificateImg.png";
 
 
@@ -83,83 +79,6 @@ const Certificate = () => {
 
         cartStore.setCartCnt(cartStore.cartCnt + 1)
     }
-
-    const addSpacesToNumber = (number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-
-    const renderParametersForMobBlock = () => {
-        const params = [];
-
-        // Добавляем Артикул, если он есть
-        if (product.manufacturer_sku) {
-            params.push(
-                <div className={s.parameter} key="Артикул">
-                    <div className={s.parameterName}>Артикул</div>
-                    <div className={s.parameterValue}>{product.manufacturer_sku}</div>
-                </div>
-            );
-            params.push(<div className={s.verticalLine} key="Артикул"></div>);
-        }
-
-        // Добавляем Дату релиза, если она есть
-        if (product.approximate_date) {
-            params.push(
-                <div className={s.parameter} key="Дата релиза">
-                    <div className={s.parameterName}>Дата релиза</div>
-                    <div className={s.parameterValue}>{product.approximate_date}</div>
-                </div>
-            );
-            params.push(<div className={s.verticalLine} key="Дата релиза"></div>);
-        }
-
-        // Получаем остальные параметры
-        const paramsObj = product.parameters;
-        const order = paramsObj.parameters_order;
-
-        if (order) {
-            // Идем по порядку из order
-            for (const param of order) {
-                if (param in paramsObj.parameters) {
-                    const value = paramsObj.parameters[param].join(', ');
-                    params.push(
-                        <div className={s.parameter} key={param}>
-                            <div className={s.parameterName}>{param}</div>
-                            <div className={s.parameterValue}>{value}</div>
-                        </div>
-                    );
-                    params.push(<div className={s.verticalLine} key={`${param}-line`}></div>);
-                }
-            }
-        } else {
-            // Идем по всем параметрам, если порядок не указан
-            for (const key in paramsObj.parameters) {
-                const value = paramsObj.parameters[key].join(', ');
-                params.push(
-                    <div className={s.parameter} key={key}>
-                        <div className={s.parameterName}>{key}</div>
-                        <div className={s.parameterValue}>{value}</div>
-                    </div>
-                );
-                params.push(<div className={s.verticalLine} key={`${key}-line`}></div>);
-            }
-        }
-
-        // Убираем последнюю вертикальную линию, если есть параметры
-        if (params.length > 0 && params[params.length - 1].type === 'div') {
-            params.pop();
-        }
-
-        return params;
-    };
-
-    const [contactOpen, setContactOpen] = useState(false);
-    const toggleContact = () => {
-        setContactOpen(!contactOpen);
-    };
-
-    const closeContact = () => {
-        setContactOpen(false);
-    };
-
     return (
         <MainLayout>
             <Head>
@@ -268,7 +187,6 @@ const Certificate = () => {
                     <Compilation arr={lastSeen} title={'Ранее просмотренные'} paddings={'regular'}/>
                 }
             </div>
-            <ContactModal isOpen={contactOpen} handleClose={closeContact}/>
         </MainLayout>
     );
 };

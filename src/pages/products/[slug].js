@@ -7,11 +7,7 @@ import like_fill from '@/static/icons/heart-fill.svg'
 import SizeChoice from "@/components/pages/oneProduct/SizeChoice/SizeChoice";
 import Arrow from "@/components/shared/UI/Arrow/Arrow";
 import Image from 'next/image'
-import {
-    fetchOneProduct,
-    fetchProductsByArray,
-    fetchProductsPage
-} from "@/http/productsApi";
+import {fetchOneProduct, fetchProductsByArray, fetchProductsPage} from "@/http/productsApi";
 import MainLayout from "@/layout/MainLayout";
 import {Context} from "@/context/AppWrapper";
 import {observer} from "mobx-react-lite";
@@ -74,12 +70,8 @@ export const getServerSideProps = async (context) => {
 
 StarRating.propTypes = {rating: PropTypes.number};
 const OneProductPage = ({product, events, userData}) => {
-    console.log(product)
-    console.log(events)
-    console.log(userData)
     const router = useRouter()
     const [moreOpen, setMoreOpen] = useState(false)
-    const [bonuses, setBonuses] = useState(`До ${product.price.bonus}`)
     const [notification, setNotification] = useState(null);
 
     const [similarProducts, setSimilarProducts] = useState([])
@@ -497,14 +489,12 @@ const OneProductPage = ({product, events, userData}) => {
                                                             height: '22px',
                                                             marginLeft: '12px'
                                                         }}/>
-                                                        {/*<Image src={like} alt="" style={{ width: '22px', height: '22px'}}/>*/}
-                                                        {/*<div>В избранное</div>*/}
                                                     </div>
                                                 </AuthModal>
                                             </div>
                                     }
                                 </div>
-                                <hr style={{marginTop: '10px', marginBottom: '10px' , color: '#d1838c', opacity: '1'}}/>
+                                <hr style={{marginTop: '10px', marginBottom: '10px', color: '#d1838c', opacity: '1'}}/>
                                 <div className={s.containerParamsMob} onClick={toggleInfoModal}>
                                     {/* Верхняя часть */}
                                     <div className={s.section}>
@@ -515,7 +505,7 @@ const OneProductPage = ({product, events, userData}) => {
                                     {/* Нижняя часть (пока такая же) */}
                                     {/* Нижняя часть с параметрами */}
                                     <div className={s.parametersSection}>
-                                        <span className={s.parametersTitle}>Параметры:</span>
+                                        <span className={s.parametersTitle}>Детали:</span>
 
                                         <div className={s.parametersContainer}>
                                             {renderParametersForMobBlock()}
@@ -921,12 +911,6 @@ const OneProductPage = ({product, events, userData}) => {
                 </div>
                 {desktopStore.isDesktop &&
                     <hr className={s.margins}/>}
-                {/*{!desktopStore.isDesktop && similarProducts.map(el =>*/}
-                {/*    <>*/}
-                {/*        <Compilation arr={el.products} title={'Похожие мастер-классы'} paddings={'regular'}*/}
-                {/*                     rows={1} key={product.id}/>*/}
-                {/*    </>*/}
-                {/*)}*/}
                 {similarProducts.length > 0 &&
                     <Compilation arr={similarProducts} title={'Похожие мастер-классы'} paddings={'regular'}/>
                 }

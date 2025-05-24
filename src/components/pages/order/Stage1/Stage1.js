@@ -23,7 +23,7 @@ const Stage1 = ({userData}) => {
     return (
         <div>
             <div className={s.stage_block}>
-                <div className={s.stage}>1. Адрес доставки</div>
+                <div className={s.stage}>1. Данные гостя</div>
                 <a onClick={e => goToCart(e)}
                    className={s.link}
                 >Вернуться в корзину</a>
@@ -53,6 +53,14 @@ const Stage1 = ({userData}) => {
                                                 className={s.input}
                         />}
                     </InputMask>
+                    {!desktopStore.isDesktop &&
+                        <input type="text"
+                               className={s.input}
+                               placeholder={'Телеграм(@nickname)*'}
+                               value={orderStore.telegram}
+                               onChange={e => orderStore.setTelegram(e.target.value)}
+                        />
+                    }
                     <input type="email"
                            className={s.input}
                            placeholder={'Почта*'}
@@ -60,12 +68,14 @@ const Stage1 = ({userData}) => {
                            onChange={e => orderStore.setEmail(e.target.value)}
                            style={{width: desktopStore.isDesktop ? '' : '100%'}}
                     />
-                    <input type="text"
-                           className={s.input}
-                           placeholder={'Телеграм(@nickname)*'}
-                           value={orderStore.telegram}
-                           onChange={e => orderStore.setTelegram(e.target.value)}
-                    />
+                    {desktopStore.isDesktop &&
+                        <input type="text"
+                               className={s.input}
+                               placeholder={'Телеграм(@nickname)*'}
+                               value={orderStore.telegram}
+                               onChange={e => orderStore.setTelegram(e.target.value)}
+                        />
+                    }
                 </div>
             </div>
             <div>

@@ -68,7 +68,7 @@
     display: flex;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1200px) {
     .header_col {
         display: block;
     }
@@ -79,6 +79,7 @@
 
     .row {
         gap: 10px;
+        min-height: 150px;
     }
 
     .inner_row {
@@ -88,11 +89,15 @@
 
     .col1 {
         align-items: center;
-        min-width: 180px;
+        min-width: 120px;
     }
 
     .col {
-        width: 100%;
+        width: 50%;
+    }
+
+    .col2 {
+        width: 50%;
     }
 
     .brand {

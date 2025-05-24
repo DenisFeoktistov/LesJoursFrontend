@@ -1,5 +1,5 @@
 .dropdown {
-    margin-top: 4px ;
+    margin-top: 4px;
     border: 1px solid black;
     border-radius: 7px;
     overflow: hidden;
@@ -7,20 +7,23 @@
     opacity: 1;
     background-color: #FFFFFF;
 }
+
 .dropdown_content {
     max-height: 200px;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
 }
+
 .dropdown_content::-webkit-scrollbar {
     display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .dropdown_content {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
+
 .text {
     min-height: 48px;
     align-items: center;
@@ -31,9 +34,11 @@
     cursor: pointer;
     font-weight: 500;
 }
+
 .text:hover {
     background: rgba(0, 0, 0, 0.05);
 }
+
 .items {
     padding: 10px;
     border-top: 1px solid black;
@@ -41,9 +46,11 @@
     justify-content: space-between;
     cursor: pointer;
 }
+
 .items:hover {
     background: rgba(0, 0, 0, 0.05);
 }
+
 .size_block {
     display: flex;
     align-items: center;
@@ -52,20 +59,24 @@
 .price {
     font-weight: 700;
 }
+
 .crossed {
     text-decoration: line-through;
 }
+
 .sale_price {
     margin-left: 10px;
     color: #940a0a;
     /*color: ;*/
 }
+
 .icons {
     font-weight: 700;
     margin-right: 10px;
     display: flex;
     align-items: center;
 }
+
 .inputWrapper {
     position: relative;
     display: inline-block;
@@ -95,12 +106,14 @@
     margin-right: 10px;
     text-decoration: line-through;
 }
+
 .items_not {
     padding: 10px;
     border-top: 1px solid black;
     display: flex;
     justify-content: space-between;
 }
+
 .link {
     display: inline;
     background: transparent;
@@ -110,6 +123,7 @@
     margin-left: 2px;
     text-decoration: underline;
 }
+
 .link:hover {
     color: black;
 }
@@ -122,7 +136,7 @@
         flex-direction: column;
         gap: 10px;
         align-items: center;
-        padding: 7px;
+        /*padding: 7px;*/
     }
 
     .text {
