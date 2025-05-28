@@ -8,10 +8,6 @@ import Cookies from "js-cookie";
 import {useRouter} from "next/router";
 import Head from "next/head";
 import {checkoutOrder} from "@/http/orderApi";
-import Image from "next/image";
-import heart from "@/static/icons/circle_heart.svg";
-import {desktopStore} from "@/store/DesktopStore";
-import ContactModal from "@/components/shared/ContactModal/ContactModal";
 import jwtDecode from "jwt-decode";
 import {fetchCart} from "@/http/cartApi";
 import {fetchUserInfo} from "@/http/userApi";
@@ -47,13 +43,6 @@ const Order = ({
                    userData,
                    skipPayment
                }) => {
-    console.log(defaultPrice)
-    console.log(finalPrice)
-    console.log(sale)
-    console.log(userData)
-    console.log(skipPayment)
-
-
     const router = useRouter()
     const {orderStore, userStore} = useContext(Context)
     const [defAmount, setDefAmount] = useState(defaultPrice)
@@ -105,10 +94,7 @@ const Order = ({
         const token = Cookies.get('access_token')
         const id = userStore.id
 
-        console.log(orderObj)
-
         const checkout = await checkoutOrder(orderObj, id, token).catch()
-        console.log(checkout)
         Cookies.set('cart', '', {expires: 2772})
         Cookies.set('promo', '', {expires: 2772})
         const invoiceStr = JSON.stringify(checkout.invoice_data)
@@ -194,24 +180,6 @@ const Order = ({
                         {fillAll &&
                             <p className={'red_text'}>Заполните все поля</p>
                         }
-
-                        {!desktopStore.isDesktop &&
-                            <div>
-                                <br/>
-
-                                <div className={'d-flex justify-content-center'}>
-                                    <Image src={heart} alt='' width={85}/>
-                                </div>
-                                <p className={'text-center mt-2'}>
-                                    Мы готовы сформировать для вас индивидуальные условия отправления,
-                                    поэтому вы всегда можете написать нам в <span
-                                    style={{color: 'black', textDecoration: 'underline', cursor: 'pointer'}}
-                                    onClick={toggleContact}>службу поддержку</span> свой запрос и мы обязательно вам
-                                    поможем!
-                                </p>
-                                <ContactModal isOpen={contactOpen} handleClose={closeContact}/>
-
-                            </div>}
                     </div>
                 </div>
             </div>

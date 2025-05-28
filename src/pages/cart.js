@@ -4,7 +4,7 @@ import MainLayout from "@/layout/MainLayout";
 import CartItem from "@/components/pages/cart/CartItem/CartItem";
 import {useRouter} from "next/router";
 import {parse} from "cookie";
-import {fetchCart, fetchCartPrice, fetchProductUnits, promoAuth, promoUnauth} from "@/http/cartApi";
+import {fetchCart, fetchCartPrice, fetchProductUnits} from "@/http/cartApi";
 import {Context} from "@/context/AppWrapper";
 import AuthModal from "@/components/shared/AuthModal/AuthModal";
 import PromoInput from "@/components/pages/cart/PromoInput/PromoInput";
@@ -136,21 +136,21 @@ const Cart = ({
     const checkPromo = async () => {
         const token = Cookies.get('access_token')
         let res
-        if (promo) {
-            if (userStore.isLogged) {
-                res = await promoAuth(promo, userStore.id, token)
-                setFinAmount(Math.max(res.final_amount, 1))
-                setTotalSaleAmount(Math.min(res.promo_sale + saleAmount, defAmount - 1))
-                setPromoRes(res)
-            } else {
-                const cartArr = Cookies.get('cart').trim().split(' ')
-                res = await promoUnauth(promo, cartArr)
-
-                setFinAmount(Math.max(res.final_amount, 1))
-                setTotalSaleAmount(Math.min(res.promo_sale + saleAmount, defAmount - 1))
-                setPromoRes(res)
-            }
-        }
+        // if (promo) {
+        //     if (userStore.isLogged) {
+        //         res = await promoAuth(promo, userStore.id, token)
+        //         setFinAmount(Math.max(res.final_amount, 1))
+        //         setTotalSaleAmount(Math.min(res.promo_sale + saleAmount, defAmount - 1))
+        //         setPromoRes(res)
+        //     } else {
+        //         const cartArr = Cookies.get('cart').trim().split(' ')
+        //         res = await promoUnauth(promo, cartArr)
+        //
+        //         setFinAmount(Math.max(res.final_amount, 1))
+        //         setTotalSaleAmount(Math.min(res.promo_sale + saleAmount, defAmount - 1))
+        //         setPromoRes(res)
+        //     }
+        // }
 
     }
 

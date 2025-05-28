@@ -180,7 +180,6 @@ const OneProductPage = ({product, events, userData}) => {
         const token = Cookies.get('access_token')
         const userId = userStore.id
         const data = await addToWishlist(userId, product.id, token)
-        console.log(data)
     }
     const deleteFromWL = async () => {
         setIsInWishlist(false)
@@ -193,17 +192,12 @@ const OneProductPage = ({product, events, userData}) => {
         let cart = Cookies.get('cart')
         Cookies.set('cart', cart + ' ' + productStore.sizeChosen.id + '_' + productStore.guestCounts + '_guests', {expires: 2772})
         const arr = Cookies.get('cart').trim().split(' ')
-        console.log(arr)
         productStore.setText(arr, productStore.sizeChosen.id)
 
         if (userStore.isLogged) {
             const token = Cookies.get('access_token')
             const userId = userStore.id
-            console.log(userId)
-            console.log(productStore.sizeChosen.id)
-            console.log(productStore.guestCounts)
             const data = await addToCart(userId, productStore.sizeChosen.id, productStore.guestCounts, token)
-            console.log(data)
         }
 
         cartStore.setCartCnt(cartStore.cartCnt + 1)

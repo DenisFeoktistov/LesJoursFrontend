@@ -51,7 +51,6 @@ export const getServerSideProps = async (context) => {
     }
 }
 const Products = ({lastSeen, productsAll, productsAmount}) => {
-    console.log(lastSeen)
     const productListRef = useRef(null)
     const router = useRouter()
     const page = Number(router.query.page) || 1

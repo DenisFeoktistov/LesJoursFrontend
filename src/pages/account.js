@@ -20,7 +20,6 @@ export const getServerSideProps = async (context) => {
     return {props: {userData}}
 }
 const Account = ({userData}) => {
-    console.log(userData)
     const {userStore} = useContext(Context)
     const [firstname, setFirstname] = useState(userData.first_name)
     const [lastname, setLastname] = useState(userData.last_name)

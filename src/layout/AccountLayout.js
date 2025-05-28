@@ -34,9 +34,6 @@ const AccountLayout = ({children}) => {
         }
     }
 
-    console.log(userStore.firstName)
-    console.log(userStore.lastName)
-
     const {desktopStore} = useContext(Context)
     return (
         <div className={s.cont + ' custom_cont'}>

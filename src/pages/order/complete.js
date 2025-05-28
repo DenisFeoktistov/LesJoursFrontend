@@ -65,8 +65,6 @@ export const getServerSideProps = async (context) => {
     return {props: {order}}
 }
 const Complete = ({order}) => {
-    console.log(order)
-
     const {userStore, cartStore} = useContext(Context)
 
     const {desktopStore} = useContext(Context)
